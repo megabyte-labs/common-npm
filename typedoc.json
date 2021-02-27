@@ -1,0 +1,12 @@
+{
+    "exclude": ["**/*.spec.ts"],
+    "externalPattern": "",
+    "gaSite": "tracking_code",
+    "hideGenerator": true,
+    "inputFiles": ["./src/index.ts"],
+    "mode": "file",
+    "module": "esnext",
+    "name": "PROJECT_NAME",
+    "out": "build/docs",
+    "tsconfig": "./tsconfig.json"
+}
