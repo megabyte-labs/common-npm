@@ -40,6 +40,9 @@ cp ./.modules/shared/CODE_OF_CONDUCT.md CODE_OF_CONDUCT.md
 # Copy files from the project type's module
 cp -Rf ./.modules/$PROJECT_TYPE/files/ .
 
+# Ensure the pre-commit hook is executable
+chmod 755 .husky/pre-commit
+
 # Generate the documentation
 if [ -f ./.blueprint.json ]; then
   jq -s '.[0] * .[1]' .blueprint.json ./.modules/docs/common.json > __bp.json | true
