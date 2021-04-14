@@ -41,9 +41,11 @@ cp ./.modules/shared/CODE_OF_CONDUCT.md CODE_OF_CONDUCT.md
 cp -Rf ./.modules/$PROJECT_TYPE/files/ .
 
 # Generate the documentation
-jq -s '.[0] * .[1]' template.json ./.modules/docs/common.json > __bp.json | true
-npx -y @appnest/readme generate --config __bp.json --input ./.modules/docs/blueprint-contributing.md --output CONTRIBUTING.md | true
-npx -y @appnest/readme generate --config __bp.json --input ./.modules/docs/blueprint-readme.md | true
-rm __bp.json
+if [ -f ./.blueprint.json ]; then
+  jq -s '.[0] * .[1]' .blueprint.json ./.modules/docs/common.json > __bp.json | true
+  npx -y @appnest/readme generate --config __bp.json --input ./.modules/docs/blueprint-contributing.md --output CONTRIBUTING.md | true
+  npx -y @appnest/readme generate --config __bp.json --input ./.modules/docs/blueprint-readme.md | true
+  rm __bp.json
+fi
 
 echo "*** Done updating meta files and generating documentation ***"
