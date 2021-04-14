@@ -47,7 +47,7 @@ chmod 755 .husky/pre-commit
 if [ -f ./.blueprint.json ]; then
   jq -s '.[0] * .[1]' .blueprint.json ./.modules/docs/common.json > __bp.json | true
   npx -y @appnest/readme generate --config __bp.json --input ./.modules/docs/blueprint-contributing.md --output CONTRIBUTING.md | true
-  npx -y @appnest/readme generate --config __bp.json --input ./.modules/docs/blueprint-readme.md | true
+  npx -y @appnest/readme generate --config __bp.json --input ./.blueprint.md | true
   rm __bp.json
 fi
 
