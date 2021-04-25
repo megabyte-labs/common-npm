@@ -138,7 +138,7 @@
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": false
+        "devDependencies": ["**/*.test.ts", "**/*.spec.ts"]
       }
     ],
     "import/no-internal-modules": "off",
