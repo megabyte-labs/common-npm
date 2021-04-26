@@ -52,3 +52,5 @@ if [ -f ./.blueprint.json ]; then
 fi
 
 echo "*** Done updating meta files and generating documentation ***"
+
+
