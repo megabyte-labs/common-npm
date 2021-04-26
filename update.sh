@@ -49,6 +49,9 @@ if [ -f ./.blueprint.json ]; then
   npx -y @appnest/readme generate --config __bp.json --input ./.modules/docs/blueprint-contributing.md --output CONTRIBUTING.md | true
   npx -y @appnest/readme generate --config __bp.json --input ./.blueprint.md | true
   rm __bp.json
+  # Remove formatting error
+  sed -i .bak 's/](#-/](#/g' README.md
+  sed -i .bak 's/](#-/](#/g' CONTRIBUTING.md
 fi
 
 echo "*** Done updating meta files and generating documentation ***"
