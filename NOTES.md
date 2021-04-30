@@ -4,7 +4,8 @@
   This rule conflicts with `functional/no-loop-statement` rule. By `no-loop-statement` it discourages to use primitive loops and encourages to use `map` and `reduce` functions.
 
 - `functional/no-class`  
-  Most of the current code follows object orientation. Thus disabling this rule.
+- `functional/no-this-expression`  
+  Most of the current code follows object orientation. Thus disabling these rules.
 
 - `functional/no-return-void`  
   To allow to set return type `void` disable this rule.

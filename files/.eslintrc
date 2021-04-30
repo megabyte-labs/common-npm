@@ -21,6 +21,7 @@
     "eslint-comments/no-unused-disable": "error",
     "functional/no-class": "off",
     "functional/no-return-void": "off",
+    "functional/no-this-expression": "off",
     "functional/no-throw-statement": "off",
     "import/order": ["error", { "newlines-between": "always", "alphabetize": { "order": "asc" } }],
     "sort-imports": ["error", { "ignoreDeclarationSort": true, "ignoreCase": true }],
