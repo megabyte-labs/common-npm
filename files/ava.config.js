@@ -1,8 +1,7 @@
 export default {
   failFast: true,
-  files: ["!diff", "!test", "!build/module/**"],
+  files: ["!diff", "!test", "!build/module/**", "**/*.spec.ts"],
   ignoredByWatcher: ["diff", "test"],
-  sources: ["build/main/**/*.js"],
   timeout: "60s",
   typescript: {
     rewritePaths: {
