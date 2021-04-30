@@ -19,7 +19,10 @@
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "eslint-comments/disable-enable-pair": ["error", { "allowWholeFile": true }],
     "eslint-comments/no-unused-disable": "error",
+    "functional/no-return-void": "off",
+    "functional/no-throw-statement": "off",
     "import/order": ["error", { "newlines-between": "always", "alphabetize": { "order": "asc" } }],
-    "sort-imports": ["error", { "ignoreDeclarationSort": true, "ignoreCase": true }]
+    "sort-imports": ["error", { "ignoreDeclarationSort": true, "ignoreCase": true }],
+    "unicorn/no-array-reduce": "off"
   }
 }

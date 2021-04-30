@@ -1,8 +1,10 @@
 # eslint rules notes
 
-- `no-return-void`  
-  To allow to set return type `void` disable this rule.
+- `unicorn/no-array-reduce`  
+  This rule conflicts with `functional/no-loop-statement` rule. By `no-loop-statement` it discourages to use primitive loops and encourages to use `map` and `reduce` functions.
 
+- `functional/no-return-void`  
+  To allow to set return type `void` disable this rule.
 
 - `functional/no-throw-statement`  
   Because this conflicts with type checking.  
