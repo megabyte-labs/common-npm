@@ -3,8 +3,9 @@
 - `unicorn/no-array-reduce`  
   This rule conflicts with `functional/no-loop-statement` rule. By `no-loop-statement` it discourages to use primitive loops and encourages to use `map` and `reduce` functions.
 
-- `functional/no-class`  
-- `functional/no-this-expression`  
+- 
+  `functional/no-class`  
+  `functional/no-this-expression`  
   Most of the current code follows object orientation. Thus disabling these rules.
 
 - `functional/no-return-void`  
