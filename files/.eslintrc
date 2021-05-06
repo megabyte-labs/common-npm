@@ -1,10 +1,8 @@
 {
-  "root": true,
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": { "project": "./tsconfig.json" },
-  "env": { "es6": true },
-  "ignorePatterns": ["node_modules", "build", "coverage"],
-  "plugins": ["import", "eslint-comments", "functional", "prefer-arrow", "jsdoc"],
+  "env": {
+    "es6": true,
+    "node": true
+  },
   "extends": [
     "eslint:recommended",
     "plugin:eslint-comments/recommended",
@@ -12,19 +10,171 @@
     "plugin:import/typescript",
     "plugin:functional/lite",
     "prettier",
-    "plugin:unicorn/recommended"
+    "plugin:unicorn/recommended",
+    "plugin:jsdoc/recommended"
   ],
-  "globals": { "BigInt": true, "console": true, "WebAssembly": true },
+  "globals": {
+    "BigInt": true,
+    "WebAssembly": true,
+    "console": true
+  },
+  "ignorePatterns": ["node_modules", "build", "coverage"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["import", "eslint-comments", "functional", "prefer-arrow", "jsdoc", "deprecation"],
+  "root": true,
   "rules": {
+    "@typescript-eslint/adjacent-overload-signatures": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/explicit-function-return-type": "error",
+    "@typescript-eslint/explicit-member-accessibility": "error",
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "eslint-comments/disable-enable-pair": ["error", { "allowWholeFile": true }],
+    "@typescript-eslint/member-ordering": [
+      "error",
+      {
+        "default": [
+          "public-static-field",
+          "public-instance-field",
+          "public-constructor",
+          "private-static-field",
+          "private-instance-field",
+          "private-constructor",
+          "public-instance-method",
+          "protected-instance-method",
+          "private-instance-method"
+        ]
+      }
+    ],
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "format": ["PascalCase"],
+        "selector": "class"
+      }
+    ],
+    "@typescript-eslint/no-extraneous-class": [
+      "error",
+      {
+        "allowConstructorOnly": true,
+        "allowStaticOnly": true
+      }
+    ],
+    "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/no-invalid-void-type": "error",
+    "@typescript-eslint/no-magic-numbers": "error",
+    "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/no-throw-literal": "error",
+    "@typescript-eslint/no-unnecessary-type-arguments": "error",
+    "@typescript-eslint/prefer-for-of": "error",
+    "@typescript-eslint/prefer-namespace-keyword": "off",
+    "@typescript-eslint/prefer-readonly": "error",
+    "@typescript-eslint/promise-function-async": "error",
+    "@typescript-eslint/strict-boolean-expressions": "error",
+    "@typescript-eslint/typedef": "error",
+    "complexity": "error",
+    "curly": "error",
+    "default-case": "error",
+    "deprecation/deprecation": "error",
+    "dot-notation": "error",
+    "eqeqeq": "error",
+    "eslint-comments/disable-enable-pair": [
+      "error",
+      {
+        "allowWholeFile": true
+      }
+    ],
     "eslint-comments/no-unused-disable": "error",
     "functional/no-class": "off",
+    "functional/no-let": "off", // because es lint has better prefer-const with auto fixing
     "functional/no-return-void": "off",
     "functional/no-this-expression": "off",
     "functional/no-throw-statement": "off",
-    "import/order": ["error", { "newlines-between": "always", "alphabetize": { "order": "asc" } }],
-    "sort-imports": ["error", { "ignoreDeclarationSort": true, "ignoreCase": true }],
+    "import/no-default-export": "error",
+    "import/no-duplicates": "error",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["**/*.test.js", "**/*.spec.js", "**/*.spec.ts"]
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "alphabetize": {
+          "order": "asc"
+        },
+        "newlines-between": "always"
+      }
+    ],
+    "max-classes-per-file": "error",
+    "max-lines": ["error", 500],
+    "no-bitwise": "error",
+    "no-caller": "error",
+    "no-console": [
+      "error",
+      {
+        "allow": ["warn", "debug", "info"]
+      }
+    ],
+    "no-else-return": "error",
+    "no-eval": "error",
+    "no-extra-bind": "error",
+    "no-invalid-this": "error",
+    "no-new-func": "error",
+    "no-new-wrappers": "error",
+    "no-param-reassign": "error",
+    "no-restricted-syntax": "error",
+    "no-return-await": "error",
+    "no-sequences": "error",
+    "no-shadow": "error",
+    "no-template-curly-in-string": "error",
+    "no-unused-expressions": "error",
+    "no-useless-constructor": "error",
+    "prefer-arrow/prefer-arrow-functions": [
+      "error",
+      {
+        "classPropertiesAllowed": false,
+        "disallowPrototype": true,
+        "singleReturnOnly": true
+      }
+    ],
+    "prefer-object-spread": "error",
+    "radix": "error",
+    "require-await": "error",
+    "sort-imports": [
+      "error",
+      {
+        "ignoreCase": true,
+        "ignoreDeclarationSort": true
+      }
+    ],
+    "sort-keys": [
+      "error",
+      "asc",
+      {
+        "caseSensitive": false,
+        "minKeys": 2,
+        "natural": false
+      }
+    ],
+    "spaced-comment": [
+      "error",
+      "always",
+      {
+        "block": {
+          "balanced": true,
+          "exceptions": ["*"],
+          "markers": ["!"]
+        },
+        "line": {
+          "exceptions": ["-", "+"],
+          "markers": ["/"]
+        }
+      }
+    ],
     "unicorn/no-array-reduce": "off"
   }
 }
