@@ -1,5 +1,7 @@
 # eslint rules notes
 
+https://github.com/typescript-eslint/typescript-eslint/blob/1c1b572c3000d72cfe665b7afbada0ec415e7855/packages/eslint-plugin/ROADMAP.md
+
 - `unicorn/no-array-reduce`  
   This rule conflicts with `functional/no-loop-statement` rule. By `no-loop-statement` it discourages to use primitive loops and encourages to use `map` and `reduce` functions.
 
