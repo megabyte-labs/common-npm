@@ -64,7 +64,6 @@
     ],
     "@typescript-eslint/no-inferrable-types": "off",
     "@typescript-eslint/no-invalid-void-type": "error",
-    "@typescript-eslint/no-magic-numbers": "error",
     "@typescript-eslint/no-namespace": "off",
     "@typescript-eslint/no-throw-literal": "error",
     "@typescript-eslint/no-unnecessary-type-arguments": "error",
@@ -72,7 +71,6 @@
     "@typescript-eslint/prefer-namespace-keyword": "off",
     "@typescript-eslint/prefer-readonly": "error",
     "@typescript-eslint/promise-function-async": "error",
-    "@typescript-eslint/strict-boolean-expressions": "error",
     "@typescript-eslint/typedef": "error",
     "complexity": "error",
     "curly": "error",
@@ -88,7 +86,7 @@
     ],
     "eslint-comments/no-unused-disable": "error",
     "functional/no-class": "off",
-    "functional/no-let": "off", // because es lint has better prefer-const with auto fixing
+    "functional/no-let": "off", // because eslint has better prefer-const rule with auto fixing
     "functional/no-return-void": "off",
     "functional/no-this-expression": "off",
     "functional/no-throw-statement": "off",
@@ -123,6 +121,7 @@
     "no-eval": "error",
     "no-extra-bind": "error",
     "no-invalid-this": "error",
+    "no-magic-numbers": ["error", { "ignore": [0, 1], "ignoreArrayIndexes": true, "enforceConst": true }],
     "no-new-func": "error",
     "no-new-wrappers": "error",
     "no-param-reassign": "error",
