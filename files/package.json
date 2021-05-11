@@ -167,7 +167,6 @@
   "scripts-info": {
     "build": "Clean and rebuild the project",
     "clean": "Remove test and build folders",
-    "comment": "The preferred way of committing to the git repository",
     "commit": "Automatically fix errors and guides you through the commit process",
     "cov": "Rebuild, run tests, then create and open the coverage report",
     "doc:json": "Generate API documentation in typedoc JSON format",
@@ -179,6 +178,7 @@
     "test": "Lint and unit test the project",
     "update": "Runs .update.sh to automatically update meta files and documentation",
     "version": "Bump package.json version, update CHANGELOG.md, tag release",
-    "watch": "Watch and rebuild the project on save, then rerun relevant tests"
+    "watch": "Watch and rebuild the project on save, then rerun relevant tests",
+    "watch:test": "Watch the test cases"
   }
 }
