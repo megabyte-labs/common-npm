@@ -7,6 +7,7 @@
 set -e
 
 curl -sL https://git.io/_has | bash -s git jq node npm wget
+
 export REPO_TYPE=npm
 git submodule update --init --recursive
 if [ ! -f "./.modules/${REPO_TYPE}/update.sh" ]; then
