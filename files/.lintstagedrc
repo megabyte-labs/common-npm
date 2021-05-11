@@ -1,8 +1,0 @@
-{
-  ".{ts|js}": [
-    "prettier --write"
-  ],
-  "package.json": [
-    "prettier-package-json --write"
-  ]
-}
