@@ -6,7 +6,9 @@
 
 set -e
 
-curl -sL https://git.io/_has | bash -s git jq node npm wget
+if [ "$container" != 'docker' ]; then
+  curl -sL https://git.io/_has | bash -s git jq node npm wget
+fi
 
 export REPO_TYPE=npm
 git submodule update --init --recursive
