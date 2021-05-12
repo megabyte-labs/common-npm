@@ -87,6 +87,7 @@
     "@typescript-eslint/parser": "^4.15.2",
     "ava": "^3.12.1",
     "codecov": "^3.8.1",
+    "consola": "^2.15.3",
     "cspell": "^5.3.3",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.21.0",
