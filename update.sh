@@ -37,7 +37,3 @@ cp ./.modules/shared/CODE_OF_CONDUCT.md CODE_OF_CONDUCT.md
 copy_project_files_and_generate_package_json
 generate_documentation
 misc_fixes
-
-
-# Ensure .start.sh is the latest version # TODO: Figure out how to make this work
-# cp ./.modules/$REPO_TYPE/.start.sh .start.sh
