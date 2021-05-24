@@ -47,7 +47,7 @@
     "fix:prettier": "prettier \"src/**/*.ts\" --write",
     "info": "npm-scripts-info",
     "postinstall": "husky install && run-s update",
-    "prepare-release": "run-s reset test doc:html version doc:publish",
+    "prepare-release": "run-s reset test doc:html version",
     "postpublish": "pinst --enable",
     "prepublishOnly": "pinst --disable",
     "reset": "git clean -dfx && git reset --hard && npm i --ignore-scripts",
