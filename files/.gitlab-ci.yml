@@ -3,6 +3,7 @@ stages:
   - update
   - test
   - publish
+  - deploy
 
 include:
   - remote: https://gitlab.com/megabyte-space/ci/gitlab-ci-templates/-/raw/master/npm-test.gitlab-ci.yml
