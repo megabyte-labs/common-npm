@@ -50,7 +50,7 @@
     "prepare-release": "run-s reset test doc:html version doc:publish",
     "postpublish": "pinst --enable",
     "prepublishOnly": "pinst --disable",
-    "reset": "git clean -dfx && git reset --hard && npm i",
+    "reset": "git clean -dfx && git reset --hard && npm i --ignore-scripts",
     "test": "run-s build test:*",
     "test:eslint": "eslint src --ext .ts",
     "test:prettier": "prettier \"src/**/*.ts\" --list-different",
