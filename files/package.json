@@ -26,8 +26,6 @@
     "build/module"
   ],
   "scripts": {
-    "_doc:publish": "gh-pages -m \"[ci skip] Updates\" -d build/docs",
-    "_test:unit": "nyc --silent ava",
     "build": "run-s clean && run-p build:*",
     "build:main": "tsc -p tsconfig.json",
     "build:module": "tsc -p tsconfig.module.json",
@@ -54,6 +52,7 @@
     "test": "run-s build test:*",
     "test:eslint": "eslint src --ext .ts",
     "test:prettier": "prettier \"src/**/*.ts\" --list-different",
+    "test:unit": "nyc --silent ava",
     "update": "bash .start.sh && cp ./.modules/npm/.start.sh .start.sh",
     "version": "standard-version --no-verify",
     "watch": "run-s clean && run-p watch:build",
