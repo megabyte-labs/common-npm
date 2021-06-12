@@ -17,11 +17,11 @@ https://github.com/typescript-eslint/typescript-eslint/blob/1c1b572c3000d72cfe66
   Study the below case
 
   ```typescript
-  const matches = /\[\d+\w([^[]+)\[/.exec(string);
+  const matches = /\[\d+\w([^[]+)\[/.exec(string)
   if (!matches) {
-    new Error("Unable to determine the OS family");
+    new Error('Unable to determine the OS family')
   }
-  const [family, version] = matches[1].split("-");
+  const [family, version] = matches[1].split('-')
   ```
 
   With this rule on, the typescript compiler throw error because matches can be null.  
@@ -30,9 +30,9 @@ https://github.com/typescript-eslint/typescript-eslint/blob/1c1b572c3000d72cfe66
   So this rule must be ignored and allow to use throw as below
 
   ```typescript
-  const matches = /\[\d+\w([^[]+)\[/.exec(string);
+  const matches = /\[\d+\w([^[]+)\[/.exec(string)
   if (!matches) {
-    throw new Error("Unable to determine the OS family");
+    throw new Error('Unable to determine the OS family')
   }
-  const [family, version] = matches[1].split("-");
+  const [family, version] = matches[1].split('-')
   ```
