@@ -36,4 +36,3 @@ https://github.com/typescript-eslint/typescript-eslint/blob/1c1b572c3000d72cfe66
   }
   const [family, version] = matches[1].split('-')
   ```
-
