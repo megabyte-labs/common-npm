@@ -4,7 +4,7 @@
   "description": "The base package.json used for all the Megabyte Labs NPM projects",
   "license": "MIT",
   "author": "Brian Zalewski <help@megabyte.space> (https://megabyte.space)",
-  "homepage": "https://gitlab.com/megabyte-labs/npm/PROJECT_SLUG",
+  "homepage": "https://megabyte.space",
   "repository": {
     "type": "git",
     "url": "git+https://gitlab.com/megabyte-labs/npm/PROJECT_SLUG.git"
@@ -112,7 +112,13 @@
     "typedoc": "^0.20.35",
     "typescript": "^4.2.4"
   },
-  "keywords": [],
+  "keywords": [
+    "PROJECT_SLUG",
+    "npm",
+    "typescript",
+    "megabytelabs",
+    "professormanhattan"
+  ],
   "engines": {
     "node": ">=10"
   },
@@ -179,5 +185,10 @@
     "version": "Bump package.json version, update CHANGELOG.md, tag release",
     "watch": "Watch and rebuild the project on save, then rerun relevant tests",
     "watch:test": "Watch the test cases"
+  },
+  "standard-version": {
+    "scripts": {
+      "prerelease": "git add --all"
+    }
   }
 }
