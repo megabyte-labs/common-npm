@@ -31,6 +31,7 @@ cp -Rf ./.modules/shared/.github .
 cp -Rf ./.modules/shared/.gitlab .
 cp -Rf ./.modules/shared/.vscode .
 cp ./.modules/shared/.editorconfig .editorconfig
+cp ./.modules/shared/.prettierignore .prettierignore
 cp ./.modules/shared/CODE_OF_CONDUCT.md CODE_OF_CONDUCT.md
 
 # Apply updates from shared files
