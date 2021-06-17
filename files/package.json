@@ -71,7 +71,7 @@
     "dotenv": "^10.0.0",
     "inquirer": "^8.0.0",
     "pino": "^6.11.1",
-    "pino-pretty": "^4.5.0",
+    "pino-pretty": "^5.0.2",
     "update-notifier": "^5.1.0"
   },
   "devDependencies": {
