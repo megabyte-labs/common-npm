@@ -17,24 +17,16 @@ else
 fi
 
 # shellcheck disable=SC1091
-source "./.modules/shared/update.lib.sh"
+#source "./.modules/shared/update.lib.sh"
 
 # Install software dependencies if they are missing
-ensure_node_installed
-ensure_jq_installed
+#ensure_node_installed
+#ensure_jq_installed
 
 # Ensure documentation partials submodule is present and in sync with master
-ensure_project_docs_submodule_latest
-
-# Copy files from the shared module
-cp -Rf ./.modules/shared/.github .
-cp -Rf ./.modules/shared/.gitlab .
-cp -Rf ./.modules/shared/.vscode .
-cp ./.modules/shared/.editorconfig .editorconfig
-cp ./.modules/shared/.prettierignore .prettierignore
-cp ./.modules/shared/CODE_OF_CONDUCT.md CODE_OF_CONDUCT.md
+#ensure_project_docs_submodule_latest
 
 # Apply updates from shared files
-copy_project_files_and_generate_package_json
-generate_documentation
-misc_fixes
+#copy_project_files_and_generate_package_json
+#generate_documentation
+#misc_fixes
