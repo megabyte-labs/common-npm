@@ -10,7 +10,7 @@
 #   bootstrapped. `bash .start.sh` is the first command you should run when working with this project.
 
 set -e
-export REPO_TYPE=ansible
+export REPO_TYPE=npm
 
 if [ -d .git ]; then
   git pull origin master --ff-only
