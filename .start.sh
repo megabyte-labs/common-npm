@@ -1,25 +1,28 @@
 #!/bin/bash
 
-# This script performs maintenance on NPM package repositories. It ensures git submodules are
-# installed and then copies over base files from the modules. It also generates the
-# documentation and performs other miscellaneous tasks.
+# @file .start.sh
+# @brief Ensures the project is up-to-date with the latest upstream changes
+# @description
+#   This script performs maintenance on this repository. It ensures the `.common` submodule is
+#   cloned and up-to-date. The `.common` submodule contains files that are shared between projects
+#   that are similar to this one. It also ensures the repository contains the latest code. This
+#   script calls the script in `.common/update.sh` which will make sure the project is
+#   bootstrapped. `bash .start.sh` is the first command you should run when working with this project.
 
 set -e
+export REPO_TYPE=ansible
 
-# shellcheck disable=SC2154
-if [ "$container" != 'docker' ]; then
-  curl -sL https://git.io/_has | bash -s git jq node npm wget
+if [ -d .git ]; then
+  git pull origin master --ff-only
+  git submodule update --init --recursive
 fi
 
-export REPO_TYPE=npm
-git pull origin master --ff-only
-git submodule update --init --recursive
-if [ ! -f "./.modules/${REPO_TYPE}/update.sh" ]; then
-  mkdir -p ./.modules
-  git submodule add -b master https://gitlab.com/megabyte-space/common/$REPO_TYPE.git ./.modules/$REPO_TYPE
+if [ ! -d .common ]; then
+  git submodule add -b master "https://gitlab.com/megabyte-space/common/$REPO_TYPE.git" ".common"
 else
-  cd ./.modules/$REPO_TYPE
+  cd .common
   git checkout master && git pull origin master --ff-only
-  cd ../..
+  cd ..
 fi
-bash ./.modules/$REPO_TYPE/update.sh
+
+bash .common/update.sh
