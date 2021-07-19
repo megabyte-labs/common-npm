@@ -8,8 +8,8 @@ vars:
   REPOSITORY_TYPE: npm
 
 includes:
-  common: ./.common/taskfiles-role/Taskfile-common.yml
-  npm: ./.common/taskfiles-role/Taskfile-npm.yml
-  fix: ./.common/taskfiles-role/Taskfile-fix.yml
-  lint: ./.common/taskfiles-role/Taskfile-lint.yml
-  software: ./.common/taskfiles-role/Taskfile-{{OS}}.yml
+  common: ./.common/taskfiles-cli/Taskfile-common.yml
+  npm: ./.common/taskfiles-cli/Taskfile-npm.yml
+  fix: ./.common/taskfiles-cli/Taskfile-fix.yml
+  lint: ./.common/taskfiles-cli/Taskfile-lint.yml
+  software: ./.common/taskfiles-cli/Taskfile-{{OS}}.yml
