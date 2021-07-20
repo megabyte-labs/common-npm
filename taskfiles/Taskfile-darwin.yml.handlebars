@@ -1,0 +1,90 @@
+---
+version: '3'
+
+tasks:
+  docker:
+    cmds:
+      - task: install-doctor
+        vars:
+          SOFTWARE: docker
+    status:
+      - type docker &> /dev/null
+
+  git:
+    cmds:
+      - task: install-doctor
+        vars:
+          SOFTWARE: git
+    status:
+      - type git &> /dev/null
+
+  install-doctor:
+    cmds:
+      - if type \{{.SOFTWARE}} &> /dev/null; then exit 0; fi # Prevent --force from reinstalling software
+      - curl -sS https://install.doctor/\{{.SOFTWARE}} | bash
+
+  jq:
+    cmds:
+      - task: install-doctor
+        vars:
+          SOFTWARE: jq
+    status:
+      - type jq &> /dev/null
+
+  node:
+    cmds:
+      - task: install-doctor
+        vars:
+          SOFTWARE: node
+    status:
+      - type node &> /dev/null
+      - type npm &> /dev/null
+      - type npx &> /dev/null
+
+  python:
+    vars:
+      MINICONDA_DOWNLOAD_CHECKSUM: b3bf77cbb81ee235ec6858146a2a84d20f8ecdeb614678030c39baacb5acbed1
+      MINICONDA_DOWNLOAD_URL: https://repo.anaconda.com/miniconda/Miniconda3-py39_4.9.2-MacOSX-x86_64.sh
+    cmds:
+      - if type python3 &> /dev/null; then exit 0; fi # Prevent --force from trying to reinstall Miniconda/Python 3
+      - curl -sS \{{.MINICONDA_DOWNLOAD_URL}} > miniconda.sh
+      - echo "\{{.MINICONDA_DOWNLOAD_CHECKSUM}} miniconda.sh" | sha256sum --check
+      - mkdir -p "$HOME/.local"
+      - bash miniconda.sh -b -p "$HOME/.local/miniconda"
+      - rm miniconda.sh
+      - export PATH="$HOME/.local/miniconda/bin:$PATH"
+      - if grep -L '.local/miniconda/bin' "$HOME/.bash_profile"; then echo -e '\nexport PATH=$HOME/.local/miniconda/bin:$PATH' >> "$HOME/.bash_profile"
+    status:
+      - type python3 &> /dev/null
+
+  rsync:
+    cmds:
+      - task: install-doctor
+        vars:
+          SOFTWARE: rsync
+    status:
+      - type rsync &> /dev/null
+
+  vagrant:
+    cmds:
+      - task: install-doctor
+        vars:
+          SOFTWARE: vagrant
+    status:
+      - type vagrant &> /dev/null
+
+  virtualbox:
+    cmds:
+      - task: install-doctor
+        vars:
+          SOFTWARE: virtualbox
+    status:
+      - type virtualbox &> /dev/null
+
+  yq:
+    cmds:
+      - task: install-doctor
+        vars:
+          SOFTWARE: yq
+    status:
+      - type yq &> /dev/null

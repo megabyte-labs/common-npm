@@ -1,0 +1,73 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Open: Documentation",
+      "type": "shell",
+      "command": ""
+    },
+    {
+      "label": "Lint: TypeScript",
+      "type": "shell",
+      "command": ""
+    },
+    {
+      "label": "Lint: Markdown (mdl)",
+      "type": "shell",
+      "command": "mdl ."
+    },
+    {
+      "label": "Setup: Install NPM dependencies",
+      "type": "shell",
+      "command": "",
+      "windows": {
+        "command": ""
+      }
+    },
+    {
+      "label": "Setup: Install Node.js and NVM",
+      "type": "shell",
+      "command": "",
+      "windows": {
+        "command": ""
+      }
+    },
+    {
+      "label": "Setup: Install Python",
+      "type": "shell",
+      "command": "", // example for Ubuntu 20.04: sudo apt-get install python3 python3-netaddr python3-pip
+      "windows": {
+        "command": ""
+      }
+    },
+    {
+      "label": "Setup: Install Docker",
+      "type": "shell",
+      "command": "",
+      "windows": {
+        "command": ""
+      }
+    },
+    {
+      "label": "Setup: Install KVM (Linux only)",
+      "type": "shell",
+      "command": ""
+    },
+    {
+      "label": "Setup: Install VirtualBox",
+      "type": "shell",
+      "command": "",
+      "windows": {
+        "command": ""
+      }
+    },
+    {
+      "label": "Setup: Install VMWare",
+      "type": "shell",
+      "command": "",
+      "windows": {
+        "command": ""
+      }
+    }
+  ]
+}
