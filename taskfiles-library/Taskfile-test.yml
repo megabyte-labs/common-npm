@@ -2,3 +2,6 @@
 version: '3'
 
 tasks:
+  unit:
+    cmds:
+      - npm run test:unit
