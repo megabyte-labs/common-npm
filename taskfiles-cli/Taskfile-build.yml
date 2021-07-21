@@ -2,3 +2,31 @@
 version: '3'
 
 tasks:
+  all:
+    deps: [main, module]
+
+  clean:
+    desc: Remove temporary folders that might conflicts with builds
+    vars:
+      RANDOM_STRING:
+        sh: openssl rand -hex 14
+    cmds:
+      - mv build /tmp/{{.RANDOM_STRING}}-build
+      - mv test /tmp/{{.TEST_TMP}}-test
+      - mkdir /tmp/{{.RANDOM_STRING}}-empty
+      - |
+        for TMP_FILE in build test; do
+          if [ -f "/tmp/{{.RANDOM_STRING}}-$TMP_FILE" ] || [ -d "/tmp/{{.RANDOM_STRING}}-$TMP_FILE" ]; then
+            (rsync -a --delete /tmp/{{.RANDOM_STRING}}-empty "/tmp/{{.RANDOM_STRING}}-$TMP_FILE" && rm -rf "/tmp/{{.RANDOM_STRING}}-$TMP_FILE") &
+          fi
+        done
+
+  main:
+    desc: Build `main` using `tsconfig.json`
+    cmds:
+      - tsc -p tsconfig.json
+
+  module:
+    desc: Build `module` using `tsconfig.module.json`
+    cmds:
+      - tsc -p tsconfig.module.json
