@@ -20,7 +20,7 @@
     "ansible": false,
     "dockerfile": false,
     "npm": true,
-    "npm-library": true,
+    "npm_library": true,
     "playbook": false,
     "python": false,
     "yaml": false
