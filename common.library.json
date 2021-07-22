@@ -1,7 +1,7 @@
 {
   "github_prefix": "",
   "hbs": {
-    "npm-library": true,
+    "npm_library": true,
     "npm": true
   },
   "header_description_post": ".",
