@@ -2,7 +2,7 @@
 version: '3'
 
 tasks:
-  all:
+  build:
     deps: [main, module]
 
   clean:
