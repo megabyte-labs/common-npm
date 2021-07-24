@@ -6,6 +6,8 @@ tasks:
     deps: [main, module]
 
   clean:
+    deps:
+      - :software:rsync
     desc: Remove temporary folders that might conflicts with builds
     vars:
       RANDOM_STRING:
