@@ -1,0 +1,9 @@
+---
+version: '3'
+
+tasks:
+  stats:
+    deps:
+      - :install:software:tokei
+    cmds:
+      - TODO https://github.com/XAMPPRocky/tokei
