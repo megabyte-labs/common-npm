@@ -1,9 +1,0 @@
----
-version: '3'
-
-tasks:
-  unit:
-    deps:
-      - :common:nodejs-dependencies
-    cmds:
-      - npm run test:unit
