@@ -3,6 +3,7 @@
   "files": [
     "!**/*.json",
     "!**/*.spec*",
+    "bin",
     "build/main",
     "build/module"
   ],
@@ -15,6 +16,7 @@
     "build": "task npm:build:all",
     "build:main": "tsc -p tsconfig.json",
     "build:module": "tsc -p tsconfig.module.json",
+    "build:watch": "tsc -p tsconfig.json -w",
     "clean": "task common:clean npm:clean",
     "commit": "task common:commit",
     "info": "task --list",
