@@ -1,4 +1,4 @@
-# eslint rules notes
+# ESLint Disabled Rules Notes
 
 https://github.com/typescript-eslint/typescript-eslint/blob/1c1b572c3000d72cfe665b7afbada0ec415e7855/packages/eslint-plugin/ROADMAP.md
 
