@@ -5,6 +5,7 @@
     "EditorConfig.EditorConfig",
     "esbenp.prettier-vscode",
     "firefox-devtools.vscode-firefox-debug",
+    "googlecloudtools.cloudcode",
     "ms-vscode.vscode-typescript-tslint-plugin",
     "MS-vsliveshare.vsliveshare",
     "msjsdiag.debugger-for-chrome",
@@ -12,6 +13,7 @@
     "richie5um2.vscode-sort-json",
     "streetsidesoftware.code-spell-checker",
     "tyriar.sort-lines",
-    "VisualStudioExptTeam.vscodeintellicode"
+    "VisualStudioExptTeam.vscodeintellicode",
+    "wix.vscode-import-cost"
   ]
 }
