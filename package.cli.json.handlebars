@@ -11,16 +11,12 @@
     "LICENSE",
     "README.md"
   ],
-  "main": "build/main/index.js",
-  "module": "build/module/index.js",
+  "main": "dist/main.js",
   "bin": {
     "{{ bin_name }}": "bin/cli"
   },
   "scripts": {
-    "build": "task npm:build:all",
-    "build:main": "tsc -p tsconfig.json",
-    "build:module": "tsc -p tsconfig.module.json",
-    "build:watch": "tsc -p tsconfig.json -w",
+    "build": "task npm:build",
     "clean": "task common:clean npm:clean",
     "commit": "task common:commit",
     "info": "task --list",
@@ -30,10 +26,12 @@
     "requirements": "task common:requirements",
     "reset": "task common:reset",
     "reset-force": "task common:reset-force",
+    "start": "task npm:start",
+    "test": "task npm:test",
     "update": "task common:update"
   },
-  "typings": "build/main/index.d.ts",
-  "man": "./.assets/man",
+  "typings": "dist/main.d.ts",
+  "man": "dist/man",
   "dependencies": {
     "@nestjs/common": "8.1.2",
     "@nestjs/core": "8.1.2",
@@ -56,7 +54,8 @@
     "@types/shelljs": "^0.8.9",
     "@types/jest": "^27.0.2",
     "@types/update-notifier": "^5.1.0",
-    "jest": "27.3.1",
+    "jest-html-reporters": "^2.1.6",
+    "jest-runner-eslint": "^1.0.0",
     "prettier-plugin-organize-imports": "^2.3.2",
     "remark-man": "^8.0.0",
     "ts-jest": "27.0.7",
@@ -68,6 +67,34 @@
       "js",
       "json",
       "ts"
+    ],
+    "reporters": [
+      "default",
+      [
+        "jest-html-reporters",
+        {
+          "logoImgPath": "./.common/assets/logo.png",
+          "pageTitle": "Code Coverage Report",
+          "publicPath": "./coverage",
+          "filename": "code-coverage.html",
+          "openReport": true
+        }
+      ]
+    ],
+    "projects": [
+      {
+        "displayName": "test"
+      },
+      {
+        "runner": "jest-runner-eslint",
+        "displayName": "lint",
+        "testMatch": [
+          "src/**/*.spec.ts"
+        ]
+      }
+    ],
+    "watchPlugins": [
+      "jest-runner-eslint/watch-fix"
     ],
     "rootDir": "src",
     "testRegex": ".*\\.spec\\.ts$",
