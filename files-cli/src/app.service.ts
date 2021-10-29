@@ -1,17 +1,17 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common'
 
 @Injectable()
 /**
  * The main app service singleton
  */
 export class AppService {
-  private helloWorld: string;
+  private helloWorld: string
 
   /**
    * Initialization logic
    */
   constructor() {
-    this.helloWorld = 'Hello World!';
+    this.helloWorld = 'Hello World!'
   }
 
   /**
@@ -20,6 +20,6 @@ export class AppService {
    * @returns 'Hello World!'
    */
   public getHello(): string {
-    return this.helloWorld;
+    return this.helloWorld
   }
 }
