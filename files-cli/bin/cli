@@ -1,2 +1,2 @@
 #!/usr/bin/env node
-require('../build/main/cli.js').cli(process.argv);
+require('../dist/main.js').cli(process.argv);

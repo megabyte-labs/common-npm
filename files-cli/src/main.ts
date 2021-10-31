@@ -1,4 +1,4 @@
-import { NestFactory } from '@nestjs/core'
+import { CommandFactory } from 'nest-commander'
 import { AppModule } from './app.module'
 import { AppService } from './app.service'
 
@@ -6,9 +6,6 @@ import { AppService } from './app.service'
  * Application entry point
  */
 async function bootstrap() {
-  const app = await NestFactory.createApplicationContext(AppModule)
-  const appService = app.get(AppService)
-  console.log(appService.getHello())
-  await app.close()
+  await CommandFactory.run(AppModule)
 }
 bootstrap()
