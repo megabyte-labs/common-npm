@@ -1,4 +1,4 @@
-const esbuild = require('esbuild');
+const esbuild = require('esbuild')
 
 esbuild.build({
   entryPoints: ['src/main.ts'],
@@ -13,4 +13,4 @@ esbuild.build({
   minify: true,
   platform: 'node',
   outfile: 'dist/main.bundled.js'
-});
+})

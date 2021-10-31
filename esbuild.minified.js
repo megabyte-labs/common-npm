@@ -1,5 +1,5 @@
-const esbuild = require('esbuild');
-const { nodeExternalsPlugin } = require('esbuild-node-externals');
+const esbuild = require('esbuild')
+const { nodeExternalsPlugin } = require('esbuild-node-externals')
 
 esbuild.build({
   entryPoints: ['src/main.ts'],
@@ -15,4 +15,4 @@ esbuild.build({
   platform: 'node',
   plugins: [nodeExternalsPlugin()],
   outfile: 'dist/main.minified.js'
-});
+})
