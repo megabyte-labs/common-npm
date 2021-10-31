@@ -3,18 +3,15 @@
   "files": [
     "!**/*.json",
     "!**/*.spec*",
-    "!dist/bin",
-    "!dist/main.bundled.js",
-    "!dist/main.minified.js",
     "bin",
     "dist",
     "CHANGELOG.md",
+    "CONTRIBUTING.md",
     "LICENSE",
     "README.md"
   ],
-  "main": "dist/main.js",
+  "main": "dist/main.minified.js",
   "bin": {
-    "_pkg_{{ bin_name }}": "bin/cli",
     "{{ bin_name }}": "bin/cli"
   },
   "scripts": {
@@ -35,39 +32,14 @@
   "typings": "dist/main.d.ts",
   "man": "dist/man",
   "dependencies": {
-    "@nestjs/common": "8.1.2",
     "@nestjs/config": "^1.0.3",
-    "@nestjs/core": "8.1.2",
     "@nestjs/event-emitter": "^1.0.0",
     "cache-manager": "^3.4.4",
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1"
-    "chalk": "^4.1.2",
-    "commander": "^8.3.0",
-    "cosmiconfig": "^7.0.1",
-    "inquirer": "^8.2.0",
-    "ora": "^6.0.1",
-    "pino-http": "^5.8.0",
-    "pino-pretty": "^7.1.0",
-    "rxjs": "7.4.0",
-    "shelljs": "^0.8.4",
-    "tslib": "^2.3.1",
-    "update-notifier": "^5.1.0"
   },
   "devDependencies": {
     "@types/cache-manager": "^3.4.2",
-    "@types/inquirer": "8.1.3",
-    "@types/node": "^15.0.1",
-    "@types/shelljs": "^0.8.9",
-    "@types/jest": "^27.0.2",
-    "@types/update-notifier": "^5.1.0",
-    "esbuild-node-externals": "^1.3.0",
-    "jest-html-reporters": "^2.1.6",
-    "jest-runner-eslint": "^1.0.0",
-    "remark-man": "^8.0.0",
-    "ts-jest": "27.0.7",
-    "tsconfig-paths": "^3.11.0",
-    "typescript": "^4.4.4"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -121,10 +93,6 @@
     "node",
     "nest"
   ],
-  "pkg": {
-    "compress": "Brotli",
-    "outputPath": "dist/bin"
-  },
   "publishConfig": {
     "access": "{{ npm_publish_config_access }}"
   },
