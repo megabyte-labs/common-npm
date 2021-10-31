@@ -90,7 +90,7 @@
       "software": "https://gitlab.com/megabyte-labs/software",
       "web_components": "https://gitlab.com/megabyte-labs/web-components"
     },
-    "src_paths": "./bin ./src",
+    "src_paths": "./src",
     "location": {
       "commits": {
         "github": "/commits/master",
