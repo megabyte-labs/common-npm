@@ -70,7 +70,6 @@
     "twitter": "MegabyteLabs",
     "vagrant": "https://app.vagrantup.com"
   },
-  "src_paths": "./bin ./src",
   "repository": {
     "github": "",
     "gitlab": "",
