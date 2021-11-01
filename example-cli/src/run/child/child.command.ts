@@ -9,14 +9,13 @@ import { LogService } from '../../common'
   name: 'child'
 })
 export class ChildCommand implements CommandRunner {
-
   /**
    * Constructor for the [[ChildCommand]]
    *
    * @param logger - The logger service
    */
   constructor(private logger: LogService) {
-    this.logger.setContext(ChildCommand.name);
+    this.logger.setContext(ChildCommand.name)
   }
   /**
    * Entry point for the `app run child` command
