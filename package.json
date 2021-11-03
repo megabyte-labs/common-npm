@@ -1,46 +1,133 @@
 {
-  "name": "shared",
+  "private": false,
+  "name": "@megabytelabs/npm-common-files",
   "version": "1.0.0",
-  "description": "Common files used across Megabyte Labs repositories",
-  "license": "ISC",
-  "author": "",
-  "homepage": "https://gitlab.com/megabyte-labs/common/shared#readme",
+  "description": "Includes common files used across Megabyte Labs NPM package repositories",
+  "license": "MIT",
+  "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
+  "homepage": "https://megabyte.space",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/megabyte-labs/common/shared.git"
+    "url": "git+https://gitlab.com/megabyte-labs/common/npm.git"
   },
   "bugs": {
-    "url": "https://gitlab.com/megabyte-labs/common/shared/issues"
+    "url": "https://gitlab.com/megabyte-labs/common/npm/-/issues"
   },
-  "main": "index.js",
+  "type": "module",
+  "main": "dist/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.31.0",
-    "@typescript-eslint/eslint-plugin-tslint": "^4.31.0",
-    "@typescript-eslint/parser": "^4.31.0",
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.24.2",
-    "eslint-plugin-jsdoc": "^36.1.0",
-    "eslint-plugin-prefer-arrow": "^1.2.3",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-tsdoc": "^0.2.14",
-    "eslint-plugin-unicorn": "^35.0.0",
-    "eslint-plugin-yml": "^0.10.0",
-    "prettier": "^2.3.2",
-    "typescript": "^4.4.2"
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   },
-  "supportedApps": {
-    "app": {
-      "desc": ""
+  "dependencies": {
+    "tslib": "^2.3.1"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^13.1.0",
+    "@megabytelabs/eslint-config": "^1.0.61",
+    "@megabytelabs/prettier-config": "^14.14.14",
+    "cz-conventional-changelog": "^3.3.0"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "blueprint": {
+    "description": "Includes common files used across Megabyte Labs NPM package repositories",
+    "overview": "All of the Megabyte Labs repositories share configuration files and sometimes even application files. When this repository is updated, the changes are propagated down to all of our NPM packages. The system works via GitLab CI and is a great way of ensuring dependencies are up-to-date.",
+    "name": "NPM",
+    "repository": {
+      "github": "https://github.com/ProfessorManhattan/npm-common-files",
+      "gitlab": "https://gitlab.com/megabyte-labs/common/npm"
     },
-    "cli": {
-      "desc": "Starting point for Node CLI apps using NestJS and nest-commander"
+    "slug": "npm",
+    "supportedApps": {
+      "app": {
+        "desc": ""
+      },
+      "cli": {
+        "desc": "Starting point for Node CLI apps using NestJS and nest-commander"
+      },
+      "library": {
+        "desc": "Minimalistic boilerplate for libraries and configuration packages"
+      }
     },
-    "library": {
-      "desc": "Minimalistic boilerplate for libraries and configuration packages"
+    "title": "NPM Common Files"
+  },
+  "eslintConfig": {
+    "extends": "@megabytelabs/eslint-config"
+  },
+  "funding": [
+    {
+      "type": "opencollective",
+      "url": "https://opencollective.com/megabytelabs"
+    },
+    {
+      "type": "patreon",
+      "url": "https://www.patreon.com/ProfessorManhattan"
+    }
+  ],
+  "lint-staged": {
+    "**/*": [
+      "blocklint --wordlist blacklist,slave,whitelist",
+      "check-merge-conflict",
+      "check-added-large-files",
+      "check-symlinks",
+      "destroyed-symlinks"
+    ],
+    "**/*.(css|html|less|md|mjml|php|scss|sh|xml)": [
+      "task fix:prettier --"
+    ],
+    "**/*.(jpg|png)": [
+      "task image:compress --"
+    ],
+    "**/*.(js|jsx|ts)": [
+      "task fix:js --",
+      "task lint:js --"
+    ],
+    "**/*.json": [
+      "task fix:json --"
+    ],
+    "**/*.py": [
+      "black",
+      "flake8"
+    ],
+    "**/*.sh": [
+      "task fix:shell --",
+      "task lint:shell --"
+    ],
+    "**/*.toml": [
+      "task lint:toml --"
+    ],
+    "**/*.xml": [
+      "task fix:xml --",
+      "task lint:xml --"
+    ],
+    "**/*.yml": [
+      "task fix:yaml --",
+      "task lint:yaml --"
+    ],
+    "**/*vault.yml": [
+      "task ansible:vault:lint:file --"
+    ],
+    "logo.png": [
+      "task image:resize -- 200 200",
+      "task image:compress --"
+    ],
+    "requirements.txt": [
+      "requirements-txt-fixer"
+    ]
+  },
+  "prettier": "@megabytelabs/prettier-config",
+  "standard-version": {
+    "scripts": {
+      "prerelease": "git add --all"
     }
   }
 }
