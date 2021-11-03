@@ -7,9 +7,9 @@ includes:
   lint: ./.common/taskfiles-library/Taskfile-lint.yml
   npm: ./.common/taskfiles-library/Taskfile-npm.yml
   software: ./.common/taskfiles-library/Taskfile-{{OS}}.yml
+
 output: prefixed
 
 vars:
   REPOSITORY_SUBTYPE: library
   REPOSITORY_TYPE: npm
-
