@@ -14,24 +14,10 @@
   ],
   "main": "dist/main.js",
   "bin": {
-    "_pkg_{{ bin_name }}": "bin/cli",
+    "__pkg_{{ bin_name }}": "bin/cli",
     "{{ bin_name }}": "bin/cli"
   },
-  "scripts": {
-    "build": "task npm:build",
-    "clean": "task common:clean npm:clean",
-    "commit": "task common:commit",
-    "info": "task --list",
-    "preinstall": "npx -y only-allow pnpm",
-    "prepare": "task common:husky",
-    "prepare-release": "task common:prepare-release",
-    "requirements": "task common:requirements",
-    "reset": "task common:reset",
-    "reset-force": "task common:reset-force",
-    "start": "task npm:start",
-    "test": "task npm:test",
-    "update": "task common:update"
-  },
+  "scripts": {},
   "typings": "dist/main.d.ts",
   "man": "dist/man",
   "dependencies": {
@@ -39,25 +25,20 @@
     "@nestjs/config": "^1.0.3",
     "@nestjs/core": "8.1.2",
     "@nestjs/event-emitter": "^1.0.0",
-    "cache-manager": "^3.4.4",
+    "chalk": "^4.1.2",
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1",
-    "chalk": "^4.1.2",
-    "commander": "^8.3.0",
     "cosmiconfig": "^7.0.1",
-    "inquirer": "^8.2.0",
     "nest-commander": "^2.3.3",
-    "ora": "^6.0.1",
-    "rxjs": "7.4.0",
     "shelljs": "^0.8.4",
     "update-notifier": "^5.1.0"
   },
   "devDependencies": {
-    "@types/cache-manager": "^3.4.2",
-    "@types/inquirer": "8.1.3",
+    "@megabytelabs/eslint-config": "^1.0.67",
+    "@megabytelabs/jest-preset": "^1.0.0",
+    "@megabytelabs/prettier-config": "^14.14.14",
     "@types/node": "^15.0.1",
     "@types/shelljs": "^0.8.9",
-    "@types/jest": "^27.0.2",
     "@types/update-notifier": "^5.1.0",
     "esbuild-node-externals": "^1.3.0",
     "nest-commander-schematics": "^2.0.1",
@@ -87,7 +68,13 @@
     "cli",
     "npm",
     "node",
-    "nest"
+    "nest",
+    "commander",
+    "inquirer",
+    "manpage",
+    "nestjs",
+    "standalone",
+    "cosmicconfig"
   ],
   "pkg": {
     "compress": "Brotli",
@@ -98,7 +85,7 @@
   },
   "nodemonConfig": {
     "exec": "nest build && node --inspect-brk dist/main",
-    "ext": "js,jsx,json,ts,yml",
+    "ext": "js,jsx,json,ts,tsx,yml",
     "ignore": [
       "src/**/*.spec.ts"
     ],
