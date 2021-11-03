@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^13.1.0",
-    "@megabytelabs/eslint-config": "^1.0.67",
+    "@megabytelabs/eslint-config": "^1.0.0",
     "@megabytelabs/jest-preset": "^1.0.0",
     "@megabytelabs/prettier-config": "^14.14.14",
     "cz-conventional-changelog": "^3.3.0",
@@ -121,13 +121,13 @@
       "prerelease": "git add --all"
     }
   },
-  "private": "{{ npm_private }}",
   "files": [
     "!**/*.json",
     "!**/*.spec*",
     "!dist/bin",
     "!dist/main.minified.js",
-    "dist",
+    "bin",
+    "dist/main.bundled.js",
     "CHANGELOG.md",
     "LICENSE",
     "README.md"
@@ -148,9 +148,6 @@
         }
       ]
     ]
-  },
-  "publishConfig": {
-    "access": "{{ npm_publish_config_access }}"
   },
   "nodemonConfig": {
     "exec": "nest build && node --inspect-brk dist/main",
