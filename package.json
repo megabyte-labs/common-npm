@@ -1,28 +1,32 @@
 {
-  "name": "@megabytelabs/npm-common-files",
+  "name": "@megabytelabs/shared-common-files",
   "version": "1.0.0",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
-  "description": "Includes common files used across NPM package repositories",
+  "description": "Common files used across Megabyte Labs repositories",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/megabyte-labs/common/npm.git"
+    "url": "git+https://gitlab.com/megabyte-labs/common/shared.git"
   },
   "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
-  "homepage": "https://megabyte.space",
+  "homepage": "https://gitlab.com/megabyte-labs/common/shared#readme",
   "bugs": {
-    "url": "https://gitlab.com/megabyte-labs/common/npm/-/issues"
+    "email": "help@megabyte.space",
+    "url": "https://gitlab.com/megabyte-labs/common/shared/-/issues"
   },
   "main": "dist/main.js",
   "type": "module",
   "engines": {
-    "node": ">=14"
+    "node": ">=10"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "fix": "",
+    "lint": "",
+    "lint:eslint": "eslint .",
+    "test": "cd ../eslint && npm run test && cd ../shared && npm install --save-dev @megabytelabs/eslint-config && eslint ."
   },
   "dependencies": {
     "esbuild": "^0.12.29",
@@ -31,32 +35,22 @@
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^13.1.0",
-    "@megabytelabs/eslint-config": "^1.0.71",
+    "@megabytelabs/eslint-config": "^1.0.61",
     "@megabytelabs/prettier-config": "^14.14.14",
     "@typescript-eslint/eslint-plugin": "^5.3.0",
+    "@typescript-eslint/eslint-plugin-tslint": "^5.3.0",
     "cz-conventional-changelog": "^3.3.0"
   },
   "blueprint": {
-    "description": "Includes common files used across NPM package repositories",
-    "overview": "All of the Megabyte Labs repositories share configuration files and sometimes even application files. When this repository is updated, the changes are propagated down to all of our NPM packages. The system works via GitLab CI and is a great way of ensuring dependencies are up-to-date.",
-    "name": "NPM",
+    "description": "Includes common files used across Megabyte Labs repositories",
+    "overview": "All of the Megabyte Labs repositories share configuration files and sometimes even application files. When this repository is updated, the changes are propagated down to an application-type-specific shared repository which is then used to update all of the repositories by making a single change to this repository. The changes are propagated through GitLab CI.",
+    "name": "Shared",
     "repository": {
-      "github": "https://github.com/ProfessorManhattan/npm-common-files",
-      "gitlab": "https://gitlab.com/megabyte-labs/common/npm"
+      "github": "https://github.com/ProfessorManhattan/shared-common-files",
+      "gitlab": "https://gitlab.com/megabyte-labs/common/shared"
     },
-    "slug": "npm",
-    "supportedApps": {
-      "app": {
-        "desc": ""
-      },
-      "cli": {
-        "desc": "Starting point for Node CLI apps using NestJS and nest-commander"
-      },
-      "library": {
-        "desc": "Minimalistic boilerplate for libraries and configuration packages"
-      }
-    },
-    "title": "NPM Common Files"
+    "slug": "shared-common-files",
+    "title": "Shared Common Files"
   },
   "config": {
     "commitizen": {
@@ -64,11 +58,7 @@
     }
   },
   "eslintConfig": {
-    "extends": "@megabytelabs/eslint-config",
-    "rules": {
-      "import/no-extraneous-dependencies": "off",
-      "import/no-unresolved": "off"
-    }
+    "extends": "@megabytelabs/eslint-config"
   },
   "funding": [
     {
