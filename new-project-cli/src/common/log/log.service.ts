@@ -1,10 +1,23 @@
-import { Injectable, Scope, LoggerService, ConsoleLogger } from '@nestjs/common'
-import * as chalk from 'chalk'
-import { isUnicodeSupported, isGCP } from '../common.util'
+/* eslint-disable @typescript-eslint/no-explicit-any, fp/no-rest-parameters, functional/functional-parameters */
+import { ConsoleLogger, Injectable, LoggerService, Scope } from '@nestjs/common'
+import chalk from 'chalk'
+import { isUnicodeSupported } from '../common.util'
 
+/**
+ * Logger service implementing [[LoggerService]] that implements a transient scope
+ * because it includes methods that are not defined in the [[ConsoleLogger]]
+ * or [[LoggerService]]
+ */
 @Injectable({ scope: Scope.TRANSIENT })
 export class LogService extends ConsoleLogger implements LoggerService {
-  public logger
+  constructor() {
+    super()
+    this.figures = isUnicodeSupported() ? this.figures : this.figuresFallback
+    this.logger = console
+  }
+
+  public readonly logger
+
   private readonly figures = {
     bullet: '●',
     circle: '◯',
@@ -16,6 +29,7 @@ export class LogService extends ConsoleLogger implements LoggerService {
     star: '★',
     tick: '✔'
   }
+
   private readonly figuresFallback = {
     bullet: '■',
     circle: '□',
@@ -27,120 +41,191 @@ export class LogService extends ConsoleLogger implements LoggerService {
     star: '✶',
     tick: '√'
   }
-  private ignoredLogs = ['InstanceLoader', 'NestFactory', 'RouterExplorer', 'RoutesResolver']
 
-  constructor() {
-    super()
-    this.figures = isUnicodeSupported() ? this.figures : this.figuresFallback
-    this.logger = isGCP() ? console : console
-    // this.isFirebase = functions.config() && functions.config().environment && functions.config().environment.production;
-    // this.isFirebaseProduction = functions.config() && functions.config().environment && functions.config().environment.production === 'true';
-  }
+  private readonly ignoredLogs = ['InstanceLoader', 'NestFactory', 'RouterExplorer', 'RoutesResolver']
 
-  public debug(message: string, ...args: any[]): void {
+  /**
+   * Logs a debug message
+   *
+   * @param message - Message to print
+   * @param arguments_ - arguments that should be passed to console after the message
+   */
+  public debug(message: string, ...arguments_: readonly any[]): void {
     return this.logMessage(
       chalk.cyan(this.figures.bullet),
       chalk.bold.underline,
       chalk.dim(message),
       this,
       'debug',
-      args
+      arguments_
     )
   }
 
-  public error(message: string, ...args: any[]) {
+  /**
+   * Logs an error message
+   *
+   * @param message - Message to print
+   * @param arguments_ - arguments that should be passed to console after the message
+   */
+  public error(message: string, ...arguments_: readonly any[]): void {
     return this.logMessage(
-      chalk.redBright(this.figures.cross) + ' ' + chalk.redBright.bold('ERROR  '),
+      `${chalk.redBright(this.figures.cross)} ${chalk.black.bold.bgRedBright(' ERROR ')} + '  '}`,
       chalk.bold.underline,
       chalk.redBright(message),
       this,
       'error',
-      args
+      arguments_
     )
   }
 
-  public log(message: string, ...args: any[]) {
-    return this.logMessage(chalk.cyanBright(this.figures.pointer), chalk.bold.underline, message, this, 'log', args)
+  /**
+   * Logs a regular message
+   *
+   * @param message - Message to print
+   * @param arguments_ - arguments that should be passed to console after the message
+   */
+  public log(message: string, ...arguments_: readonly any[]): void {
+    return this.logMessage(
+      chalk.cyanBright(this.figures.pointer),
+      chalk.bold.underline,
+      message,
+      this,
+      'log',
+      arguments_
+    )
   }
 
+  /**
+   * Helper method to handle all logs
+   *
+   * @param icon - Icon styled with chalk
+   * @param contextStyle - Chalk style to apply to the context label
+   * @param message - Message that should be printed
+   * @param logService - A reference to the log service
+   * @param logHandler - Type of log to use
+   * @param arguments_ - The extra arguments
+   */
+  // eslint-disable-next-line max-params
   private logMessage(
     icon: string,
     contextStyle: chalk.Chalk,
     message: string,
     logService: LogService,
     logHandler: 'debug' | 'error' | 'log' | 'warn',
-    args: any[]
-  ) {
+    arguments_: readonly any[]
+  ): void {
     const label = logService.context ? logService.context : 'SYSTEM'
     const labelStyle = label === 'SYSTEM' ? chalk.bold.underline.dim : contextStyle
-    if (logService.ignoredLogs.includes(label === 'SYSTEM' ? args.at(-1) : label)) return
-    const msg = icon + ' ' + labelStyle(label) + ' ' + message
-    args && args.length ? logService.logger[logHandler](msg, ...args) : logService.logger[logHandler](msg)
+    const negativeIndex = -1
+    const localArguments = [...arguments_]
+    if (logService.ignoredLogs.includes(label === 'SYSTEM' ? localArguments.at(negativeIndex) : label)) return
+    const outputMessage = `${icon} ${labelStyle(label)} ${message}`
+    arguments_ && arguments_.length > 0
+      ? // eslint-disable-next-line security/detect-object-injection
+        logService.logger[logHandler](outputMessage, ...arguments_)
+      : // eslint-disable-next-line security/detect-object-injection
+        logService.logger[logHandler](outputMessage)
   }
 
-  public start(message: string, ...args: any[]) {
+  /**
+   * Logs a start message
+   *
+   * @param message - Message to print
+   * @param arguments_ - arguments that should be passed to console after the message
+   */
+  public start(message: string, ...arguments_: readonly any[]): void {
     return this.logMessage(
       chalk.greenBright(this.figures.play),
       chalk.bold.underline,
       chalk.italic(message),
       this,
       'log',
-      args
+      arguments_
     )
   }
 
-  public star(message: string, ...args: any[]) {
+  /**
+   * Logs a star message
+   *
+   * @param message - Message to print
+   * @param arguments_ - arguments that should be passed to console after the message
+   */
+  public star(message: string, ...arguments_: readonly any[]): void {
     return this.logMessage(
       chalk.yellowBright(this.figures.star),
       chalk.bold.underline,
       chalk.bold(message),
       this,
       'log',
-      args
+      arguments_
     )
   }
 
-  public stop(message: string, ...args: any[]) {
+  /**
+   * Logs a stop message
+   *
+   * @param message - Message to print
+   * @param arguments_ - arguments that should be passed to console after the message
+   */
+  public stop(message: string, ...arguments_: readonly any[]): void {
     return this.logMessage(
       chalk.redBright(this.figures.square),
       chalk.bold.underline,
       chalk.italic(message),
       this,
       'log',
-      args
+      arguments_
     )
   }
 
-  public success(message: string, ...args: any[]) {
+  /**
+   * Logs a success message
+   *
+   * @param message - Message to print
+   * @param arguments_ - arguments that should be passed to console after the message
+   */
+  public success(message: string, ...arguments_: readonly any[]): void {
     return this.logMessage(
       chalk.greenBright(this.figures.tick),
       chalk.bold.underline,
       chalk.bold(message),
       this,
       'log',
-      args
+      arguments_
     )
   }
 
-  public warn(message: string, ...args: any[]) {
+  /**
+   * Logs a warning message
+   *
+   * @param message - Message to print
+   * @param arguments_ - arguments that should be passed to console after the message
+   */
+  public warn(message: string, ...arguments_: readonly any[]): void {
     return this.logMessage(
-      chalk.yellowBright(this.figures.lozenge) + ' ' + chalk.bold.yellowBright('WARNING'),
+      `${chalk.yellowBright(this.figures.lozenge)} ${chalk.bold.black.bgYellowBright(' WARNING ')}`,
       chalk.bold.underline,
       chalk.yellowBright(message),
       this,
       'warn',
-      args
+      arguments_
     )
   }
 
-  public verbose(message: string, ...args: any[]) {
+  /**
+   * Logs a verbose message
+   *
+   * @param message - Message to print
+   * @param arguments_ - arguments that should be passed to console after the message
+   */
+  public verbose(message: string, ...arguments_: readonly any[]): void {
     return this.logMessage(
       chalk.cyan.dim(this.figures.bullet),
       chalk.bold.underline,
       chalk.dim(message),
       this,
       'debug',
-      args
+      arguments_
     )
   }
 }

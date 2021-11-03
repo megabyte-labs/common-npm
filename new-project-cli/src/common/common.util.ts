@@ -5,11 +5,13 @@
  * @param n - Size of returned array
  * @returns Randomly shuffled array of specified size
  */
-export function getRandomElements(array: any[], count: number): any[] {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function getRandomElements(array: readonly any[], count: number): readonly any[] {
   const beginning = 0
   const sortProperty = 0.5
+  const sorted = [...array].sort(() => Math.random() - sortProperty)
 
-  return array.sort(() => Math.random() - sortProperty).slice(beginning, count)
+  return sorted.slice(beginning, count)
 }
 
 /**
