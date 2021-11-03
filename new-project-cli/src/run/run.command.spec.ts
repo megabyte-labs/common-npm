@@ -1,8 +1,8 @@
 // REFERENCE(Integration examples): https://github.com/jmcdo29/nest-commander/tree/main/integration
-import { LogService } from '../common'
 import { TestingModule } from '@nestjs/testing'
 import { CommandTestFactory } from 'nest-commander-testing'
 import { AppModule } from '../app.module'
+import { LogService } from '../common/common'
 
 describe('RunCommand', () => {
   let commandModule: TestingModule
@@ -15,6 +15,7 @@ describe('RunCommand', () => {
       imports: [AppModule]
     }).compile()
     logService = await commandModule.resolve(LogService)
+    // eslint-disable-next-line functional/immutable-data
     process.exit = exitMock as never
   })
 
@@ -23,6 +24,7 @@ describe('RunCommand', () => {
   })
 
   afterAll(() => {
+    // eslint-disable-next-line functional/immutable-data
     process.exit = trueExit
   })
 
@@ -32,7 +34,7 @@ describe('RunCommand', () => {
     ${String(['run', 'task', '-s', 'testyy'])} | ${2}
   `(
     'should run the $command command',
-    async ({ command, expectedLogs }: { command: string[]; expectedLogs: number }) => {
+    async ({ command, expectedLogs }: { readonly command: readonly string[]; readonly expectedLogs: number }) => {
       expect.assertions(1)
       const logSpy = jest.spyOn(logService.logger, 'log')
       await CommandTestFactory.run(commandModule, [...command])

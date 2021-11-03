@@ -1,5 +1,5 @@
 import { Command, CommandRunner, Option } from 'nest-commander'
-import { LogService } from '../common'
+import { LogService } from '../common/common'
 import { ChildCommand } from './child/child.command'
 
 /**
@@ -23,8 +23,8 @@ export class RunCommand implements CommandRunner {
    *
    * @param logger - The logger service
    */
-  constructor(private logger: LogService) {
-    this.logger.setContext(RunCommand.name)
+  constructor(private readonly logger: LogService) {
+    logger.setContext(RunCommand.name)
   }
 
   /**
@@ -33,7 +33,7 @@ export class RunCommand implements CommandRunner {
    * @param passedParameter - Parameters used by command
    * @param options - Options used by command
    */
-  public async run(passedParameter: string[], options?: Record<string, string>): Promise<void> {
+  public async run(passedParameter: readonly string[], options?: Record<string, string>): Promise<void> {
     await this.logger.verbose('run() parameters:', passedParameter, options)
     await this.logger.log('`run` option selected.')
   }

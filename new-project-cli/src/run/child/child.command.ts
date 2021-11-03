@@ -1,5 +1,5 @@
 import { CommandRunner, Option, SubCommand } from 'nest-commander'
-import { LogService } from '../../common'
+import { LogService } from '../../common/common'
 
 /**
  * Sub-command for `app run child`
@@ -14,16 +14,17 @@ export class ChildCommand implements CommandRunner {
    *
    * @param logger - The logger service
    */
-  constructor(private logger: LogService) {
-    this.logger.setContext(ChildCommand.name)
+  constructor(private readonly logger: LogService) {
+    logger.setContext(ChildCommand.name)
   }
+
   /**
    * Entry point for the `app run child` command
    *
    * @param passedParameter - The parameters passed to the command
    * @param options - The options passed to the command
    */
-  public async run(passedParameter: string[], options?: Record<string, string>): Promise<void> {
+  public async run(passedParameter: readonly string[], options?: Record<string, string>): Promise<void> {
     await this.logger.verbose('run() parameters:', passedParameter, options)
     await this.logger.log('`run child` option selected.')
   }
@@ -41,6 +42,7 @@ export class ChildCommand implements CommandRunner {
   })
   public parseString(value: string): string {
     this.logger.verbose('parseString() parameters:', value)
+
     return value
   }
 }

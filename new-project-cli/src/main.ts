@@ -5,7 +5,7 @@ import { LogService } from './common/log/log.service'
 /**
  * Application entry point
  */
-async function bootstrap() {
+async function bootstrap(): Promise<void> {
   await CommandFactory.run(AppModule, new LogService())
 }
 bootstrap()
