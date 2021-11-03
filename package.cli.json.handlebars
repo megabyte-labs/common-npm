@@ -1,5 +1,4 @@
 {
-  "private": "{{ npm_private }}",
   "files": [
     "!**/*.json",
     "!**/*.spec*",
@@ -12,8 +11,7 @@
     "LICENSE",
     "README.md"
   ],
-  "scripts": {},
-  "main": "dist/main.js",
+  "main": "dist/main.bundled.js",
   "bin": {
     "__pkg_{{ bin_name }}": "bin/cli",
     "{{ bin_name }}": "bin/cli"
@@ -34,7 +32,6 @@
     "update-notifier": "^5.1.0"
   },
   "devDependencies": {
-    "@megabytelabs/eslint-config": "^1.0.67",
     "@megabytelabs/jest-preset": "^1.0.0",
     "@types/node": "^15.0.1",
     "@types/shelljs": "^0.8.9",
@@ -79,9 +76,6 @@
     "standalone",
     "cosmicconfig"
   ],
-  "publishConfig": {
-    "access": "{{ npm_publish_config_access }}"
-  },
   "nodemonConfig": {
     "exec": "nest build && node --inspect-brk dist/main",
     "ext": "js,jsx,json,ts,tsx,yml",

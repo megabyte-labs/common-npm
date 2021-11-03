@@ -1,17 +1,16 @@
 {
-  "private": "{{ npm_private }}",
   "files": [
     "!**/*.json",
     "!**/*.spec*",
     "!dist/bin",
     "!dist/main.minified.js",
-    "dist",
+    "bin",
+    "dist/main.bundled.js",
     "CHANGELOG.md",
     "LICENSE",
     "README.md"
   ],
   "main": "dist/main.bundled.js",
-  "scripts": {},
   "dependencies": {
     "@nestjs/common": "8.1.2",
     "@nestjs/config": "^1.0.3",
@@ -22,7 +21,6 @@
     "class-validator": "^0.13.1"
   },
   "devDependencies": {
-    "@megabytelabs/eslint-config": "^1.0.67",
     "@megabytelabs/jest-preset": "^1.0.0",
     "@types/node": "^15.0.1",
     "@types/jest": "^27.0.2",
@@ -54,9 +52,6 @@
     "nest",
     "nestjs"
   ],
-  "publishConfig": {
-    "access": "{{ npm_publish_config_access }}"
-  },
   "nodemonConfig": {
     "exec": "nest build && node --inspect-brk dist/main",
     "ext": "js,jsx,json,ts,tsx,yml",
