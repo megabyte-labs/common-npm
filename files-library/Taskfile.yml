@@ -1,15 +1,15 @@
 ---
 version: '3'
 
+includes:
+  common: ./.common/taskfiles-library/Taskfile-common.yml
+  fix: ./.common/taskfiles-library/Taskfile-fix.yml
+  lint: ./.common/taskfiles-library/Taskfile-lint.yml
+  npm: ./.common/taskfiles-library/Taskfile-npm.yml
+  software: ./.common/taskfiles-library/Taskfile-{{OS}}.yml
 output: prefixed
 
 vars:
   REPOSITORY_SUBTYPE: library
   REPOSITORY_TYPE: npm
 
-includes:
-  common: ./.common/taskfiles-library/Taskfile-common.yml
-  npm: ./.common/taskfiles-library/Taskfile-npm.yml
-  fix: ./.common/taskfiles-library/Taskfile-fix.yml
-  lint: ./.common/taskfiles-library/Taskfile-lint.yml
-  software: ./.common/taskfiles-library/Taskfile-{{OS}}.yml

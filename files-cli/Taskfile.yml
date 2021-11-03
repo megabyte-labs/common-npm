@@ -1,4 +1,0 @@
----
-vars:
-  REPOSITORY_SUBTYPE: cli
-  REPOSITORY_TYPE: npm

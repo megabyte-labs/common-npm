@@ -1,6 +1,7 @@
-const esbuild = require('esbuild')
+import esbuild from 'esbuild'
 
 esbuild.build({
+  bundle: true,
   entryPoints: ['src/main.ts'],
   external: [
     '@nestjs/microservices',
@@ -9,8 +10,7 @@ esbuild.build({
     'class-transformer',
     'class-validator'
   ],
-  bundle: true,
   minify: true,
-  platform: 'node',
-  outfile: 'dist/main.bundled.js'
+  outfile: 'dist/main.bundled.js',
+  platform: 'node'
 })
