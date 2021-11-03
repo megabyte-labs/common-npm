@@ -12,7 +12,7 @@
 
 set -eo pipefail
 
-export REPO_TYPE="npm"
+export REPO_TYPE="none"
 export REPO_SUBTYPE="cli"
 
 # @description Set the `BASH_PROFILE` variable to the location of the bash initialization script and

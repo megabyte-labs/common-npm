@@ -13,7 +13,7 @@
 set -eo pipefail
 
 export REPO_TYPE="none"
-export REPO_SUBTYPE="library"
+export REPO_SUBTYPE="app"
 
 # @description Set the `BASH_PROFILE` variable to the location of the bash initialization script and
 # set the `SYSTEM` variable equal to a value indicating the type of system we are on.
