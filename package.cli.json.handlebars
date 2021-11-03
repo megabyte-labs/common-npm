@@ -12,12 +12,12 @@
     "LICENSE",
     "README.md"
   ],
+  "scripts": {},
   "main": "dist/main.js",
   "bin": {
     "__pkg_{{ bin_name }}": "bin/cli",
     "{{ bin_name }}": "bin/cli"
   },
-  "scripts": {},
   "typings": "dist/main.d.ts",
   "man": "dist/man",
   "dependencies": {
@@ -36,7 +36,6 @@
   "devDependencies": {
     "@megabytelabs/eslint-config": "^1.0.67",
     "@megabytelabs/jest-preset": "^1.0.0",
-    "@megabytelabs/prettier-config": "^14.14.14",
     "@types/node": "^15.0.1",
     "@types/shelljs": "^0.8.9",
     "@types/update-notifier": "^5.1.0",
@@ -63,6 +62,10 @@
       ]
     ]
   },
+  "pkg": {
+    "compress": "Brotli",
+    "outputPath": "dist/bin"
+  },
   "keywords": [
     "bin",
     "cli",
@@ -76,10 +79,6 @@
     "standalone",
     "cosmicconfig"
   ],
-  "pkg": {
-    "compress": "Brotli",
-    "outputPath": "dist/bin"
-  },
   "publishConfig": {
     "access": "{{ npm_publish_config_access }}"
   },

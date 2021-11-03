@@ -5,7 +5,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "description": "Includes common files used across Megabyte Labs NPM package repositories",
+  "description": "Includes common files used across NPM package repositories",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -31,13 +31,13 @@
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^13.1.0",
-    "@megabytelabs/eslint-config": "^1.0.67",
+    "@megabytelabs/eslint-config": "^1.0.71",
     "@megabytelabs/prettier-config": "^14.14.14",
     "@typescript-eslint/eslint-plugin": "^5.3.0",
     "cz-conventional-changelog": "^3.3.0"
   },
   "blueprint": {
-    "description": "Includes common files used across Megabyte Labs NPM package repositories",
+    "description": "Includes common files used across NPM package repositories",
     "overview": "All of the Megabyte Labs repositories share configuration files and sometimes even application files. When this repository is updated, the changes are propagated down to all of our NPM packages. The system works via GitLab CI and is a great way of ensuring dependencies are up-to-date.",
     "name": "NPM",
     "repository": {

@@ -1,5 +1,5 @@
 {
-  "bin_name": "ADD_EXECUTABLE_NAME",
+  "bin_name": "ADD_BIN_NAME",
   "docs": {
     "header_description_pre": "An NPM CLI maintained by ",
     "header_title_pre": "NPM Library: ",
