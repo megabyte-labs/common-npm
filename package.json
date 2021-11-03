@@ -31,5 +31,16 @@
     "eslint-plugin-yml": "^0.10.0",
     "prettier": "^2.3.2",
     "typescript": "^4.4.2"
+  },
+  "supportedApps": {
+    "app": {
+      "desc": ""
+    },
+    "cli": {
+      "desc": "Starting point for Node CLI apps using NestJS and nest-commander"
+    },
+    "library": {
+      "desc": "Minimalistic boilerplate for libraries and configuration packages"
+    }
   }
 }
