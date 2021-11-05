@@ -1,4 +1,7 @@
 {
+  "bin": {
+    "{{#if binName}}{{binName}}{{else}}{{slug}}{{/if}}": "bin/cli"
+  },
   "dependencies": {
     "@nestjs/common": "8.1.2",
     "@nestjs/config": "^1.0.3",
@@ -11,5 +14,33 @@
     "nest-commander": "^2.3.3",
     "shelljs": "^0.8.4",
     "update-notifier": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/shelljs": "^0.8.9",
+    "@types/update-notifier": "^5.1.0",
+    "nest-commander-schematics": "^2.0.1",
+    "nest-commander-testing": "^2.0.1",
+    "remark-man": "^8.0.0"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md"
+  ],
+  "keywords": [
+    "bin",
+    "cli",
+    "cosmicconfig",
+    "commander",
+    "inquirer",
+    "manpage",
+    "nestjs"
+  ],
+  "man": "man",
+  "pkg": {
+    "compress": "Brotli",
+    "outputPath": "build"
   }
 }
