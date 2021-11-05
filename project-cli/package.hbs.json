@@ -6,25 +6,33 @@
     "@nestjs/common": "8.1.2",
     "@nestjs/config": "^1.0.3",
     "@nestjs/core": "8.1.2",
-    "@nestjs/event-emitter": "^1.0.0",
     "chalk": "^4.1.2",
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1",
     "cosmiconfig": "^7.0.1",
     "nest-commander": "^2.3.3",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.2.0",
     "shelljs": "^0.8.4",
     "update-notifier": "^5.1.0"
   },
   "devDependencies": {
+    "@nestjs/cli": "^8.0.0",
+    "@nestjs/schematics": "^8.0.0",
+    "@nestjs/testing": "^8.0.0",
     "@types/shelljs": "^0.8.9",
     "@types/update-notifier": "^5.1.0",
     "nest-commander-schematics": "^2.0.1",
     "nest-commander-testing": "^2.0.1",
-    "remark-man": "^8.0.0"
+    "remark-man": "^8.0.0",
+    "source-map-support": "^0.5.20"
   },
   "files": ["bin", "dist", "CHANGELOG.md", "LICENSE", "README.md"],
   "keywords": ["bin", "cli", "cosmicconfig", "commander", "inquirer", "manpage", "nestjs"],
   "man": "man",
+  "nodemonConfig": {
+    "exec": "tsc -p . && node --inspect-brk dist/main"
+  },
   "pkg": {
     "compress": "Brotli",
     "outputPath": "build"
