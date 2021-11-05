@@ -1,0 +1,22 @@
+{
+  "devDependencies": {
+    "@megabytelabs/jest-preset": "^1.0.0",
+    "@types/node": "^16.11.6"
+  },
+  "jest": {
+    "preset": "@megabytelabs/jest-preset",
+    "reporters": [
+      "default",
+      [
+        "jest-html-reporters",
+        {
+          "filename": "index.html",
+          "logoImgPath": "./.common/assets/logo-icon-square-200x200.png",
+          "openReport": true,
+          "pageTitle": "Code Coverage Report",
+          "publicPath": "./coverage"
+        }
+      ]
+    ]
+  }
+}
