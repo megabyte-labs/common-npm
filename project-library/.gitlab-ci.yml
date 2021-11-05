@@ -6,7 +6,6 @@ stages:
   - security
   - lsif
   - publish
-  - deploy
 
 include:
   - local: .gitlab/ci/lint/eslint.gitlab-ci.yml
@@ -15,9 +14,8 @@ include:
   - local: .gitlab/ci/lint/shellcheck.gitlab-ci.yml
   - local: .gitlab/ci/lint/yamllint.gitlab-ci.yml
   - local: .gitlab/ci/lsif/typescript.gitlab-ci.yml
-  - local: .gitlab/ci/publish/docs/typedoc.gitlab-ci.yml
-  - local: .gitlab/ci/publish/npm/dockerize.gitlab-ci.yml
-  - local: .gitlab/ci/publish/npm/npmjs.gitlab-ci.yml
+  - local: .gitlab/ci/publish/docs.gitlab-ci.yml
+  - local: .gitlab/ci/publish/npmjs.gitlab-ci.yml
   - local: .gitlab/ci/test/jest.gitlab-ci.yml
   - local: .gitlab/ci/update/project.gitlab-ci.yml
   - template: Dependency-Scanning.gitlab-ci.yml
