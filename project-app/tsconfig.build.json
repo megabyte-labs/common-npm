@@ -3,6 +3,7 @@
   "exclude": [
     ".autodoc",
     ".cache",
+    ".common",
     ".config",
     ".git",
     ".github",
