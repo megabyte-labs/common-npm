@@ -4,7 +4,6 @@
     "header_title_pre": "Config: ",
     "link": "https://megabyte.space/docs/npm/config"
   },
-  "group": "npm",
   "plugins": {
     "eslint": [
       ["ESLint Plugin", "Description"],

@@ -4,7 +4,6 @@
     "header_title_pre": "NPM Library: ",
     "link": "https://megabyte.space/docs/npm/libraries"
   },
-  "group": "npm",
   "repository": {
     "prefix": {
       "github": "npm-lib-"

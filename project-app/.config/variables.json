@@ -4,7 +4,6 @@
     "header_title_pre": "Node.js App: ",
     "link": "https://megabyte.space/docs/npm/apps"
   },
-  "group": "npm",
   "repository": {
         "prefix": {
             "github": "app-"
