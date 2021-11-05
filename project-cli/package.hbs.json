@@ -22,22 +22,8 @@
     "nest-commander-testing": "^2.0.1",
     "remark-man": "^8.0.0"
   },
-  "files": [
-    "bin",
-    "dist",
-    "CHANGELOG.md",
-    "LICENSE",
-    "README.md"
-  ],
-  "keywords": [
-    "bin",
-    "cli",
-    "cosmicconfig",
-    "commander",
-    "inquirer",
-    "manpage",
-    "nestjs"
-  ],
+  "files": ["bin", "dist", "CHANGELOG.md", "LICENSE", "README.md"],
+  "keywords": ["bin", "cli", "cosmicconfig", "commander", "inquirer", "manpage", "nestjs"],
   "man": "man",
   "pkg": {
     "compress": "Brotli",

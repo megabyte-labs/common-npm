@@ -7,8 +7,5 @@
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1"
   },
-  "keywords": [
-    "app",
-    "nestjs"
-  ]
+  "keywords": ["app", "nestjs"]
 }
