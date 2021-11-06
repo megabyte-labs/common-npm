@@ -42,6 +42,14 @@ tasks:
       - if [ ! -d project ]; then mkdir project; fi
       - cp -rT project common
 
+  copy:project:subtype:
+    cmds:
+      - |
+        for FOLDER in project-*/; do
+          SUBTYPE="$(echo "$FOLDER" | sed 's/project-\(.*\)\//\1/')"
+          cp -rT "$FOLDER" "common-$SUBTYPE"
+        done
+
   merge:
     deps:
       - merge:package
@@ -50,7 +58,7 @@ tasks:
   merge:package:
     cmds:
       - task: merge:package:project
-      - task: merge:package:project-subtype
+      - task: merge:package:project:subtype
 
   merge:package:project:
     deps:
@@ -76,7 +84,7 @@ tasks:
 
         mergePackages "{{.SHARED_FOLDER}}/common/package.hbs.json" "project/package.hbs.json" "common/package.hbs.json"
 
-  merge:package:project-subtype:
+  merge:package:project:subtype:
     deps:
       - :install:software:jq
     cmds:
@@ -170,7 +178,7 @@ tasks:
     deps:
       - :install:npm:hbs
     cmds:
-      - if [ -f package.hbs.json ]; then mv tmp.package.hbs.json; fi
+      - if [ -f package.hbs.json ]; then mv package.hbs.json tmp.package.hbs.json; fi
       - |
         function handlebars() {
           FILE="$1"

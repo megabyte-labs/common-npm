@@ -192,12 +192,15 @@ tasks:
       - |
         function handlebars() {
           FILE="$1"
+          echo "FILE: $1"
+          echo "OUTPUT: ${FILE%.*}"
           hbs --data .variables.json --helper ./.config/hbs.cjs "$FILE" --stdout > "${FILE%.*}"
           rm "$FILE"
         }
         find . -type f -not \( -path './common*' -o -path './project*' \) -prune -name '*.handlebars' | while read FILE; do
-          handlebars "$1"
+          handlebars "$FILE" &
         done
+        wait
 
   template:variables:
     deps:
