@@ -1,5 +1,5 @@
 {
-    "gitlab_pipelines": [
+  "gitlab_pipelines": [
     {
       "active": true,
       "cron": "0 12 * * 1",

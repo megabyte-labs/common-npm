@@ -5,9 +5,9 @@
     "link": "https://megabyte.space/docs/npm/apps"
   },
   "repository": {
-        "prefix": {
-            "github": "app-"
-        }
-    },
-    "subgroup": "app"
+    "prefix": {
+      "github": "app-"
+    }
+  },
+  "subgroup": "app"
 }

@@ -9,6 +9,7 @@
 export function getRandomElements(array: readonly any[], count: number): readonly any[] {
   const beginning = 0
   const sortProperty = 0.5
+  // eslint-disable-next-line fp/no-mutating-methods
   const sorted = [...array].sort(() => Math.random() - sortProperty)
 
   return sorted.slice(beginning, count)

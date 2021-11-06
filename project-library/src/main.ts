@@ -6,6 +6,6 @@
  * @param message - Any string
  * @returns The first character in the `message` string
  */
-export function myExportedFunction(message: string) {
+export function myExportedFunction(message: string): string {
   return message.charAt(0)
 }

@@ -22,11 +22,11 @@
     ]
   },
   "main": "dist/main.js",
-  "typings": "dist/main.d.ts",
   "nodemonConfig": {
     "exec": "tsc -p . && node --inspect-brk dist/main",
     "ext": "js,jsx,json,ts,tsx,yml",
     "ignore": ["src/**/*.spec.ts"],
     "watch": [".env", "src"]
-  }
+  },
+  "typings": "dist/main.d.ts"
 }

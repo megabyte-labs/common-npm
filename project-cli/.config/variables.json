@@ -1,13 +1,13 @@
 {
-    "docs": {
-        "header_description_pre": "An NPM CLI maintained by ",
-        "header_title_pre": "NPM Library: ",
-        "link": "https://megabyte.space/docs/npm/cli"
-    },
-    "repository": {
-        "prefix": {
-            "github": "npm-"
-        }
-    },
-    "subgroup": "cli"
+  "docs": {
+    "header_description_pre": "An NPM CLI maintained by ",
+    "header_title_pre": "NPM Library: ",
+    "link": "https://megabyte.space/docs/npm/cli"
+  },
+  "repository": {
+    "prefix": {
+      "github": "npm-"
+    }
+  },
+  "subgroup": "cli"
 }

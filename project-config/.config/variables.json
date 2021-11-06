@@ -110,24 +110,30 @@
     ],
     "jest": [
       ["Jest Plugin", "Description"],
-    ["[`@jest-runner/electron`](https://npmjs.com/package/@jest-runner/electron)", "INSERT_DESCRIPTION_HERE"],
-["[`@storybook/addon-storyshots`](https://npmjs.com/package/@storybook/addon-storyshots)", "INSERT_DESCRIPTION_HERE"],
-["[`expect-puppeteer`](https://npmjs.com/package/expect-puppeteer)", "INSERT_DESCRIPTION_HERE"],
-["[`jest-chain`](https://npmjs.com/package/jest-chain)", "INSERT_DESCRIPTION_HERE"],
-["[`jest-dom`](https://npmjs.com/package/jest-dom)", "INSERT_DESCRIPTION_HERE"],
-["[`jest-html-reporters`](https://npmjs.com/package/jest-html-reporters)", "INSERT_DESCRIPTION_HERE"],
-["[`jest-image-snapshot`](https://npmjs.com/package/jest-image-snapshot)", "INSERT_DESCRIPTION_HERE"],
-["[`jest-json-schema`](https://npmjs.com/package/jest-json-schema)", "INSERT_DESCRIPTION_HERE"],
-["[`jest-preset-angular`](https://npmjs.com/package/jest-preset-angular)", "INSERT_DESCRIPTION_HERE"],
-["[`jest-puppeteer`](https://npmjs.com/package/jest-puppeteer)", "INSERT_DESCRIPTION_HERE"],
-["[`jest-runner-eslint`](https://npmjs.com/package/jest-runner-eslint)", "INSERT_DESCRIPTION_HERE"],
-["[`jest-runner-groups`](https://npmjs.com/package/jest-runner-groups)", "INSERT_DESCRIPTION_HERE"],
-["[`jest-runner-prettier`](https://npmjs.com/package/jest-runner-prettier)", "INSERT_DESCRIPTION_HERE"],
-["[`jest-runner-stylelint`](https://npmjs.com/package/jest-runner-stylelint)", "INSERT_DESCRIPTION_HERE"],
-["[`jest-runner-tsc`](https://npmjs.com/package/jest-runner-tsc)", "INSERT_DESCRIPTION_HERE"],
-["[`jest-watch-master`](https://npmjs.com/package/jest-watch-master)", "INSERT_DESCRIPTION_HERE"],
-["[`jest-watch-select-projects`](https://npmjs.com/package/jest-watch-select-projects)", "INSERT_DESCRIPTION_HERE"],
-["[`jest-watch-typeahead`](https://npmjs.com/package/jest-watch-typeahead)", "INSERT_DESCRIPTION_HERE"]
+      ["[`@jest-runner/electron`](https://npmjs.com/package/@jest-runner/electron)", "INSERT_DESCRIPTION_HERE"],
+      [
+        "[`@storybook/addon-storyshots`](https://npmjs.com/package/@storybook/addon-storyshots)",
+        "INSERT_DESCRIPTION_HERE"
+      ],
+      ["[`expect-puppeteer`](https://npmjs.com/package/expect-puppeteer)", "INSERT_DESCRIPTION_HERE"],
+      ["[`jest-chain`](https://npmjs.com/package/jest-chain)", "INSERT_DESCRIPTION_HERE"],
+      ["[`jest-dom`](https://npmjs.com/package/jest-dom)", "INSERT_DESCRIPTION_HERE"],
+      ["[`jest-html-reporters`](https://npmjs.com/package/jest-html-reporters)", "INSERT_DESCRIPTION_HERE"],
+      ["[`jest-image-snapshot`](https://npmjs.com/package/jest-image-snapshot)", "INSERT_DESCRIPTION_HERE"],
+      ["[`jest-json-schema`](https://npmjs.com/package/jest-json-schema)", "INSERT_DESCRIPTION_HERE"],
+      ["[`jest-preset-angular`](https://npmjs.com/package/jest-preset-angular)", "INSERT_DESCRIPTION_HERE"],
+      ["[`jest-puppeteer`](https://npmjs.com/package/jest-puppeteer)", "INSERT_DESCRIPTION_HERE"],
+      ["[`jest-runner-eslint`](https://npmjs.com/package/jest-runner-eslint)", "INSERT_DESCRIPTION_HERE"],
+      ["[`jest-runner-groups`](https://npmjs.com/package/jest-runner-groups)", "INSERT_DESCRIPTION_HERE"],
+      ["[`jest-runner-prettier`](https://npmjs.com/package/jest-runner-prettier)", "INSERT_DESCRIPTION_HERE"],
+      ["[`jest-runner-stylelint`](https://npmjs.com/package/jest-runner-stylelint)", "INSERT_DESCRIPTION_HERE"],
+      ["[`jest-runner-tsc`](https://npmjs.com/package/jest-runner-tsc)", "INSERT_DESCRIPTION_HERE"],
+      ["[`jest-watch-master`](https://npmjs.com/package/jest-watch-master)", "INSERT_DESCRIPTION_HERE"],
+      [
+        "[`jest-watch-select-projects`](https://npmjs.com/package/jest-watch-select-projects)",
+        "INSERT_DESCRIPTION_HERE"
+      ],
+      ["[`jest-watch-typeahead`](https://npmjs.com/package/jest-watch-typeahead)", "INSERT_DESCRIPTION_HERE"]
     ],
     "prettier": [
       ["Prettier Plugin", "Description"],
@@ -145,7 +151,10 @@
         "[`prettier-plugin-organize-imports`](https://npmjs.com/package/prettier-plugin-organize-imports)",
         "INSERT_DESCRIPTION_HERE"
       ],
-      ["[`prettier-plugin-package-perfection`](https://npmjs.com/package/prettier-plugin-package-perfection)", "INSERT_DESCRIPTION_HERE"],
+      [
+        "[`prettier-plugin-package-perfection`](https://npmjs.com/package/prettier-plugin-package-perfection)",
+        "INSERT_DESCRIPTION_HERE"
+      ],
       [
         "[`prettier-plugin-properties`](https://npmjs.com/package/prettier-plugin-properties)",
         "INSERT_DESCRIPTION_HERE"
