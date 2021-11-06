@@ -39,6 +39,7 @@
     "@megabytelabs/prettier-config": "^14.14.28",
     "@typescript-eslint/eslint-plugin": "^5.3.0",
     "cz-conventional-changelog": "^3.0.1",
+    "handlebars-helpers": "^0.10.0",
     "tslint": "^6.1.3"
   },
   "engines": {
@@ -48,17 +49,17 @@
     "access": "public"
   },
   "blueprint": {
-    "description": "Includes common files used across different types of common file repositories (e.g. Go, Python, etc.)",
+    "description": "Files shared across NPM projects including global common files, doc partials, and shared configs",
     "group": "common",
-    "overview": "This repository feeds downstream repositories that store programming language specific common files. When this repository is updated, the changes are propagated downstream via CI. This repository contains files that are meant to be global. For instance, if Go projects and Angular projects share a common file (say `.editorconfig`, for example) then that file is stored in this repository and propagated to the Go and Angular common file repositories. Then, for example, the Go common file repository is included in all of the Go projects as a submodule. This is meant to be done with every repository in an eco-system so that meta files, documentation, etc. are all kept in sync.",
-    "name": "Shared",
+    "overview": "This repository houses files that propagate down to NPM projects via CI. Its point is to keep dependencies and configurations up to date and synchronized across all the NPM projects. Individual NPM projects inherit their upstream files by copying over the `common` folder files and then the `common-{{ NPM_PROJECT_TYPE }}` folder. After the individual projects do that, they merge the appropriate JSON into a `variables.json` file and use that as the context to generate any files that match `*.hbs.*` or `*.handlebars`.",
+    "name": "Common NPM",
     "repository": {
-      "github": "https://github.com/ProfessorManhattan/shared-common-files",
-      "gitlab": "https://gitlab.com/megabyte-labs/common/shared"
+      "github": "https://github.com/ProfessorManhattan/common-npm",
+      "gitlab": "https://gitlab.com/megabyte-labs/common/npm"
     },
-    "slug": "shared-common-files",
+    "slug": "common-npm",
     "subgroup": "npm",
-    "title": "Shared Common Files"
+    "title": "Upstream Common NPM Files"
   },
   "eslintConfig": {
     "extends": "@megabytelabs/eslint-config",

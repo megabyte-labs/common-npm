@@ -42,11 +42,6 @@ tasks:
       - if [ ! -d project ]; then mkdir project; fi
       - cp -rT project common
 
-  merge-and-template:
-    deps:
-      - merge
-      - template
-
   merge:
     deps:
       - merge:package
@@ -62,38 +57,74 @@ tasks:
       - :install:software:jq
     cmds:
       - |
-        if [ -f "project/package.hbs.json" ]; then
-          jq -s -S '.[0] * .[1]' {{.SHARED_FOLDER}}/common/package.hbs.json project/package.hbs.json > common/package.hbs.json
-        fi
+        function ensureKeywords() {
+          if [ ! -f "$1" ]; then echo "{}" > "$1"; fi
+          KEYWORDS="$(jq -r '.keywords' "$1")"
+          if [ "$KEYWORDS" == 'null' ] || [ "$KEYWORDS" == '' ]; then
+            TMP="$(mktemp)" && jq -r '.keywords = [] | .' "$1" > "$TMP" && mv "$TMP" "$1"
+          fi
+        }
+
+        function mergePackages() {
+          # Ensure array exists in both JSON files
+          ensureKeywords "$1"
+          ensureKeywords "$2"
+
+          # Merge the files
+          jq --arg keywords "$(jq '.keywords[]' "$1" "$2" | jq -s '. | unique')" -s -S '.[0] * .[1] | .keywords = ($keywords | fromjson) | .' "$1" "$2" > "$3"
+        }
+
+        mergePackages "{{.SHARED_FOLDER}}/common/package.hbs.json" "project/package.hbs.json" "common/package.hbs.json"
 
   merge:package:project-subtype:
     deps:
       - :install:software:jq
     cmds:
       - |
-        for FOLDER in project-*/; do
-          SUBTYPE="$(echo "$FOLDER" | sed 's/files-\(.*\)\//\1/')"
-          if [ -f "project-$SUBTYPE/package.hbs.json" ]; then
-            mkdir -p "common-$SUBTYPE"
-            jq -s -S '.[0] * .[1]' common/package.hbs.json "project-$SUBTYPE/package.hbs.json" > "common-$SUBTYPE/package.hbs.json"
+        function ensureKeywords() {
+          if [ ! -f "$1" ]; then echo "{}" > "$1"; fi
+          KEYWORDS="$(jq -r '.keywords' "$1")"
+          if [ "$KEYWORDS" == 'null' ] || [ "$KEYWORDS" == '' ]; then
+            TMP="$(mktemp)" && jq -r '.keywords = [] | .' "$1" > "$TMP" && mv "$TMP" "$1"
           fi
+        }
+
+        function mergePackages() {
+          # Ensure array exists in both JSON files
+          ensureKeywords "$1"
+          ensureKeywords "$2"
+
+          # Merge the files
+          jq --arg keywords "$(jq '.keywords[]' "$1" "$2" | jq -s '. | unique')" -s -S '.[0] * .[1] | .keywords = ($keywords | fromjson) | .' "$1" "$2" > "$3"
+        }
+
+        for FOLDER in project-*/; do
+          SUBTYPE="$(echo "$FOLDER" | sed 's/project-\(.*\)\//\1/')"
+          mergePackages "common/package.hbs.json" "project-$SUBTYPE/package.hbs.json" "common-$SUBTYPE/package.hbs.json" &
         done
+        wait
 
   merge:variables:
-    cmds:
-      - task: merge:variables:project
-      - task: merge:variables:project-subtype
+    deps:
+      - merge:variables:project
 
   merge:variables:project:
+    cmds:
+      - task: merge:variables:project:project
+      - task: merge:variables:project:subtype
+
+  merge:variables:project:project:
     deps:
       - :install:software:jq
     cmds:
       - |
         if [ -f "project/.config/variables.json" ]; then
           jq -s -S '.[0] * .[1]' "common/.config/docs/variables.json" "project/.config/variables.json" > "common/.config/variables.json"
+        else
+          cp common/.config/docs/variables.json common/.config/variables.json
         fi
 
-  merge:variables:project-subtype:
+  merge:variables:project:subtype:
     deps:
       - :install:software:jq
     env:
@@ -102,35 +133,76 @@ tasks:
     cmds:
       - |
         GROUP="$(jq -r '.blueprint.subgroup' package.json)"
-        for FOLDER in project-*/; do
-          SUBTYPE="$(echo "$FOLDER" | sed 's/files-\(.*\)\//\1/')"
-          if [ -f "project-$SUBTYPE/.config/variables.json" ]; then
-            mkdir -p "common-$SUBTYPE/.config"
-            jq --arg group "$GROUP" --arg subtype "$SUBTYPE" '.subgroup = $subtype | .group = $group' common/.config/variables.json > "$TMP"
-            jq -s -S '.[0] * .[1]' "$TMP" "project-$SUBTYPE/.config/variables.json" > "common-$SUBTYPE/.config/variables.json"
+        if [ "$GROUP" == 'null' ]; then
+          GROUP="$(yq e '.vars.REPOSITORY_SUBTYPE' Taskfile.yml)"
+          if [ "$GROUP" == 'null' ]; then
+            echo "ERROR '.blueprint.subgroup' did not exist in the package.json and the fallback '.vars.REPOSITORY_SUBTYPE' did not exist in the Taskfile.yml"
           fi
+        fi
+        function handleSubtype() {
+          FOLDER="$1"
+          SUBTYPE="$(echo "$FOLDER" | sed 's/project-\(.*\)\//\1/')"
+          mkdir -p "common-$SUBTYPE/.config"
+          jq --arg group "$GROUP" --arg subtype "$SUBTYPE" '.subgroup = $subtype | .group = $group' common/.config/variables.json > "$TMP"
+          if [ -f "project-$SUBTYPE/.config/variables.json" ]; then
+            jq -r '.keywords' common/package.hbs.json #DEBUG
+            jq -s -S '.[0] * .[1]' "$TMP" "project-$SUBTYPE/.config/variables.json" > "common-$SUBTYPE/.config/variables.json"
+          else
+            mv "$TMP" "common-$SUBTYPE/.config/variables.json"
+          fi
+        }
+        for FOLDER in project-*/; do
+          handleSubtype "$FOLDER" &
         done
+        wait
 
   template:
     cmds:
-      - task: template:package
+      - task: template:variables
       - task: template:files
 
   template:files:
     deps:
+      - template:files:handlebars
+      - template:files:hbs
+
+  template:files:hbs:
+    deps:
+      - :install:npm:hbs
+    cmds:
+      - if [ -f package.hbs.json ]; then mv tmp.package.hbs.json; fi
+      - |
+        function handlebars() {
+          FILE="$1"
+          hbs --data .variables.json --helper ./.config/hbs.cjs "$FILE" --stdout > "${FILE//.hbs}"
+          rm "$FILE"
+        }
+        find . -type f -not \( -path './common*' -o -path './project*' \) -prune -name '*.hbs.*' | while read FILE; do
+          handlebars "$FILE" &
+        done
+        wait
+      - jq -s '.[0] * .[1]' package.json tmp.package.json > "$TMP"
+      - mv "$TMP" package.json
+      - rm tmp.package.json
+
+  template:files:handlebars:
+    deps:
       - :install:npm:hbs
     cmds:
       - |
-        find . -type f -path ./common -prune -name '*.hbs.*' | while read FILE; do
-          hbs --data .variables.json --helper ./.config/hbs.js "$FILE" --stdout > "${FILE//.hbs}"
-        done
-      - |
-        find . -type f -path ./common -prune -name '*.handlebars' | while read FILE; do
-          hbs --data .variables.json --helper ./.config/hbs.js "$FILE" --stdout > "${FILE%.*}"
+        function handlebars() {
+          FILE="$1"
+          hbs --data .variables.json --helper ./.config/hbs.cjs "$FILE" --stdout > "${FILE%.*}"
+          rm "$FILE"
+        }
+        find . -type f -not \( -path './common*' -o -path './project*' \) -prune -name '*.handlebars' | while read FILE; do
+          handlebars "$1"
         done
 
-  template:package:
+  template:variables:
     deps:
       - :install:software:jq
     cmds:
-      - jq --arg blueprint "$(jq -r '.blueprint' package.json)" -S '. = (($blueprint | fromjson) * .)' common/.config/docs/variables.json > .variables.json
+      - jq --arg blueprint "$(jq -r '.blueprint' package.json | sed 's/^null$/{}/')"
+        --arg version "$(jq -r '.version' package.json | sed 's/^null$/0.0.1/')"
+        -S '. = (. * ($blueprint | fromjson))' common/.config/docs/variables.json > .variables.json

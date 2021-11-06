@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "common-npm"
+version = ""
+description = "Files shared across NPM projects including global common files, doc partials, and shared configs"
+authors = ["Brian Zalewski <brian@megabyte.space>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://megabyte.space"
+documentation = ""
+keywords = ["node", "python", "app"]
+include = ["CHANGELOG.md", "LICENSE"]
+
+[tool.poetry.dependencies]
+
+[tool.poetry.dev-dependencies]
+python = "^3.9"
+blocklint = "^0.2.3"
+pre-commit-hooks = "^4.0.1"
+proselint = "^0.12.0"
+yamllint = "^1.26.3"
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://gitlab.com/megabyte-labs/common/npm/-/issues"
+"GitHub" = "https://github.com/ProfessorManhattan/common-npm"
+"GitLab" = "https://gitlab.com/megabyte-labs/common/npm"
+"Open Collective" = "https://opencollective.com/megabytelabs"
+"Patreon" = "https://www.patreon.com/ProfessorManhattan"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
