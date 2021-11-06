@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "common-npm"
+name = "my-project"
 version = ""
-description = "Files shared across NPM projects including global common files, doc partials, and shared configs"
+description = "An NPM package that is part of the Megabyte Labs eco-system"
 authors = ["Brian Zalewski <brian@megabyte.space>"]
 license = "MIT"
 readme = "README.md"
@@ -20,9 +20,9 @@ proselint = "^0.12.0"
 yamllint = "^1.26.3"
 
 [tool.poetry.urls]
-"Bug Tracker" = "https://gitlab.com/megabyte-labs/common/npm/-/issues"
-"GitHub" = "https://github.com/ProfessorManhattan/common-npm"
-"GitLab" = "https://gitlab.com/megabyte-labs/common/npm"
+"Bug Tracker" = "/common/npm/my-project/-/issues"
+"GitHub" = "https://github.com/ProfessorManhattan/my-project"
+"GitLab" = "/common/npm/my-project"
 "Open Collective" = "https://opencollective.com/megabytelabs"
 "Patreon" = "https://www.patreon.com/ProfessorManhattan"
 

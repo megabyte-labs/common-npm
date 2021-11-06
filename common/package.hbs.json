@@ -40,17 +40,12 @@
   },
   "eslintConfig": {
     "extends": "@megabytelabs/eslint-config",
-    "files": {
+    "rules": {
       "import/no-extraneous-dependencies": "off",
       "import/no-unresolved": "off"
     }
   },
-  "files": [
-    "dist",
-    "CHANGELOG.md",
-    "LICENSE",
-    "README.md"
-  ],
+  "files": ["dist", "CHANGELOG.md", "LICENSE", "README.md"],
   "funding": [
     {
       "type": "opencollective",
@@ -78,12 +73,7 @@
       ]
     ]
   },
-  "keywords": [
-    "megabytelabs",
-    "npm",
-    "package",
-    "professormanhattan"
-  ],
+  "keywords": ["megabytelabs", "npm", "package", "professormanhattan"],
   "license": "{{license}}",
   "lint-staged": {
     "**/*": [
@@ -93,51 +83,23 @@
       "check-symlinks",
       "destroyed-symlinks"
     ],
-    "**/*.(css|html|less|md|mjml|php|scss|sh|xml)": [
-      "task fix:prettier --"
-    ],
-    "**/*.(jpg|png)": [
-      "task image:compress --"
-    ],
-    "**/*.(js|jsx|ts|tsx)": [
-      "task fix:js --",
-      "task lint:js --"
-    ],
-    "**/*.json": [
-      "task fix:json --"
-    ],
-    "**/*.sh": [
-      "task fix:shell --",
-      "task lint:shell --"
-    ],
-    "**/*.toml": [
-      "task lint:toml --"
-    ],
-    "**/*.xml": [
-      "task fix:xml --",
-      "task lint:xml --"
-    ],
-    "**/*.yml": [
-      "task fix:yaml --",
-      "task lint:yaml --"
-    ],
-    "logo.png": [
-      "task image:resize -- 200 200",
-      "task image:compress --"
-    ]
+    "**/*.(css|html|less|md|mjml|php|scss|sh|xml)": ["task fix:prettier --"],
+    "**/*.(jpg|png)": ["task image:compress --"],
+    "**/*.(js|jsx|ts|tsx)": ["task fix:js --", "task lint:js --"],
+    "**/*.json": ["task fix:json --"],
+    "**/*.sh": ["task fix:shell --", "task lint:shell --"],
+    "**/*.toml": ["task lint:toml --"],
+    "**/*.xml": ["task fix:xml --", "task lint:xml --"],
+    "**/*.yml": ["task fix:yaml --", "task lint:yaml --"],
+    "logo.png": ["task image:resize -- 200 200", "task image:compress --"]
   },
   "main": "dist/main.js",
   "name": "{{#if customPackageName}}{{customPackageName}}{{else}}@{{profile.npmjs_organization}}/{{repository.prefix.github}}{{slug}}{{/if}}",
   "nodemonConfig": {
     "exec": "tsc -p . && node --inspect-brk dist/main",
     "ext": "js,jsx,json,ts,tsx,yml",
-    "ignore": [
-      "src/**/*.spec.ts"
-    ],
-    "watch": [
-      ".env",
-      "src"
-    ]
+    "ignore": ["src/**/*.spec.ts"],
+    "watch": [".env", "src"]
   },
   "prettier": "@megabytelabs/prettier-config",
   "private": false,

@@ -1,25 +1,26 @@
 {
   "private": false,
-  "name": "@megabytelabs/shared-common-files",
-  "version": "1.0.0",
-  "description": "Includes common files used across different types of common file repositories (e.g. Go, Python, etc.)",
+  "name": "@megabytelabs/my-project",
+  "version": "0.0.1",
+  "description": "An NPM package that is part of the Megabyte Labs eco-system",
   "license": "MIT",
   "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
   "homepage": "https://megabyte.space",
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/megabyte-labs/common/shared.git"
+    "url": "git+https://github.com/ProfessorManhattan/my-project.git"
   },
   "bugs": {
     "email": "help@megabyte.space",
-    "url": "https://gitlab.com/megabyte-labs/common/shared/-/issues"
+    "url": "/common/npm/my-project/-/issues"
   },
   "type": "module",
   "scripts": {
     "fix": "task fix",
     "help": "task --list",
     "lint": "task lint",
-    "start": "bash .start.sh",
+    "prepare": "task common:husky",
+    "start": "bash .config/start.sh",
     "update:tasks": "rm -rf shared && git clone https://gitlab.com/megabyte-labs/common/shared.git && cp -rT shared/common/.config .config"
   },
   "config": {
@@ -35,31 +36,38 @@
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^13.1.0",
-    "@megabytelabs/eslint-config": "^1.0.77",
-    "@megabytelabs/prettier-config": "^14.14.28",
-    "@typescript-eslint/eslint-plugin": "^5.3.0",
-    "cz-conventional-changelog": "^3.0.1",
+    "@megabytelabs/eslint-config": "^1.0.0",
+    "@megabytelabs/jest-preset": "^1.0.0",
+    "@megabytelabs/prettier-config": "^14.14.14",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "cz-conventional-changelog": "^3.3.0",
     "handlebars-helpers": "^0.10.0",
     "tslint": "^6.1.3"
   },
+  "keywords": [
+    "megabytelabs",
+    "npm",
+    "package",
+    "professormanhattan"
+  ],
   "engines": {
-    "node": ">=10"
+    "node": ">=14"
   },
   "publishConfig": {
     "access": "public"
   },
   "blueprint": {
-    "description": "Files shared across NPM projects including global common files, doc partials, and shared configs",
+    "description": "An NPM package that is part of the Megabyte Labs eco-system",
     "group": "common",
-    "overview": "This repository houses files that propagate down to NPM projects via CI. Its point is to keep dependencies and configurations up to date and synchronized across all the NPM projects. Individual NPM projects inherit their upstream files by copying over the `common` folder files and then the `common-{{ NPM_PROJECT_TYPE }}` folder. After the individual projects do that, they merge the appropriate JSON into a `variables.json` file and use that as the context to generate any files that match `*.hbs.*` or `*.handlebars`.",
-    "name": "Common NPM",
+    "overview": "This text shows up at the top of the README.md.",
+    "name": "My Project Name",
     "repository": {
-      "github": "https://github.com/ProfessorManhattan/common-npm",
-      "gitlab": "https://gitlab.com/megabyte-labs/common/npm"
+      "github": "https://github.com/ProfessorManhattan/my-project",
+      "gitlab": "/common/npm/my-project"
     },
-    "slug": "common-npm",
+    "slug": "my-project",
     "subgroup": "npm",
-    "title": "Upstream Common NPM Files"
+    "title": "Title of the README.md"
   },
   "eslintConfig": {
     "extends": "@megabytelabs/eslint-config",
@@ -93,6 +101,10 @@
       "task image:compress --"
     ],
     "**/*.(js|jsx|ts)": [
+      "task fix:js --",
+      "task lint:js --"
+    ],
+    "**/*.(js|jsx|ts|tsx)": [
       "task fix:js --",
       "task lint:js --"
     ],
