@@ -51,17 +51,17 @@
     "access": "public"
   },
   "blueprint": {
-    "description": "An NPM package that is part of the Megabyte Labs eco-system",
+    "description": "Files shared across NPM projects including global common files, doc partials, and shared configs",
     "group": "common",
-    "overview": "This text shows up at the top of the README.md.",
-    "name": "My Project Name",
+    "overview": "This repository houses files that propagate down to NPM projects via CI. Its point is to keep dependencies and configurations up to date and synchronized across all the NPM projects. Individual NPM projects inherit their upstream files by copying over the `common` folder files and then the `common-{{ NPM_PROJECT_TYPE }}` folder. After the individual projects do that, they merge the appropriate JSON into a `variables.json` file and use that as the context to generate any files that match `*.hbs.*` or `*.handlebars`.",
+    "name": "Common NPM",
     "repository": {
-      "github": "https://github.com/ProfessorManhattan/my-project",
-      "gitlab": "/common/npm/my-project"
+      "github": "https://github.com/ProfessorManhattan/common-npm",
+      "gitlab": "https://gitlab.com/megabyte-labs/common/npm"
     },
-    "slug": "my-project",
+    "slug": "common-npm",
     "subgroup": "npm",
-    "title": "Title of the README.md"
+    "title": "Upstream Common NPM Files"
   },
   "eslintConfig": {
     "extends": "@megabytelabs/eslint-config",
