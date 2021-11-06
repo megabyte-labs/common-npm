@@ -19,9 +19,9 @@
     "fix": "task fix",
     "help": "task --list",
     "lint": "task lint",
-    "prepare": "task common:husky",
     "start": "bash .config/start.sh",
-    "update:tasks": "rm -rf shared && git clone https://gitlab.com/megabyte-labs/common/shared.git && cp -rT shared/common/.config .config"
+    "update:tasks": "rm -rf .shared && git clone https://gitlab.com/megabyte-labs/common/shared.git .shared && cp -rT .shared/common/.config .config",
+    "prepare": "task common:husky"
   },
   "config": {
     "commitizen": {
@@ -40,16 +40,10 @@
     "@megabytelabs/jest-preset": "^1.0.0",
     "@megabytelabs/prettier-config": "^14.14.14",
     "@typescript-eslint/eslint-plugin": "^5.2.0",
-    "cz-conventional-changelog": "^3.3.0",
-    "handlebars-helpers": "^0.10.0",
+    "cz-conventional-changelog": "^3.0.1",
+    "handlebars-helpers": "^0.9.8",
     "tslint": "^6.1.3"
   },
-  "keywords": [
-    "megabytelabs",
-    "professormanhattan",
-    "npm",
-    "package"
-  ],
   "engines": {
     "node": ">=14"
   },
@@ -104,10 +98,6 @@
       "task fix:js --",
       "task lint:js --"
     ],
-    "**/*.(js|jsx|ts|tsx)": [
-      "task fix:js --",
-      "task lint:js --"
-    ],
     "**/*.json": [
       "task fix:json --"
     ],
@@ -139,6 +129,10 @@
     ],
     "requirements.txt": [
       "requirements-txt-fixer"
+    ],
+    "**/*.(js|jsx|ts|tsx)": [
+      "task fix:js --",
+      "task lint:js --"
     ]
   },
   "prettier": "@megabytelabs/prettier-config",
@@ -146,5 +140,11 @@
     "scripts": {
       "prerelease": "git add --all"
     }
-  }
+  },
+  "keywords": [
+    "megabytelabs",
+    "professormanhattan",
+    "npm",
+    "package"
+  ]
 }
