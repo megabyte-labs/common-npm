@@ -1,19 +1,19 @@
 {
-  "author": "{{author.name}} <{{author.email}}> ({{link.home}})",
+  "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
   "blueprint": {
     "description": "An NPM package that is part of the Megabyte Labs eco-system",
     "name": "My Project Name",
     "overview": "This text shows up at the top of the README.md.",
     "repository": {
-      "github": "https://github.com/{{profile.github}}/{{repository.prefix.github}}{{slug}}",
-      "gitlab": "{{repository.gitlabBaseUrl}}/{{group}}/{{subgroup}}/{{slug}}"
+      "github": "https://github.com/ProfessorManhattan/my-project",
+      "gitlab": "/common/npm/my-project"
     },
     "slug": "my-project",
     "title": "Title of the README.md"
   },
   "bugs": {
-    "email": "{{email.help}}",
-    "url": "{{repository.gitlab}}{{repository.location.issues.gitlab}}"
+    "email": "help@megabyte.space",
+    "url": "/common/npm/my-project/-/issues"
   },
   "config": {
     "commitizen": {
@@ -23,7 +23,7 @@
   "dependencies": {
     "tslib": "^2.3.1"
   },
-  "description": "{{description}}",
+  "description": "An NPM package that is part of the Megabyte Labs eco-system",
   "devDependencies": {
     "@commitlint/config-conventional": "^13.1.0",
     "@megabytelabs/eslint-config": "^1.0.0",
@@ -54,14 +54,14 @@
   "funding": [
     {
       "type": "opencollective",
-      "url": "{{profile_link.opencollective}}/{{profile.opencollective}}"
+      "url": "https://opencollective.com/megabytelabs"
     },
     {
       "type": "patreon",
-      "url": "{{profile_link.patreon}}/{{profile.patreon}}"
+      "url": "https://www.patreon.com/ProfessorManhattan"
     }
   ],
-  "homepage": "{{link.home}}",
+  "homepage": "https://megabyte.space",
   "jest": {
     "preset": "@megabytelabs/jest-preset",
     "reporters": [
@@ -85,7 +85,7 @@
     "package",
     "professormanhattan"
   ],
-  "license": "{{license}}",
+  "license": "MIT",
   "lint-staged": {
     "**/*": [
       "blocklint --wordlist blacklist,slave,whitelist",
@@ -128,7 +128,7 @@
     ]
   },
   "main": "dist/main.js",
-  "name": "{{#if customPackageName}}{{customPackageName}}{{else}}@{{profile.npmjs_organization}}/{{repository.prefix.github}}{{slug}}{{/if}}",
+  "name": "@megabytelabs/my-project",
   "nodemonConfig": {
     "exec": "tsc -p . && node --inspect-brk dist/main",
     "ext": "js,jsx,json,ts,tsx,yml",
@@ -147,7 +147,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+{{repository.github}}.git"
+    "url": "git+https://github.com/ProfessorManhattan/my-project.git"
   },
   "scripts": {
     "help": "task --list",

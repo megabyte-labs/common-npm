@@ -46,9 +46,9 @@
   },
   "keywords": [
     "megabytelabs",
+    "professormanhattan",
     "npm",
-    "package",
-    "professormanhattan"
+    "package"
   ],
   "engines": {
     "node": ">=14"

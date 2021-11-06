@@ -1,22 +1,19 @@
 {
-  "author": "{{author.name}} <{{author.email}}> ({{link.home}})",
-  "bin": {
-    "{{#if binName}}{{binName}}{{else}}{{slug}}{{/if}}": "bin/cli"
-  },
+  "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
   "blueprint": {
     "description": "An NPM package that is part of the Megabyte Labs eco-system",
     "name": "My Project Name",
     "overview": "This text shows up at the top of the README.md.",
     "repository": {
-      "github": "https://github.com/{{profile.github}}/{{repository.prefix.github}}{{slug}}",
-      "gitlab": "{{repository.gitlabBaseUrl}}/{{group}}/{{subgroup}}/{{slug}}"
+      "github": "https://github.com/ProfessorManhattan/my-project",
+      "gitlab": "/common/npm/my-project"
     },
     "slug": "my-project",
     "title": "Title of the README.md"
   },
   "bugs": {
-    "email": "{{email.help}}",
-    "url": "{{repository.gitlab}}{{repository.location.issues.gitlab}}"
+    "email": "help@megabyte.space",
+    "url": "/common/npm/my-project/-/issues"
   },
   "config": {
     "commitizen": {
@@ -24,40 +21,19 @@
     }
   },
   "dependencies": {
-    "@nestjs/common": "8.1.2",
-    "@nestjs/config": "^1.0.3",
-    "@nestjs/core": "8.1.2",
-    "chalk": "^4.1.2",
-    "class-transformer": "^0.4.0",
-    "class-validator": "^0.13.1",
-    "cosmiconfig": "^7.0.1",
-    "nest-commander": "^2.3.3",
-    "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.2.0",
-    "shelljs": "^0.8.4",
-    "tslib": "^2.3.1",
-    "update-notifier": "^5.1.0"
+    "tslib": "^2.3.1"
   },
-  "description": "{{description}}",
+  "description": "An NPM package that is part of the Megabyte Labs eco-system",
   "devDependencies": {
     "@commitlint/config-conventional": "^13.1.0",
     "@megabytelabs/eslint-config": "^1.0.0",
     "@megabytelabs/jest-preset": "^1.0.0",
     "@megabytelabs/prettier-config": "^14.14.14",
-    "@nestjs/cli": "^8.0.0",
-    "@nestjs/schematics": "^8.0.0",
-    "@nestjs/testing": "^8.0.0",
     "@types/node": "^16.11.6",
-    "@types/shelljs": "^0.8.9",
-    "@types/update-notifier": "^5.1.0",
     "@typescript-eslint/eslint-plugin": "^5.2.0",
     "cz-conventional-changelog": "^3.3.0",
     "esbuild-node-externals": "^1.3.0",
-    "handlebars-helpers": "^0.10.0",
-    "nest-commander-schematics": "^2.0.1",
-    "nest-commander-testing": "^2.0.1",
-    "remark-man": "^8.0.0",
-    "source-map-support": "^0.5.20"
+    "handlebars-helpers": "^0.10.0"
   },
   "engines": {
     "node": ">=14"
@@ -70,7 +46,6 @@
     }
   },
   "files": [
-    "bin",
     "dist",
     "CHANGELOG.md",
     "LICENSE",
@@ -79,14 +54,14 @@
   "funding": [
     {
       "type": "opencollective",
-      "url": "{{profile_link.opencollective}}/{{profile.opencollective}}"
+      "url": "https://opencollective.com/megabytelabs"
     },
     {
       "type": "patreon",
-      "url": "{{profile_link.patreon}}/{{profile.patreon}}"
+      "url": "https://www.patreon.com/ProfessorManhattan"
     }
   ],
-  "homepage": "{{link.home}}",
+  "homepage": "https://megabyte.space",
   "jest": {
     "preset": "@megabytelabs/jest-preset",
     "reporters": [
@@ -104,19 +79,12 @@
     ]
   },
   "keywords": [
-    "bin",
-    "cli",
-    "commander",
-    "cosmicconfig",
-    "inquirer",
-    "manpage",
     "megabytelabs",
-    "nestjs",
     "npm",
     "package",
     "professormanhattan"
   ],
-  "license": "{{license}}",
+  "license": "MIT",
   "lint-staged": {
     "**/*": [
       "blocklint --wordlist blacklist,slave,whitelist",
@@ -159,8 +127,7 @@
     ]
   },
   "main": "dist/main.js",
-  "man": "man",
-  "name": "{{#if customPackageName}}{{customPackageName}}{{else}}@{{profile.npmjs_organization}}/{{repository.prefix.github}}{{slug}}{{/if}}",
+  "name": "@megabytelabs/my-project",
   "nodemonConfig": {
     "exec": "tsc -p . && node --inspect-brk dist/main",
     "ext": "js,jsx,json,ts,tsx,yml",
@@ -172,10 +139,6 @@
       "src"
     ]
   },
-  "pkg": {
-    "compress": "Brotli",
-    "outputPath": "build"
-  },
   "prettier": "@megabytelabs/prettier-config",
   "private": false,
   "publishConfig": {
@@ -183,7 +146,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+{{repository.github}}.git"
+    "url": "git+https://github.com/ProfessorManhattan/my-project.git"
   },
   "scripts": {
     "help": "task --list",
