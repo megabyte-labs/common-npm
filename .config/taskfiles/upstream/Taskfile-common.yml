@@ -193,7 +193,7 @@ tasks:
           hbs --data .variables.json --helper ./.config/hbs.cjs "$FILE" --stdout > "${FILE//.hbs}"
           rm "$FILE"
         }
-        find . -type f -not \( -path './{{.COMMON_FOLDER}}*' -o -path './project*' \) -prune -name '*.hbs.*' | while read FILE; do
+        find . -type f -not \( -path './{{.COMMON_FOLDER}}*' -o -path './project*' -o -path './package.hbs.json' \) -prune -name '*.hbs.*' | while read FILE; do
           handlebars "$FILE" &
         done
         wait
