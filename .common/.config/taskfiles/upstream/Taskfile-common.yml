@@ -72,7 +72,9 @@ tasks:
           if [ ! -f "$1" ]; then echo "{}" > "$1"; fi
           KEYWORDS="$(jq -r '.keywords' "$1")"
           if [ "$KEYWORDS" == 'null' ] || [ "$KEYWORDS" == '' ]; then
-            TMP="$(mktemp)" && jq -r '.keywords = [] | .' "$1" > "$TMP" && mv "$TMP" "$1"
+            TMP="$(mktemp)"
+            jq -r '.keywords = [] | .' "$1" > "$TMP"
+            mv "$TMP" "$1"
           fi
         }
 
@@ -98,7 +100,9 @@ tasks:
           if [ ! -f "$1" ]; then echo "{}" > "$1"; fi
           KEYWORDS="$(jq -r '.keywords' "$1")"
           if [ "$KEYWORDS" == 'null' ] || [ "$KEYWORDS" == '' ]; then
-            TMP="$(mktemp)" && jq -r '.keywords = [] | .' "$1" > "$TMP" && mv "$TMP" "$1"
+            TMP="$(mktemp)"
+            jq -r '.keywords = [] | .' "$1" > "$TMP"
+            mv "$TMP" "$1"
           fi
         }
 
@@ -142,9 +146,6 @@ tasks:
   merge:variables:project:subtype:
     deps:
       - :install:software:jq
-    env:
-      TMP:
-        sh: mktemp
     cmds:
       - |
         GROUP="$(jq -r '.blueprint.subgroup' package.json)"
@@ -158,6 +159,7 @@ tasks:
           FOLDER="$1"
           SUBTYPE="$(echo "$FOLDER" | sed 's/project-\(.*\)\//\1/')"
           mkdir -p "./{{.COMMON_FOLDER}}-$SUBTYPE/.config"
+          TMP="$(mktemp)"
           jq --arg group "$GROUP" --arg subtype "$SUBTYPE" '.subgroup = $subtype | .group = $group | .' ./{{.COMMON_FOLDER}}/.config/variables.json > "$TMP"
           if [ -f "project-$SUBTYPE/.config/variables.json" ]; then
             jq -s -S '.[0] * .[1]' "$TMP" "project-$SUBTYPE/.config/variables.json" > "./{{.COMMON_FOLDER}}-$SUBTYPE/.config/variables.json"
@@ -171,6 +173,9 @@ tasks:
         wait
 
   template:
+    deps:
+      - :install:local:modules
+      - :install:npm:hbs
     cmds:
       - task: template:variables
       - task: template:files
@@ -181,8 +186,6 @@ tasks:
       - template:files:hbs
 
   template:files:hbs:
-    deps:
-      - :install:npm:hbs
     cmds:
       - if [ -f "package.hbs.json" ]; then mv package.hbs.json tmp.package.hbs.json; fi
       - |
@@ -191,20 +194,18 @@ tasks:
           hbs --data .variables.json --helper ./.config/hbs.cjs "$FILE" --stdout > "${FILE//.hbs}"
           rm "$FILE"
         }
-        find . -type f -not \( -path './{{.COMMON_FOLDER}}*' -o -path './project*' \) -prune -name '*.hbs.*'
         find . -type f -not \( -path './{{.COMMON_FOLDER}}*' -o -path './project*' \) -prune -name '*.hbs.*' | while read FILE; do
           handlebars "$FILE" &
         done
         wait
       - |
         TMP="$(mktemp)"
-        jq -s '.[0] * .[1]' "package.json" tmp.package.json > "$TMP"
+        BLUEPRINT="$(jq -r '.blueprint' package.json)"
+        jq --arg blueprint "$BLUEPRINT" -s '.[0] * .[1] | .blueprint = (.blueprint * ($blueprint | fromjson))' "package.json" tmp.package.json > "$TMP"
         mv "$TMP" package.json
       - rm tmp.package.json
 
   template:files:handlebars:
-    deps:
-      - :install:npm:hbs
     cmds:
       - |
         function handlebars() {
@@ -212,7 +213,6 @@ tasks:
           hbs --data .variables.json --helper ./.config/hbs.cjs "$FILE" --stdout > "${FILE%.*}"
           rm "$FILE"
         }
-        find . -type f -not \( -path './{{.COMMON_FOLDER}}*' -o -path './project*' \) -prune -name '*.handlebars'
         find . -type f -not \( -path './{{.COMMON_FOLDER}}*' -o -path './project*' \) -prune -name '*.handlebars' | while read FILE; do
           handlebars "$FILE" &
         done
@@ -224,4 +224,4 @@ tasks:
     cmds:
       - jq --arg blueprint "$(jq -r '.blueprint' package.json | sed 's/^null$/{}/')"
         --arg version "$(jq -r '.version' package.json | sed 's/^null$/0.0.1/')"
-        -S '. = (. * ($blueprint | fromjson))' ./{{.COMMON_FOLDER}}/.config/docs/variables.json > ./.variables.json
+        -S '. = (. * ($blueprint | fromjson)) | .version = $version' ./{{.COMMON_FOLDER}}/.config/docs/variables.json > ./.variables.json

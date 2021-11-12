@@ -1,18 +1,18 @@
 {
   "private": false,
-  "name": "@megabytelabs/my-project",
+  "name": "@megabytelabs/common-npm",
   "version": "0.0.1",
-  "description": "An NPM package that is part of the Megabyte Labs eco-system",
+  "description": "Files shared across NPM projects including global common files, doc partials, and shared configs",
   "license": "MIT",
   "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
   "homepage": "https://megabyte.space",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ProfessorManhattan/my-project.git"
+    "url": "git+https://github.com/ProfessorManhattan/common-npm.git"
   },
   "bugs": {
     "email": "help@megabyte.space",
-    "url": "/common/npm/my-project/-/issues"
+    "url": "https://gitlab.com/megabyte-labs/common/npm/-/issues"
   },
   "type": "module",
   "scripts": {
@@ -40,15 +40,15 @@
     "@megabytelabs/jest-preset": "^1.0.0",
     "@megabytelabs/prettier-config": "^14.14.14",
     "@typescript-eslint/eslint-plugin": "^5.2.0",
-    "cz-conventional-changelog": "^3.0.1",
-    "handlebars-helpers": "^0.9.8",
+    "cz-conventional-changelog": "^3.3.0",
+    "handlebars-helpers": "^0.10.0",
     "tslint": "^6.1.3"
   },
   "keywords": [
     "megabytelabs",
+    "professormanhattan",
     "npm",
-    "package",
-    "professormanhattan"
+    "package"
   ],
   "engines": {
     "node": ">=14"
