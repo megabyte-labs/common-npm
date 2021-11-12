@@ -182,28 +182,31 @@ tasks:
 
   template:files:hbs:
     deps:
+      - :install:local:modules
       - :install:npm:hbs
     cmds:
       - if [ -f "package.hbs.json" ]; then mv package.hbs.json tmp.package.hbs.json; fi
       - |
         function handlebars() {
           FILE="$1"
+          echo "Processing $FILE"
           hbs --data .variables.json --helper ./.config/hbs.cjs "$FILE" --stdout > "${FILE//.hbs}"
           rm "$FILE"
         }
-        find . -type f -not \( -path './{{.COMMON_FOLDER}}*' -o -path './project*' \) -prune -name '*.hbs.*'
         find . -type f -not \( -path './{{.COMMON_FOLDER}}*' -o -path './project*' \) -prune -name '*.hbs.*' | while read FILE; do
           handlebars "$FILE" &
         done
         wait
       - |
         TMP="$(mktemp)"
-        jq -s '.[0] * .[1]' "package.json" tmp.package.json > "$TMP"
+        BLUEPRINT="$(jq -r '.blueprint' package.json)"
+        jq --arg blueprint "$BLUEPRINT" -s '.[0] * .[1] | .blueprint = (.blueprint * ($blueprint | fromjson))' "package.json" tmp.package.json > "$TMP"
         mv "$TMP" package.json
       - rm tmp.package.json
 
   template:files:handlebars:
     deps:
+      - :install:local:modules
       - :install:npm:hbs
     cmds:
       - |
@@ -212,7 +215,6 @@ tasks:
           hbs --data .variables.json --helper ./.config/hbs.cjs "$FILE" --stdout > "${FILE%.*}"
           rm "$FILE"
         }
-        find . -type f -not \( -path './{{.COMMON_FOLDER}}*' -o -path './project*' \) -prune -name '*.handlebars'
         find . -type f -not \( -path './{{.COMMON_FOLDER}}*' -o -path './project*' \) -prune -name '*.handlebars' | while read FILE; do
           handlebars "$FILE" &
         done
@@ -224,4 +226,4 @@ tasks:
     cmds:
       - jq --arg blueprint "$(jq -r '.blueprint' package.json | sed 's/^null$/{}/')"
         --arg version "$(jq -r '.version' package.json | sed 's/^null$/0.0.1/')"
-        -S '. = (. * ($blueprint | fromjson))' ./{{.COMMON_FOLDER}}/.config/docs/variables.json > ./.variables.json
+        -S '. = (. * ($blueprint | fromjson)) | .version = $version' ./{{.COMMON_FOLDER}}/.config/docs/variables.json > ./.variables.json
