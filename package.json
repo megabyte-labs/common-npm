@@ -1,6 +1,6 @@
 {
   "private": false,
-  "name": "@megabytelabs/common-npm",
+  "name": "@mblabs/common-npm",
   "version": "0.0.1",
   "description": "Files shared across NPM projects including global common files, doc partials, and shared configs",
   "license": "MIT",
@@ -16,12 +16,9 @@
   },
   "type": "module",
   "scripts": {
-    "fix": "task fix",
     "help": "task --list",
-    "lint": "task lint",
     "prepare": "task common:husky",
-    "start": "bash .config/start.sh",
-    "update:tasks": "rm -rf .shared && git clone https://gitlab.com/megabyte-labs/common/shared.git .shared && cp -rT .shared/common/.config .config"
+    "start": "bash .config/start.sh"
   },
   "config": {
     "commitizen": {
@@ -29,16 +26,13 @@
     }
   },
   "dependencies": {
-    "esbuild": "0.12.29",
-    "esbuild-node-externals": "1.3.0",
-    "prettier-plugin-package-perfection": "^1.0.5",
     "tslib": "^2.3.1"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^13.1.0",
-    "@megabytelabs/eslint-config": "^1.0.0",
-    "@megabytelabs/jest-preset": "^1.0.0",
-    "@megabytelabs/prettier-config": "^14.14.14",
+    "@mblabs/eslint-config": "^1.0.0",
+    "@mblabs/jest-preset": "^1.0.0",
+    "@mblabs/prettier-config": "^14.14.14",
     "@typescript-eslint/eslint-plugin": "^5.2.0",
     "cz-conventional-changelog": "^3.3.0",
     "handlebars-helpers": "^0.10.0",
@@ -46,6 +40,15 @@
   },
   "keywords": [
     "megabytelabs",
+    "mblabs",
+    "node",
+    "nestjs",
+    "nest",
+    "cli",
+    "library",
+    "common",
+    "shared",
+    "files",
     "npm",
     "package",
     "professormanhattan"
@@ -70,16 +73,12 @@
     "title": "Upstream Common NPM Files"
   },
   "eslintConfig": {
-    "extends": "@megabytelabs/eslint-config",
-    "rules": {
-      "import/no-extraneous-dependencies": "off",
-      "import/no-unresolved": "off"
-    }
+    "extends": "@mblabs/eslint-config"
   },
   "funding": [
     {
       "type": "opencollective",
-      "url": "https://opencollective.com/megabytelabs"
+      "url": "https://opencollective.com/@mblabs"
     },
     {
       "type": "patreon",
@@ -100,20 +99,12 @@
     "**/*.(jpg|png)": [
       "task image:compress --"
     ],
-    "**/*.(js|jsx|ts)": [
-      "task fix:js --",
-      "task lint:js --"
-    ],
     "**/*.(js|jsx|ts|tsx)": [
       "task fix:js --",
       "task lint:js --"
     ],
     "**/*.json": [
       "task fix:json --"
-    ],
-    "**/*.py": [
-      "black",
-      "flake8"
     ],
     "**/*.sh": [
       "task fix:shell --",
@@ -130,18 +121,12 @@
       "task fix:yaml --",
       "task lint:yaml --"
     ],
-    "**/*vault.yml": [
-      "task ansible:vault:lint:file --"
-    ],
     "logo.png": [
       "task image:resize -- 200 200",
       "task image:compress --"
-    ],
-    "requirements.txt": [
-      "requirements-txt-fixer"
     ]
   },
-  "prettier": "@megabytelabs/prettier-config",
+  "prettier": "@mblabs/prettier-config",
   "standard-version": {
     "scripts": {
       "prerelease": "git add --all"
