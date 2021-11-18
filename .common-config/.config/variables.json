@@ -51,6 +51,8 @@
     "tinypng": "https://tinypng.com/"
   },
   "name": "[[ package.json .blueprint.name - See CONTRIBUTING.md ]]",
+  "npm_private": false,
+  "npm_publish_config_access": "public",
   "organization": "Megabyte Labs",
   "overview": "[[ This is a new repository without the details filled in yet. Look for the section about blueprint data in the CONTRIBUTING.md to set up the project. ]]",
   "plugins": {
@@ -383,7 +385,7 @@
     "github": "ProfessorManhattan",
     "linkedin": "blzalewski",
     "npmjs": "thisismyfirstday",
-    "npmjs_organization": "megabytelabs",
+    "npmjs_organization": "mblabs",
     "opencollective": "megabytelabs",
     "patreon": "ProfessorManhattan",
     "pypi": "ProfessorManhattan",
@@ -409,6 +411,7 @@
   "repository": {
     "github": "",
     "gitlab": "",
+    "gitlabBaseUrl": "https://gitlab.com/megabyte-labs",
     "group": {
       "ansible_roles": "https://gitlab.com/megabyte-labs/ansible-roles",
       "apps": "https://gitlab.com/megabyte-labs/apps",

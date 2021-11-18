@@ -35,9 +35,9 @@
   "description": "{{description}}",
   "devDependencies": {
     "@commitlint/config-conventional": "^13.1.0",
-    "@megabytelabs/eslint-config": "^1.0.0",
+    "@mblabs/eslint-config": "^1.0.0",
+    "@mblabs/prettier-config": "^14.14.14",
     "@megabytelabs/jest-preset": "^1.0.0",
-    "@megabytelabs/prettier-config": "^14.14.14",
     "@nestjs/cli": "^8.0.0",
     "@nestjs/schematics": "^8.0.0",
     "@nestjs/testing": "^8.0.0",
@@ -53,10 +53,10 @@
     "tsconfig-paths": "^3.10.1"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=14.18.0"
   },
   "eslintConfig": {
-    "extends": "@megabytelabs/eslint-config"
+    "extends": "@mblabs/eslint-config"
   },
   "files": [
     "dist",
@@ -154,7 +154,7 @@
       "src"
     ]
   },
-  "prettier": "@megabytelabs/prettier-config",
+  "prettier": "@mblabs/prettier-config",
   "private": false,
   "publishConfig": {
     "access": "public"

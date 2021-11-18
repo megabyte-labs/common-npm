@@ -3,7 +3,6 @@ stages:
   - update
   - lint
   - test
-  - security
   - lsif
   - publish
 
@@ -23,19 +22,3 @@ include:
   - template: Security/License-Scanning.gitlab-ci.yml
   - template: Security/SAST.gitlab-ci.yml
   - template: Security/Secret-Detection.gitlab-ci.yml
-
-dependency_scanning:
-  stage: security
-  needs: []
-
-license_scanning:
-  stage: security
-  needs: []
-
-sast:
-  stage: security
-  needs: []
-
-.secret-analyzer:
-  stage: security
-  needs: []
