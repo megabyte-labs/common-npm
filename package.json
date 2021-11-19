@@ -1,5 +1,5 @@
 {
-  "private": "false",
+  "private": true,
   "name": "@mblabs/common-npm",
   "version": "0.0.1",
   "description": "Files shared across NPM projects including global common files, doc partials, and shared configs",
