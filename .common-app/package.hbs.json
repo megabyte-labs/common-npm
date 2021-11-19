@@ -35,7 +35,7 @@
   "description": "{{description}}",
   "devDependencies": {
     "@commitlint/config-conventional": "^13.1.0",
-    "@mblabs/eslint-config": "^1.0.0",
+    "@mblabs/eslint-config": "^1.0.97",
     "@mblabs/prettier-config": "^14.14.14",
     "@megabytelabs/jest-preset": "^1.0.0",
     "@nestjs/cli": "^8.0.0",
