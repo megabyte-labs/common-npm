@@ -1,0 +1,169 @@
+{
+  "author": "{{author.name}} <{{author.email}}> ({{link.home}})",
+  "bin": {
+    "{{#if binName}}{{binName}}{{else}}{{slug}}{{/if}}": "bin/cli"
+  },
+  "blueprint": {
+    "description": "An NPM package that is part of the Megabyte Labs eco-system",
+    "name": "My Project Name",
+    "overview": "This text shows up at the top of the README.md.",
+    "repository": {
+      "github": "{{#if repository.github}}{{repository.github}}{{else}}https://github.com/{{profile.github}}/{{repository.prefix.github}}{{slug}}{{/if}}",
+      "gitlab": "{{#if repository.gitlab}}{{repository.gitlab}}{{else}}{{repository.gitlabBaseUrl}}/{{group}}/{{subgroup}}/{{slug}}{{/if}}"
+    },
+    "slug": "my-project",
+    "title": "Title of the README.md"
+  },
+  "bugs": {
+    "email": "{{email.help}}",
+    "url": "{{#if repository.gitlab}}{{repository.gitlab}}{{else}}{{repository.gitlabBaseUrl}}/{{group}}/{{subgroup}}/{{slug}}{{/if}}{{repository.location.issues.gitlab}}"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "@nestjs/common": "8.1.2",
+    "@nestjs/config": "^1.0.3",
+    "@nestjs/core": "8.1.2",
+    "chalk": "^4.1.2",
+    "class-transformer": "^0.4.0",
+    "class-validator": "^0.13.1",
+    "cosmiconfig": "^7.0.1",
+    "nest-commander": "^2.3.3",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.2.0",
+    "shelljs": "^0.8.4",
+    "tslib": "^2.3.1",
+    "update-notifier": "^5.1.0"
+  },
+  "description": "{{description}}",
+  "devDependencies": {
+    "@commitlint/config-conventional": "^13.1.0",
+    "@mblabs/eslint-config": "^1.0.97",
+    "@mblabs/prettier-config": "^14.14.14",
+    "@mblabs/release-config": "^1.0.0",
+    "@megabytelabs/jest-preset": "^1.0.0",
+    "@nestjs/cli": "^8.0.0",
+    "@nestjs/schematics": "^8.0.0",
+    "@nestjs/testing": "^8.0.0",
+    "@types/node": "^16.11.6",
+    "@types/shelljs": "^0.8.9",
+    "@types/update-notifier": "^5.1.0",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "esbuild": "^0.12.29",
+    "esbuild-node-externals": "^1.3.0",
+    "handlebars-helpers": "^0.10.0",
+    "nest-commander-schematics": "^2.0.1",
+    "nest-commander-testing": "^2.0.1",
+    "remark-man": "^8.0.0",
+    "semantic-release": "^18.0.0",
+    "source-map-support": "^0.5.20"
+  },
+  "engines": {
+    "node": ">=14.18.0"
+  },
+  "eslintConfig": {
+    "extends": "@mblabs/eslint-config"
+  },
+  "files": ["bin", "dist", "CHANGELOG.md", "LICENSE", "README.md"],
+  "funding": [
+    {
+      "type": "opencollective",
+      "url": "{{profile_link.opencollective}}/{{profile.opencollective}}"
+    },
+    {
+      "type": "patreon",
+      "url": "{{profile_link.patreon}}/{{profile.patreon}}"
+    }
+  ],
+  "homepage": "{{link.home}}",
+  "jest": {
+    "preset": "@megabytelabs/jest-preset",
+    "reporters": [
+      "default",
+      [
+        "jest-html-reporters",
+        {
+          "filename": "index.html",
+          "logoImgPath": "./.config/assets/logo-jest-report.png",
+          "openReport": true,
+          "pageTitle": "Code Coverage Report",
+          "publicPath": "./coverage"
+        }
+      ]
+    ]
+  },
+  "keywords": [
+    "bin",
+    "cli",
+    "commander",
+    "cosmicconfig",
+    "inquirer",
+    "manpage",
+    "mblabs",
+    "megabytelabs",
+    "nestjs",
+    "professormanhattan"
+  ],
+  "license": "{{license}}",
+  "lint-staged": {
+    "**/*": [
+      "blocklint --wordlist blacklist,slave,whitelist",
+      "check-merge-conflict",
+      "check-added-large-files",
+      "check-symlinks",
+      "destroyed-symlinks"
+    ],
+    "**/*.(css|html|less|md|mjml|php|scss|sh|xml)": ["task fix:prettier --"],
+    "**/*.(jpg|png)": ["task image:compress --"],
+    "**/*.(js|jsx|ts|tsx)": ["task fix:js --", "task lint:js --"],
+    "**/*.json": ["task fix:json --"],
+    "**/*.sh": ["task fix:shell --", "task lint:shell --"],
+    "**/*.toml": ["task lint:toml --"],
+    "**/*.xml": ["task fix:xml --", "task lint:xml --"],
+    "**/*.yml": ["task fix:yaml --", "task lint:yaml --"],
+    "logo.png": ["task image:resize -- 200 200", "task image:compress --"]
+  },
+  "main": "dist/main.js",
+  "man": "man",
+  "name": "{{#if customPackageName}}{{customPackageName}}{{else}}@{{profile.npmjs_organization}}/{{repository.prefix.github}}{{slug}}{{/if}}",
+  "nodemonConfig": {
+    "exec": "tsc -p . && node --inspect-brk dist/main",
+    "ext": "js,jsx,json,ts,tsx,yml",
+    "ignore": ["src/**/*.spec.ts"],
+    "watch": [".env", "src"]
+  },
+  "optionalDependencies": {
+    "chalk": "^4.1.2",
+    "inquirer": "^8.2.0",
+    "signale": "^1.4.0"
+  },
+  "pkg": {
+    "compress": "Brotli",
+    "outputPath": "build"
+  },
+  "prettier": "@mblabs/prettier-config",
+  "private": true,
+  "publishConfig": {
+    "access": "{{npm_publish_config_access}}"
+  },
+  "release": {
+    "branches": ["master", "next"],
+    "extends": "@mblabs/release-config"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+{{#if repository.github}}{{repository.github}}{{else}}https://github.com/{{profile.github}}/{{repository.prefix.github}}{{slug}}{{/if}}.git"
+  },
+  "scripts": {
+    "help": "{{npm_scripts_help}}",
+    "prepare": "{{npm_scripts_prepare}}",
+    "start": "{{npm_scripts_start}}"
+  },
+  "type": "{{npm_type}}",
+  "typings": "dist/main.d.ts",
+  "version": "{{version}}"
+}
