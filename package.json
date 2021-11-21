@@ -28,13 +28,12 @@
   "dependencies": {
     "@nestjs/common": "^8.2.1",
     "@nestjs/core": "^8.2.1",
-    "chalk": "^4.1.2",
     "nest-commander": "^2.3.4",
     "tslib": "^2.3.1"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^13.1.0",
-    "@mblabs/eslint-config": "^1.0.97",
+    "@mblabs/eslint-config": "^1.0.99",
     "@mblabs/jest-preset": "^1.0.0",
     "@mblabs/prettier-config": "^14.14.14",
     "@nestjs/testing": "^8.2.1",
@@ -95,51 +94,10 @@
       "url": "https://www.patreon.com/ProfessorManhattan"
     }
   ],
-  "lint-staged": {
-    "**/*": [
-      "blocklint --wordlist blacklist,slave,whitelist",
-      "check-merge-conflict",
-      "check-added-large-files",
-      "check-symlinks",
-      "destroyed-symlinks"
-    ],
-    "**/*.(css|html|less|md|mjml|php|scss|sh|xml)": [
-      "task fix:prettier --"
-    ],
-    "**/*.(jpg|png)": [
-      "task image:compress --"
-    ],
-    "**/*.(js|jsx|ts|tsx)": [
-      "task fix:js --",
-      "task lint:js --"
-    ],
-    "**/*.json": [
-      "task fix:json --"
-    ],
-    "**/*.sh": [
-      "task fix:shell --",
-      "task lint:shell --"
-    ],
-    "**/*.toml": [
-      "task lint:toml --"
-    ],
-    "**/*.xml": [
-      "task fix:xml --",
-      "task lint:xml --"
-    ],
-    "**/*.yml": [
-      "task fix:yaml --",
-      "task lint:yaml --"
-    ],
-    "logo.png": [
-      "task image:resize -- 200 200",
-      "task image:compress --"
-    ]
-  },
   "prettier": "@mblabs/prettier-config",
-  "standard-version": {
-    "scripts": {
-      "prerelease": "git add --all"
-    }
+  "optionalDependencies": {
+    "chalk": "^4.1.2",
+    "inquirer": "^8.2.0",
+    "signale": "^1.4.0"
   }
 }
