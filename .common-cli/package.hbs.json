@@ -43,6 +43,7 @@
     "@commitlint/config-conventional": "^13.1.0",
     "@mblabs/eslint-config": "^1.0.97",
     "@mblabs/prettier-config": "^14.14.14",
+    "@mblabs/release-config": "^1.0.0",
     "@megabytelabs/jest-preset": "^1.0.0",
     "@nestjs/cli": "^8.0.0",
     "@nestjs/schematics": "^8.0.0",
@@ -52,11 +53,13 @@
     "@types/update-notifier": "^5.1.0",
     "@typescript-eslint/eslint-plugin": "^5.2.0",
     "cz-conventional-changelog": "^3.3.0",
+    "esbuild": "^0.12.29",
     "esbuild-node-externals": "^1.3.0",
     "handlebars-helpers": "^0.10.0",
     "nest-commander-schematics": "^2.0.1",
     "nest-commander-testing": "^2.0.1",
     "remark-man": "^8.0.0",
+    "semantic-release": "^18.0.0",
     "source-map-support": "^0.5.20"
   },
   "engines": {
@@ -91,7 +94,7 @@
         "jest-html-reporters",
         {
           "filename": "index.html",
-          "logoImgPath": "./.common/assets/logo-icon-square-200x200.png",
+          "logoImgPath": "./.config/assets/logo-jest-report.png",
           "openReport": true,
           "pageTitle": "Code Coverage Report",
           "publicPath": "./coverage"
@@ -106,10 +109,9 @@
     "cosmicconfig",
     "inquirer",
     "manpage",
+    "mblabs",
     "megabytelabs",
     "nestjs",
-    "npm",
-    "package",
     "professormanhattan"
   ],
   "license": "{{license}}",
@@ -168,6 +170,11 @@
       "src"
     ]
   },
+  "optionalDependencies": {
+    "chalk": "^4.1.2",
+    "inquirer": "^8.2.0",
+    "signale": "^1.4.0"
+  },
   "pkg": {
     "compress": "Brotli",
     "outputPath": "build"
@@ -177,6 +184,13 @@
   "publishConfig": {
     "access": "{{npm_publish_config_access}}"
   },
+  "release": {
+    "branches": [
+      "master",
+      "next"
+    ],
+    "extends": "@mblabs/release-config"
+  },
   "repository": {
     "type": "git",
     "url": "git+{{#if repository.github}}{{repository.github}}{{else}}https://github.com/{{profile.github}}/{{repository.prefix.github}}{{slug}}{{/if}}.git"
@@ -185,11 +199,6 @@
     "help": "{{npm_scripts_help}}",
     "prepare": "{{npm_scripts_prepare}}",
     "start": "{{npm_scripts_start}}"
-  },
-  "standard-version": {
-    "scripts": {
-      "prerelease": "{{npm_standard_version_prerelease}}"
-    }
   },
   "type": "{{npm_type}}",
   "typings": "dist/main.d.ts",
