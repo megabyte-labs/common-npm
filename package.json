@@ -1,24 +1,21 @@
 {
-  "private": true,
-  "name": "@mblabs/common-npm",
-  "version": "0.0.1",
-  "description": "Files shared across NPM projects including global common files, doc partials, and shared configs",
-  "license": "MIT",
   "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
-  "homepage": "https://megabyte.space",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ProfessorManhattan/common-npm.git"
+  "blueprint": {
+    "description": "Files shared across NPM projects including global common files, doc partials, and shared configs",
+    "group": "common",
+    "name": "Common NPM",
+    "overview": "This repository houses files that propagate down to NPM projects via CI. Its point is to keep dependencies and configurations up to date and synchronized across all the NPM projects. Individual NPM projects inherit their upstream files by copying over the `common` folder files and then the `common-{{ NPM_PROJECT_TYPE }}` folder. After the individual projects do that, they merge the appropriate JSON into a `variables.json` file and use that as the context to generate any files that match `*.hbs.*` or `*.handlebars`.",
+    "repository": {
+      "github": "https://github.com/ProfessorManhattan/common-npm",
+      "gitlab": "https://gitlab.com/megabyte-labs/common/npm"
+    },
+    "slug": "common-npm",
+    "subgroup": "npm",
+    "title": "Upstream Common NPM Files"
   },
   "bugs": {
     "email": "help@megabyte.space",
     "url": "https://gitlab.com/megabyte-labs/common/npm/-/issues"
-  },
-  "type": "module",
-  "scripts": {
-    "help": "task --list",
-    "prepare": "task common:husky",
-    "start": "bash .config/start.sh"
   },
   "config": {
     "commitizen": {
@@ -31,12 +28,7 @@
     "nest-commander": "^2.3.4",
     "tslib": "^2.3.1"
   },
-  "optionalDependencies": {
-    "chalk": "^4.1.2",
-    "inquirer": "^8.2.0",
-    "signale": "^1.4.0",
-    "string-break": "^1.2.0"
-  },
+  "description": "Files shared across NPM projects including global common files, doc partials, and shared configs",
   "devDependencies": {
     "@commitlint/config-conventional": "^13.1.0",
     "@mblabs/eslint-config": "^1.0.97",
@@ -52,39 +44,8 @@
     "supertest": "^6.1.6",
     "tslint": "^6.1.3"
   },
-  "keywords": [
-    "cli",
-    "common",
-    "files",
-    "library",
-    "mblabs",
-    "megabytelabs",
-    "nest",
-    "nestjs",
-    "node",
-    "npm",
-    "package",
-    "professormanhattan",
-    "shared"
-  ],
   "engines": {
     "node": ">=14.18.0"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "blueprint": {
-    "description": "Files shared across NPM projects including global common files, doc partials, and shared configs",
-    "group": "common",
-    "name": "Common NPM",
-    "overview": "This repository houses files that propagate down to NPM projects via CI. Its point is to keep dependencies and configurations up to date and synchronized across all the NPM projects. Individual NPM projects inherit their upstream files by copying over the `common` folder files and then the `common-{{ NPM_PROJECT_TYPE }}` folder. After the individual projects do that, they merge the appropriate JSON into a `variables.json` file and use that as the context to generate any files that match `*.hbs.*` or `*.handlebars`.",
-    "repository": {
-      "github": "https://github.com/ProfessorManhattan/common-npm",
-      "gitlab": "https://gitlab.com/megabyte-labs/common/npm"
-    },
-    "slug": "common-npm",
-    "subgroup": "npm",
-    "title": "Upstream Common NPM Files"
   },
   "eslintConfig": {
     "extends": "@mblabs/eslint-config",
@@ -105,6 +66,23 @@
       "url": "https://www.patreon.com/ProfessorManhattan"
     }
   ],
+  "homepage": "https://megabyte.space",
+  "keywords": [
+    "cli",
+    "common",
+    "files",
+    "library",
+    "mblabs",
+    "megabytelabs",
+    "nest",
+    "nestjs",
+    "node",
+    "npm",
+    "package",
+    "professormanhattan",
+    "shared"
+  ],
+  "license": "MIT",
   "lint-staged": {
     "**/*": [
       "blocklint --wordlist blacklist,slave,whitelist",
@@ -146,12 +124,34 @@
       "task image:compress --"
     ]
   },
+  "name": "@mblabs/common-npm",
+  "optionalDependencies": {
+    "chalk": "^4.1.2",
+    "inquirer": "^8.2.0",
+    "signale": "^1.4.0",
+    "string-break": "^1.2.0"
+  },
   "prettier": "@mblabs/prettier-config",
+  "private": true,
+  "publishConfig": {
+    "access": "public"
+  },
   "release": {
     "branches": [
       "master",
       "next"
     ],
     "extends": "@mblabs/release-config"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProfessorManhattan/common-npm.git"
+  },
+  "scripts": {
+    "help": "task --list",
+    "prepare": "task common:husky",
+    "start": "bash .config/start.sh"
+  },
+  "type": "module",
+  "version": "0.0.1"
 }
