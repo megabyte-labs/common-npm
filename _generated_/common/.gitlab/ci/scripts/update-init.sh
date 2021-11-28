@@ -37,7 +37,7 @@ if ! task donothing &> /dev/null; then
   mv "$TMP" Taskfile.yml
   rm Taskfile-shared.yml
   npm install
-  eslint --write Taskfile.yml
+  eslint --fix Taskfile.yml
 fi
 
 # @description Clean up
@@ -58,19 +58,20 @@ if test -d .config/docs; then
 fi
 
 # @description Ensure documentation is in appropriate location
-if [ -f CODE_OF_CONDUCT.md ]; then
+if test -f "CODE_OF_CONDUCT.md"; then
+  echo "in here"
   mkdir -p docs
   mv CODE_OF_CONDUCT.md docs
 fi
-if [ -f CONTRIBUTING.md ]; then
+if test -f "CONTRIBUTING.md"; then
   mkdir -p docs
   mv CODE_OF_CONDUCT.md docs
 fi
-if [ -f ARCHITECTURE.md ]; then
+if test -f "ARCHITECTURE.md"; then
   mkdir -p docs
   mv CODE_OF_CONDUCT.md docs
 fi
-
+echo "Here also"
 # @description Commit and push the changes
 if [ -n "$GITLAB_CI" ]; then
   task ci:commit
