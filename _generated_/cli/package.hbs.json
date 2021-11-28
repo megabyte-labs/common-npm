@@ -68,13 +68,7 @@
   "eslintConfig": {
     "extends": "@mblabs/eslint-config"
   },
-  "files": [
-    "bin",
-    "dist",
-    "CHANGELOG.md",
-    "LICENSE",
-    "README.md"
-  ],
+  "files": ["bin", "dist", "CHANGELOG.md", "LICENSE", "README.md"],
   "funding": [
     {
       "type": "opencollective",
@@ -123,38 +117,15 @@
       "check-symlinks",
       "destroyed-symlinks"
     ],
-    "**/*.(css|html|less|md|mjml|php|scss|sh|xml)": [
-      "task fix:prettier --"
-    ],
-    "**/*.(jpg|png)": [
-      "task image:compress --"
-    ],
-    "**/*.(js|jsx|ts|tsx)": [
-      "task fix:js --",
-      "task lint:js --"
-    ],
-    "**/*.json": [
-      "task fix:json --"
-    ],
-    "**/*.sh": [
-      "task fix:shell --",
-      "task lint:shell --"
-    ],
-    "**/*.toml": [
-      "task lint:toml --"
-    ],
-    "**/*.xml": [
-      "task fix:xml --",
-      "task lint:xml --"
-    ],
-    "**/*.yml": [
-      "task fix:yaml --",
-      "task lint:yaml --"
-    ],
-    "logo.png": [
-      "task image:resize -- 200 200",
-      "task image:compress --"
-    ]
+    "**/*.(css|html|less|md|mjml|php|scss|sh|xml)": ["task fix:prettier --"],
+    "**/*.(jpg|png)": ["task image:compress --"],
+    "**/*.(js|jsx|ts|tsx)": ["task fix:js --", "task lint:js --"],
+    "**/*.json": ["task fix:json --"],
+    "**/*.sh": ["task fix:shell --", "task lint:shell --"],
+    "**/*.toml": ["task lint:toml --"],
+    "**/*.xml": ["task fix:xml --", "task lint:xml --"],
+    "**/*.yml": ["task fix:yaml --", "task lint:yaml --"],
+    "logo.png": ["task image:resize -- 200 200", "task image:compress --"]
   },
   "main": "dist/main.js",
   "man": "man",
@@ -162,13 +133,8 @@
   "nodemonConfig": {
     "exec": "tsc -p . && node --inspect-brk dist/main",
     "ext": "js,jsx,json,ts,tsx,yml",
-    "ignore": [
-      "src/**/*.spec.ts"
-    ],
-    "watch": [
-      ".env",
-      "src"
-    ]
+    "ignore": ["src/**/*.spec.ts"],
+    "watch": [".env", "src"]
   },
   "optionalDependencies": {
     "chalk": "^4.1.2",
@@ -186,10 +152,7 @@
     "access": "{{npm_publish_config_access}}"
   },
   "release": {
-    "branches": [
-      "master",
-      "next"
-    ],
+    "branches": ["master", "next"],
     "extends": "@mblabs/release-config"
   },
   "repository": {
