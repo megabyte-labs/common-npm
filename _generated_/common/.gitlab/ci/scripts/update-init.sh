@@ -4,8 +4,6 @@
 # @brief Script that executes before the start task if the UPDATE_INIT_SCRIPT is set to the URL
 # of this script
 
-set -eo pipefail
-
 # @description Configure git if environment is GitLab CI
 if [ -n "$GITLAB_CI" ]; then
   git remote set-url origin "https://root:$GROUP_ACCESS_TOKEN@$CI_SERVER_HOST/$CI_PROJECT_PATH.git"
@@ -41,7 +39,8 @@ npm install --save-optional --ignore-scripts chalk inquirer signale string-break
 
 # @description Re-generate the Taskfile.yml if it has invalid includes
 echo "Ensuring Taskfile is properly configured"
-if ! task donothing &> /dev/null || continue; then
+task donothing &> /dev/null || EXIT_CODE=$?
+if [ "$EXIT_CODE" != '0' ]; then
   curl -s https://gitlab.com/megabyte-labs/common/shared/-/raw/master/Taskfile.yml > Taskfile-shared.yml
   TMP="$(mktemp)"
   yq eval-all 'select(fileIndex==0).includes = select(fileIndex==1).includes | select(fileIndex==0)' Taskfile.yml Taskfile-shared.yml > "$TMP"
@@ -49,7 +48,8 @@ if ! task donothing &> /dev/null || continue; then
   rm Taskfile-shared.yml
   npm install --ignore-scripts
   echo "Trying to run ESLint on Taskfile.yml"
-  if ! task fix:eslint -- Taskfile.yml || continue; then
+  task fix:eslint -- Taskfile.yml &> /dev/null || EXIT_CODE=$? && echo hey
+  if [ "$EXIT_CODE" != '0' ]; then
     curl -s https://gitlab.com/megabyte-labs/common/shared/-/raw/master/update/package-requirements.json > package-requirements.json
     if ! type jq &> /dev/null; then
       echo "ERROR: jq must be installed"
@@ -111,3 +111,5 @@ mv "$TMP" package.json
 TMP="$(mktemp)"
 jq 'del(."lint-staged")' package.json > "$TMP"
 mv "$TMP" package.json
+
+echo "Finished"
