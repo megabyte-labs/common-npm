@@ -39,10 +39,10 @@
     "string-break": "^1.2.0"
   },
   "devDependencies": {
-    "@commitlint/config-conventional": "^13.2.0",
-    "@mblabs/eslint-config": "^1.0.110",
+    "@commitlint/config-conventional": "^13.1.0",
+    "@mblabs/eslint-config": "^1.0.102",
     "@mblabs/jest-preset": "^1.0.0",
-    "@mblabs/prettier-config": "^14.14.30",
+    "@mblabs/prettier-config": "^14.14.14",
     "@mblabs/release-config": "^1.0.0",
     "@nestjs/testing": "^8.2.1",
     "@typescript-eslint/eslint-plugin": "^5.2.0",
