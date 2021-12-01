@@ -1,0 +1,83 @@
+{
+  "name": "jest-runner-stylelint",
+  "version": "2.3.7",
+  "description": "Stylelint runner for Jest",
+  "main": "src/index.js",
+  "repository": "https://github.com/keplersj/jest-runner-stylelint",
+  "author": "Kepler Sticka-Jones <kepler@stickajones.org>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "test": "jest"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*": [
+      "jest --bail --findRelatedTests"
+    ]
+  },
+  "release": {
+    "verifyConditions": "@semantic-release/github"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "projects": [
+      {
+        "displayName": "test",
+        "collectCoverage": true
+      },
+      {
+        "displayName": "lint:prettier",
+        "preset": "jest-runner-prettier",
+        "testPathIgnorePatterns": [
+          "/node_modules/",
+          "/coverage/"
+        ]
+      },
+      {
+        "runner": "eslint",
+        "displayName": "lint:eslint",
+        "testMatch": [
+          "<rootDir>/**/*.js"
+        ],
+        "testPathIgnorePatterns": [
+          "/node_modules/",
+          "/coverage/"
+        ]
+      }
+    ]
+  },
+  "dependencies": {
+    "cosmiconfig": "^7.0.0",
+    "create-jest-runner": "^0.7.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^9.0.1",
+    "@commitlint/config-conventional": "^9.0.1",
+    "eslint": "^6.8.0",
+    "eslint-config-starstuff": "^1.4.42",
+    "husky": "^4.2.5",
+    "jest": "^26.0.1",
+    "jest-runner-eslint": "^0.10.0",
+    "jest-runner-prettier": "^0.3.6",
+    "lint-staged": "^10.1.7",
+    "prettier": "^2.0.5",
+    "semantic-release": "^17.0.7",
+    "stylelint": "^13.0.0",
+    "stylelint-config-standard": "^20.0.0"
+  },
+  "peerDependencies": {
+    "stylelint": "*"
+  },
+  "eslintConfig": {
+    "extends": "starstuff/auto",
+    "env": {
+      "node": true
+    }
+  }
+}

@@ -1,0 +1,14 @@
+import { ModuleMetadata } from '@nestjs/common';
+import { TestingModule, TestingModuleBuilder } from '@nestjs/testing';
+export declare type CommandModuleMetadata = Exclude<ModuleMetadata, 'imports'> & {
+    imports: NonNullable<ModuleMetadata['imports']>;
+};
+export declare class CommandTestFactory {
+    private static testAnswers;
+    private static useOriginalInquirer;
+    static useDefaultInquirer(): typeof CommandTestFactory;
+    static createTestingCommand(moduleMetadata: CommandModuleMetadata): TestingModuleBuilder;
+    private static promptMock;
+    static run(app: TestingModule, args?: string[]): Promise<void>;
+    static setAnswers(value: any | any[]): void;
+}

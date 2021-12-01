@@ -1,0 +1,113 @@
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CommandRunnerService = void 0;
+const common_1 = require("@nestjs/common");
+const nestjs_discovery_1 = require("@golevelup/nestjs-discovery");
+const commander_1 = require("commander");
+const constants_1 = require("./constants");
+let CommandRunnerService = class CommandRunnerService {
+    constructor(discoveryService, commander, options) {
+        this.discoveryService = discoveryService;
+        this.commander = commander;
+        this.options = options;
+    }
+    async onModuleInit() {
+        var _a;
+        const providers = await this.discoveryService.providersWithMetaAtKey(constants_1.CommandMeta);
+        const commands = await this.populateCommandMapInstances(providers);
+        await this.setUpCommander(commands);
+        if (this.options.usePlugins) {
+            this.commander.showHelpAfterError(`
+${this.commander.helpInformation()}
+${(0, constants_1.cliPluginError)((_a = this.options.cliName) !== null && _a !== void 0 ? _a : 'nest-commander', this.options.pluginsAvailable)}`);
+        }
+        if (this.options.errorHandler) {
+            this.commander.exitOverride(this.options.errorHandler);
+        }
+    }
+    async populateCommandMapInstances(providers) {
+        const commands = [];
+        for (const provider of providers) {
+            const optionProviders = await this.discoveryService.providerMethodsWithMetaAtKey(constants_1.OptionMeta, (found) => found.name === provider.discoveredClass.name);
+            const helpProviders = await this.discoveryService.providerMethodsWithMetaAtKey(constants_1.HelpMeta, (found) => found.name === provider.discoveredClass.name);
+            commands.push({
+                command: provider.meta,
+                instance: provider.discoveredClass.instance,
+                params: optionProviders,
+                help: helpProviders,
+            });
+        }
+        return commands;
+    }
+    async setUpCommander(commands) {
+        for (const command of commands) {
+            const newCommand = await this.buildCommand(command);
+            this.commander.addCommand(newCommand, command.command.options);
+        }
+    }
+    async buildCommand(command) {
+        var _a, _b, _c, _d;
+        const newCommand = this.commander.createCommand(command.command.name);
+        if (command.command.arguments) {
+            this.mapArgumentDescriptions(newCommand, command.command.arguments, command.command.argsDescription);
+        }
+        newCommand.description((_a = command.command.description) !== null && _a !== void 0 ? _a : '');
+        for (const option of command.params) {
+            const { flags, description, defaultValue = undefined, required = false } = option.meta;
+            const handler = option.discoveredMethod.handler.bind(command.instance);
+            const optionsMethod = required ? 'requiredOption' : 'option';
+            newCommand[optionsMethod](flags, description !== null && description !== void 0 ? description : '', handler, defaultValue !== null && defaultValue !== void 0 ? defaultValue : undefined);
+        }
+        for (const help of (_b = command.help) !== null && _b !== void 0 ? _b : []) {
+            newCommand.addHelpText(help.meta, help.discoveredMethod.handler.bind(command.instance));
+        }
+        newCommand.action(() => command.instance.run.call(command.instance, newCommand.args, newCommand.opts()));
+        if ((_c = command.command.subCommands) === null || _c === void 0 ? void 0 : _c.length) {
+            (_d = this.subCommands) !== null && _d !== void 0 ? _d : (this.subCommands = await this.discoveryService.providersWithMetaAtKey(constants_1.SubCommandMeta));
+            const subCommandsMetaForCommand = this.subCommands.filter((subMeta) => {
+                var _a;
+                return (_a = command.command.subCommands) === null || _a === void 0 ? void 0 : _a.map((subCommand) => subCommand.name).includes(subMeta.discoveredClass.name);
+            });
+            const subCommands = await this.populateCommandMapInstances(subCommandsMetaForCommand);
+            for (const subCommand of subCommands) {
+                newCommand.addCommand(await this.buildCommand(subCommand));
+            }
+        }
+        return newCommand;
+    }
+    mapArgumentDescriptions(command, args = '', argDescriptions = {}) {
+        const trueArgDefs = {};
+        const splitArgs = args.split(' ');
+        for (const arg of splitArgs) {
+            let added = false;
+            for (const key of Object.keys(argDescriptions).filter((key) => arg.includes(key))) {
+                added = true;
+                trueArgDefs[arg] = argDescriptions[key];
+            }
+            command.argument(arg, added ? trueArgDefs[arg] : '');
+        }
+    }
+    async run(args) {
+        await this.commander.parseAsync(args || process.argv);
+    }
+};
+CommandRunnerService = __decorate([
+    __param(1, (0, common_1.Inject)(constants_1.Commander)),
+    __param(2, (0, common_1.Inject)(constants_1.CommanderOptions)),
+    __metadata("design:paramtypes", [nestjs_discovery_1.DiscoveryService,
+        commander_1.Command, Object])
+], CommandRunnerService);
+exports.CommandRunnerService = CommandRunnerService;
+//# sourceMappingURL=command-runner.service.js.map

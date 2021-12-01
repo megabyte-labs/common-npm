@@ -1,0 +1,16 @@
+export declare const CommandMeta: string;
+export declare const SubCommandMeta: string;
+export declare const OptionMeta: string;
+export declare const QuestionSetMeta: string;
+export declare const QuestionMeta: string;
+export declare const ValidateMeta: string;
+export declare const TransformMeta: string;
+export declare const WhenMeta: string;
+export declare const ChoicesMeta: string;
+export declare const DefaultMeta: string;
+export declare const MessageMeta: string;
+export declare const Commander: unique symbol;
+export declare const CommanderOptions: unique symbol;
+export declare const Inquirer: unique symbol;
+export declare const HelpMeta: string;
+export declare const cliPluginError: (cliName?: string, pluginsAvailable?: boolean) => string;

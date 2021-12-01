@@ -1,0 +1,11 @@
+import { INestApplicationContext, Type } from '@nestjs/common';
+import { CommandFactoryRunOptions, NestLogger } from './command-factory.interface';
+export declare class CommandFactory {
+    static run(rootModule: Type<any>, optionsOrLogger?: CommandFactoryRunOptions | NestLogger): Promise<void>;
+    static runWithoutClosing(rootModule: Type<any>, optionsOrLogger?: CommandFactoryRunOptions | NestLogger): Promise<INestApplicationContext>;
+    private static runApplication;
+    private static createCommandModule;
+    private static getOptions;
+    private static isFactoryOptionsObject;
+    private static registerPlugins;
+}

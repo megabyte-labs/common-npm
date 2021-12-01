@@ -1,0 +1,17 @@
+import { OnModuleInit } from '@nestjs/common';
+import { DiscoveryService } from '@golevelup/nestjs-discovery';
+import { Command } from 'commander';
+import { CommanderOptionsType } from './command-factory.interface';
+export declare class CommandRunnerService implements OnModuleInit {
+    private readonly discoveryService;
+    private readonly commander;
+    private readonly options;
+    private subCommands?;
+    constructor(discoveryService: DiscoveryService, commander: Command, options: CommanderOptionsType);
+    onModuleInit(): Promise<void>;
+    private populateCommandMapInstances;
+    private setUpCommander;
+    private buildCommand;
+    private mapArgumentDescriptions;
+    run(args?: string[]): Promise<void>;
+}

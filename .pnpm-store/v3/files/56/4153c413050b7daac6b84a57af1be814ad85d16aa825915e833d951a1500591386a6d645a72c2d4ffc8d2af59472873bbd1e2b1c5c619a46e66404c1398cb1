@@ -1,0 +1,36 @@
+{
+  "name": "nest-commander",
+  "version": "2.3.4",
+  "description": "A module for making CLI applications with NestJS. Decorators for running commands and separating out config parsers included. This package works on top of commander.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmcdo29/nest-commander.git"
+  },
+  "keywords": [
+    "cli",
+    "nestjs",
+    "application",
+    "command",
+    "command-line",
+    "nest",
+    "decorator"
+  ],
+  "author": "Jay McDoniel <jmcdo29@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jmcdo29/nest-commander/issues"
+  },
+  "homepage": "https://github.com/jmcdo29/nest-commander#readme",
+  "dependencies": {
+    "@golevelup/nestjs-discovery": "2.3.1",
+    "commander": "8.2.0",
+    "cosmiconfig": "7.0.1",
+    "inquirer": "8.2.0"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^8.0.0",
+    "@nestjs/core": "^8.0.0"
+  },
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts"
+}
