@@ -1,10 +1,10 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@commitlint/config-conventional': ^13.1.0
-  '@mblabs/eslint-config': ^1.0.102
+  '@commitlint/config-conventional': ^13.2.0
+  '@mblabs/eslint-config': ^1.0.110
   '@mblabs/jest-preset': ^1.0.0
-  '@mblabs/prettier-config': ^14.14.14
+  '@mblabs/prettier-config': ^14.14.30
   '@mblabs/release-config': ^1.0.0
   '@nestjs/common': ^8.2.1
   '@nestjs/core': ^8.2.1
@@ -37,7 +37,7 @@ optionalDependencies:
 
 devDependencies:
   '@commitlint/config-conventional': 13.2.0
-  '@mblabs/eslint-config': 1.0.107_tslint@6.1.3
+  '@mblabs/eslint-config': 1.0.110_tslint@6.1.3
   '@mblabs/jest-preset': 1.0.2
   '@mblabs/prettier-config': 14.14.30
   '@mblabs/release-config': 1.1.14
@@ -2163,8 +2163,8 @@ packages:
       chalk: 4.1.2
     dev: true
 
-  /@mblabs/eslint-config/1.0.107_tslint@6.1.3:
-    resolution: {integrity: sha512-HJYbbC1uvic8DU5mOkZBu2kzI8HmkMIdg7ym1vhylV7wSXtJw22drRzWjFm8vtFpwTTqQabObzTC4XoVJoFiOA==}
+  /@mblabs/eslint-config/1.0.110_tslint@6.1.3:
+    resolution: {integrity: sha512-O/2z5UpiWUqR6tgAwPrHyQahPd8q0QKaBAD0GpxxwFe8NHrt2hwLryqCEnra5FL29JyBgy0TEFZKkL1o28VsRA==}
     engines: {node: '>=14.18.0'}
     dependencies:
       '@typescript-eslint/eslint-plugin': 5.5.0_43d6410db0148b56249a5963c6bb1a5b
@@ -2173,6 +2173,7 @@ packages:
       eslint: 8.3.0
       eslint-config-prettier: 8.3.0_eslint@8.3.0
       eslint-formatter-gitlab: 3.0.0_eslint@8.3.0
+      eslint-formatter-pretty: 4.1.0
       eslint-plugin-array-func: 3.1.7_eslint@8.3.0
       eslint-plugin-editorconfig: 3.2.0_@typescript-eslint+parser@5.5.0
       eslint-plugin-eslint-comments: 3.2.0_eslint@8.3.0
@@ -3644,6 +3645,17 @@ packages:
     resolution: {integrity: sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==}
     dev: true
 
+  /@types/eslint/7.29.0:
+    resolution: {integrity: sha512-VNcvioYDH8/FxaeTKkM4/TiTwt6pBV9E3OfGmvaw8tPl0rrHCJ4Ll15HRT+pMiFAf/MLQvAzC+6RzUMEL9Ceng==}
+    dependencies:
+      '@types/estree': 0.0.50
+      '@types/json-schema': 7.0.9
+    dev: true
+
+  /@types/estree/0.0.50:
+    resolution: {integrity: sha512-C6N5s2ZFtuZRj54k2/zyRhNDjJwwcViAM3Nbm8zjBpbqAdZ00mr0CFxvSKeO8Y/e03WVFLpQMdHYVfUd6SB+Hw==}
+    dev: true
+
   /@types/glob/7.2.0:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
     dependencies:
@@ -3754,7 +3766,7 @@ packages:
   /@types/node-fetch/2.5.12:
     resolution: {integrity: sha512-MKgC4dlq4kKNa/mYrwpKfzQMB5X3ee5U6fSprkKpToBqBmX4nFZL9cW5jl6sWn+xpRJ7ypWh2yyqqr8UUCstSw==}
     dependencies:
-      '@types/node': 14.17.34
+      '@types/node': 16.11.10
       form-data: 3.0.1
     dev: true
 
@@ -3868,7 +3880,7 @@ packages:
   /@types/webpack-sources/3.2.0:
     resolution: {integrity: sha512-Ft7YH3lEVRQ6ls8k4Ff1oB4jN6oy/XmU6tQISKdhfh+1mR+viZFphS6WL0IrtDOzvefmJg5a0s7ZQoRXwqTEFg==}
     dependencies:
-      '@types/node': 14.17.34
+      '@types/node': 16.11.10
       '@types/source-list-map': 0.1.2
       source-map: 0.7.3
     dev: true
@@ -3876,7 +3888,7 @@ packages:
   /@types/webpack/4.41.32:
     resolution: {integrity: sha512-cb+0ioil/7oz5//7tZUSwbrSAN/NWHrQylz5cW8G0dWTcF/g+/dSdMlKVZspBYuMAN1+WnwHrkxiRrLcwd0Heg==}
     dependencies:
-      '@types/node': 14.17.34
+      '@types/node': 16.11.10
       '@types/tapable': 1.0.8
       '@types/uglify-js': 3.13.1
       '@types/webpack-sources': 3.2.0
@@ -7525,6 +7537,20 @@ packages:
       js-yaml: 4.1.0
     dev: true
 
+  /eslint-formatter-pretty/4.1.0:
+    resolution: {integrity: sha512-IsUTtGxF1hrH6lMWiSl1WbGaiP01eT6kzywdY1U+zLc0MP+nwEnUiS9UI8IaOTUhTeQJLlCEWIbXINBH4YJbBQ==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@types/eslint': 7.29.0
+      ansi-escapes: 4.3.2
+      chalk: 4.1.2
+      eslint-rule-docs: 1.1.231
+      log-symbols: 4.1.0
+      plur: 4.0.0
+      string-width: 4.2.3
+      supports-hyperlinks: 2.2.0
+    dev: true
+
   /eslint-import-resolver-node/0.3.6:
     resolution: {integrity: sha512-0En0w03NRVMn9Uiyn8YRPDKvWjxCWkslUEhGNTdGx15RvPJYQ+lbOlqrlNI2vEAs4pDYK4f/HN2TbDmk5TP0iw==}
     dependencies:
@@ -8078,6 +8104,10 @@ packages:
   /eslint-rule-composer/0.3.0:
     resolution: {integrity: sha512-bt+Sh8CtDmn2OajxvNO+BX7Wn4CIWMpTRm3MaiKPCQcnnlm0CS2mhui6QaoeQugs+3Kj2ESKEEGJUdVafwhiCg==}
     engines: {node: '>=4.0.0'}
+    dev: true
+
+  /eslint-rule-docs/1.1.231:
+    resolution: {integrity: sha512-egHz9A1WG7b8CS0x1P6P/Rj5FqZOjray/VjpJa14tMZalfRKvpE2ONJ3plCM7+PcinmU4tcmbPLv0VtwzSdLVA==}
     dev: true
 
   /eslint-scope/4.0.3:
@@ -9982,6 +10012,11 @@ packages:
     engines: {node: '>= 0.10'}
     dev: true
 
+  /irregular-plurals/3.3.0:
+    resolution: {integrity: sha512-MVBLKUTangM3EfRPFROhmWQQKRDsrgI83J8GS3jXy+OwYqiR2/aoWndYQ5416jLE3uaGgLH7ncme3X9y09gZ3g==}
+    engines: {node: '>=8'}
+    dev: true
+
   /is-accessor-descriptor/0.1.6:
     resolution: {integrity: sha1-qeEss66Nh2cn7u84Q/igiXtcmNY=}
     engines: {node: '>=0.10.0'}
@@ -10394,7 +10429,6 @@ packages:
   /is-unicode-supported/0.1.0:
     resolution: {integrity: sha512-knxG2q4UC3u8stRGyAVJCOdxFmv5DZiRcdlIaAQXAbSfJya+OhopNotLQrstBhququ4ZpuKbDc/8S6mgXgPFPw==}
     engines: {node: '>=10'}
-    dev: false
 
   /is-utf8/0.2.1:
     resolution: {integrity: sha1-Sw2hRCEE0bM2NA6AeX6GXPOffXI=}
@@ -12330,7 +12364,6 @@ packages:
     dependencies:
       chalk: 4.1.2
       is-unicode-supported: 0.1.0
-    dev: false
 
   /log-utils/0.2.1:
     resolution: {integrity: sha1-pMIXoN2aUFFdm5ICBgkas9TgMc8=}
@@ -13813,6 +13846,13 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       find-up: 3.0.0
+    dev: true
+
+  /plur/4.0.0:
+    resolution: {integrity: sha512-4UGewrYgqDFw9vV6zNV+ADmPAUAfJPKtGvb/VdpQAx25X5f3xXdGdyOEVFwkl8Hl/tl7+xbeHqSEM+D5/TirUg==}
+    engines: {node: '>=10'}
+    dependencies:
+      irregular-plurals: 3.3.0
     dev: true
 
   /pluralize/8.0.0:
@@ -17196,7 +17236,7 @@ packages:
   /wide-align/1.1.5:
     resolution: {integrity: sha512-eDMORYaPNZ4sQIuuYPDHdQvf4gyCF9rEEV/yPxGfwPkRodwEgiMUUXTx/dex+Me0wxx53S+NgUHaP7y3MGlDmg==}
     dependencies:
-      string-width: 2.1.1
+      string-width: 4.2.3
     dev: true
 
   /widest-line/3.1.0:
