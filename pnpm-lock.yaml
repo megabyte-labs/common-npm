@@ -11,6 +11,7 @@ specifiers:
   '@nestjs/testing': ^8.2.1
   '@typescript-eslint/eslint-plugin': ^5.2.0
   chalk: ^4.1.2
+  commitlint-config-gitmoji: ^2.2.5
   cz-conventional-changelog: ^3.3.0
   glob: ^7.2.0
   handlebars-helpers: ^0.10.0
@@ -44,6 +45,7 @@ devDependencies:
   '@mblabs/release-config': 1.1.14
   '@nestjs/testing': 8.2.3_4e195730d90113ce1578bd999274c7a8
   '@typescript-eslint/eslint-plugin': 5.5.0
+  commitlint-config-gitmoji: 2.2.5
   cz-conventional-changelog: 3.3.0
   glob: 7.2.0
   handlebars-helpers: 0.10.0
@@ -1704,6 +1706,14 @@ packages:
 
   /@gar/promisify/1.1.2:
     resolution: {integrity: sha512-82cpyJyKRoQoRi+14ibCeGPu0CwypgtBAdBhq1WfvagpCZNKqwXbKwXllYSMG91DhmG4jt9gN8eP6lGOtozuaw==}
+    dev: true
+
+  /@gitmoji/commit-types/1.1.5:
+    resolution: {integrity: sha512-8D3FZMRY+gtYpTcHG1SOGmm9CFqxNh6rI9xDoCydxHxnWgqInbdF3nk9gibW5gXA58Hf2cVcJaLEcGOKLRAtmw==}
+    dev: true
+
+  /@gitmoji/parser-opts/1.3.0:
+    resolution: {integrity: sha512-NqfoW12eXMdDJz3g3NHnopEgDoqdY1YshO6XxIVPOqotGTDcjD1sL28AVKskbYveGmHBPdHieRRv6M9Iq7dt4w==}
     dev: true
 
   /@golevelup/nestjs-discovery/2.3.1:
@@ -6142,6 +6152,25 @@ packages:
       strip-json-comments: 3.0.1
     dev: true
 
+  /commitlint-config-gitmoji/2.2.5:
+    resolution: {integrity: sha512-2Es3QtiOzrNHNuYsonNHodNZIub17+F0/ZukDlVz4FdrRZvYi1f5B1bTr23QPL1QmlhgYcXkNxLOQhegKqaA/g==}
+    dependencies:
+      '@gitmoji/commit-types': 1.1.5
+      '@gitmoji/parser-opts': 1.3.0
+      commitlint-plugin-gitmoji: 2.2.0
+    transitivePeerDependencies:
+      - commitlint
+    dev: true
+
+  /commitlint-plugin-gitmoji/2.2.0:
+    resolution: {integrity: sha512-njFLibrctUTeYjJYqiG9EOnCUcX/OvHCf96bArYBIbH7IEV6fylslVTt6pQcCvaMfOPUBj3f+a3g1eYchggZVw==}
+    peerDependencies:
+      commitlint: ^11.0.0
+    dependencies:
+      dotenv: 8.6.0
+      emoji-name-map: 1.2.9
+    dev: true
+
   /common-tags/1.8.2:
     resolution: {integrity: sha512-gk/Z852D2Wtb//0I+kRFNKKE9dIIVirjoqPoA1wJU+XePVXZfGeBpk45+A1rKO4Q43prqWBNY/MiIeRLbPWUaA==}
     engines: {node: '>=4.0.0'}
@@ -7120,6 +7149,14 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
+  /emoji-name-map/1.2.9:
+    resolution: {integrity: sha512-MSM8y6koSqh/2uEMI2VoKA+Ac0qL5RkgFGP/pzL6n5FOrOJ7FOZFxgs7+uNpqA+AT+WmdbMPXkd3HnFXXdz4AA==}
+    dependencies:
+      emojilib: 2.4.0
+      iterate-object: 1.3.4
+      map-o: 2.0.10
+    dev: true
+
   /emoji-regex/10.0.0:
     resolution: {integrity: sha512-KmJa8l6uHi1HrBI34udwlzZY1jOEuID/ft4d8BSSEdRyap7PwBEt910453PJa5MuGvxkLqlt4Uvhu7tttFHViw==}
     dev: true
@@ -7131,6 +7168,10 @@ packages:
 
   /emoji-regex/8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
+
+  /emojilib/2.4.0:
+    resolution: {integrity: sha512-5U0rVMU5Y2n2+ykNLQqMoqklN9ICBT/KsvC1Gz6vqHbz2AXXGkG+Pm5rMWk/8Vjrr/mY9985Hi8DYzn1F09Nyw==}
+    dev: true
 
   /emojis-list/3.0.0:
     resolution: {integrity: sha512-/kyM18EfinwXZbno9FyUGeFh87KC8HRQBQGildHZbEuRyWFOmv1U10o9BBp8XVZDVNNuQKyIGIu5ZYAAXJ0V2Q==}
@@ -10588,6 +10629,10 @@ packages:
     resolution: {integrity: sha512-t91HubM4ZDQ70M9wqp+pcNpu8OyJ9UAtXntT/Bcsvp5tZMnz9vRa+IunKXeI8AnfZMTv0jNuVEmGeLSMjVvfPw==}
     dev: true
 
+  /iterate-object/1.3.4:
+    resolution: {integrity: sha512-4dG1D1x/7g8PwHS9aK6QV5V94+ZvyP4+d19qDv43EzImmrndysIl4prmJ1hWWIGCqrZHyaHBm6BSEWHOLnpoNw==}
+    dev: true
+
   /iterate-value/1.0.2:
     resolution: {integrity: sha512-A6fMAio4D2ot2r/TYzr4yUWrmwNdsN5xL7+HUiyACE4DXm+q8HtPcnFTp+NnW3k4N05tZ7FVYFFb2CR13NxyHQ==}
     dependencies:
@@ -12484,6 +12529,12 @@ packages:
   /map-cache/0.2.2:
     resolution: {integrity: sha1-wyq9C9ZSXZsFFkW7TyasXcmKDb8=}
     engines: {node: '>=0.10.0'}
+    dev: true
+
+  /map-o/2.0.10:
+    resolution: {integrity: sha512-BxazE81fVByHWasyXhqKeo2m7bFKYu+ZbEfiuexMOnklXW+tzDvnlTi/JaklEeuuwqcqJzPaf9q+TWptSGXeLg==}
+    dependencies:
+      iterate-object: 1.3.4
     dev: true
 
   /map-obj/1.0.1:
