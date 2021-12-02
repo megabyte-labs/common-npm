@@ -39,7 +39,6 @@
     "string-break": "^1.2.0"
   },
   "devDependencies": {
-
     "@mblabs/eslint-config": "^1.0.115",
     "@mblabs/jest-preset": "^1.0.0",
     "@mblabs/prettier-config": "^14.14.30",
