@@ -90,9 +90,6 @@
   },
   "eslintConfig": {
     "extends": "@mblabs/eslint-config",
-    "ignorePatterns": [
-      ".common*/**"
-    ],
     "rules": {
       "import/no-extraneous-dependencies": "off"
     }
