@@ -86,6 +86,9 @@
       "github": "https://github.com/ProfessorManhattan/common-npm",
       "gitlab": "https://gitlab.com/megabyte-labs/common/npm"
     },
+    "profile": {
+      "npmjs_organization": "installdoc"
+    },
     "slug": "common-npm",
     "subgroup": "npm",
     "title": "Upstream Common NPM Files"
