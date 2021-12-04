@@ -1,6 +1,6 @@
 {
   "bin": {
-    "{{#if binName}}{{binName}}{{else}}{{slug}}{{/if}}": "bin/cli"
+    "common-shared": "bin/cli"
   },
   "dependencies": {
     "@nestjs/common": "8.1.2",
