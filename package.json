@@ -71,7 +71,7 @@
     "emoji_end": " ▶️🔥",
     "emoji_start": "",
     "group": "common",
-    "name": "NPM Common",
+    "name": "Common NPM/Node.js Files",
     "overview": "This repository houses files that propagate down to NPM projects via CI. Its point is to keep dependencies and configurations up to date and synchronized across all the NPM projects. Individual NPM projects inherit their upstream files by copying over the `common` folder files and then the `common-{{ NPM_PROJECT_TYPE }}` folder. After the individual projects do that, they merge the appropriate JSON into a `variables.json` file and use that as the context to generate any files that match `*.hbs.*` or `*.handlebars`.",
     "profile": {
       "npmjs_organization": "installdoc"
@@ -82,7 +82,7 @@
     },
     "slug": "common-npm",
     "subgroup": "npm",
-    "title": "Upstream Common NPM Files",
+    "title": "Common NPM/Node.js Files and Boilerplates",
     "github_id": "R_kgDOGet0xA",
     "gitlab_project_id": "24741344",
     "gitlab_group_id": "11097242"
