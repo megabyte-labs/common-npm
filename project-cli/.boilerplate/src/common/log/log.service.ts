@@ -10,12 +10,6 @@ import { isUnicodeSupported } from '../common.util'
  */
 @Injectable({ scope: Scope.TRANSIENT })
 export class LogService extends ConsoleLogger implements LoggerService {
-  constructor() {
-    super()
-    this.figures = isUnicodeSupported() ? this.figures : this.figuresFallback
-    this.logger = console
-  }
-
   public readonly logger
 
   private readonly figures = {
@@ -43,6 +37,12 @@ export class LogService extends ConsoleLogger implements LoggerService {
   }
 
   private readonly ignoredLogs = ['InstanceLoader', 'NestFactory', 'RouterExplorer', 'RoutesResolver']
+
+  constructor() {
+    super()
+    this.figures = isUnicodeSupported() ? this.figures : this.figuresFallback
+    this.logger = console
+  }
 
   /**
    * Logs a debug message
