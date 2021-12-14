@@ -1,19 +1,19 @@
 {
-  "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
+  "author": "{{author.name}} <{{author.email}}> ({{link.home}})",
   "blueprint": {
     "description": "An NPM package that is part of the Megabyte Labs eco-system",
     "name": "My Project Name",
     "overview": "This text shows up at the top of the README.md.",
     "repository": {
-      "github": "https://github.com/ProfessorManhattan/common-shared",
-      "gitlab": "https://gitlab.com/megabyte-labs/common/shared"
+      "github": "{{#if repository.github}}{{repository.github}}{{else}}https://github.com/{{profile.github}}/{{repository.prefix.github}}{{slug}}{{/if}}",
+      "gitlab": "{{#if repository.gitlab}}{{repository.gitlab}}{{else}}{{repository.gitlabBaseUrl}}/{{group}}/{{subgroup}}/{{slug}}{{/if}}"
     },
     "slug": "my-project",
     "title": "Title of the README.md"
   },
   "bugs": {
-    "email": "help@megabyte.space",
-    "url": "https://gitlab.com/megabyte-labs/common/shared/-/issues"
+    "email": "{{email.help}}",
+    "url": "{{#if repository.gitlab}}{{repository.gitlab}}{{else}}{{repository.gitlabBaseUrl}}/{{group}}/{{subgroup}}/{{slug}}{{/if}}{{repository.location.issues.gitlab}}"
   },
   "commitlint": {
     "extends": [
@@ -27,7 +27,7 @@
     }
   },
   "dependencies": {},
-  "description": "Includes common files used across different types of common file repositories (e.g. Go, Python, TypeScript, Go, more..)",
+  "description": "{{description}}",
   "devDependencies": {
     "@megabytelabs/jest-preset": "^1.0.0",
     "@types/node": "^16.11.6",
@@ -54,14 +54,14 @@
   "funding": [
     {
       "type": "opencollective",
-      "url": "https://opencollective.com/megabytelabs"
+      "url": "{{profile_link.opencollective}}/{{profile.opencollective}}"
     },
     {
       "type": "patreon",
-      "url": "https://www.patreon.com/ProfessorManhattan"
+      "url": "{{profile_link.patreon}}/{{profile.patreon}}"
     }
   ],
-  "homepage": "https://megabyte.space",
+  "homepage": "{{link.home}}",
   "jest": {
     "preset": "@megabytelabs/jest-preset",
     "reporters": [
@@ -79,20 +79,16 @@
     ]
   },
   "keywords": [
-    "library",
     "mblabs",
     "megabytelabs",
+    "plugin",
     "professormanhattan",
     "washingtondc"
   ],
-  "license": "MIT",
+  "license": "{{license}}",
   "lint-staged": {
     "**/*": [
-      "blocklint --wordlist blacklist,slave,whitelist",
-      "check-merge-conflict",
-      "check-added-large-files",
-      "check-symlinks",
-      "destroyed-symlinks"
+      "task lint:any --"
     ],
     "**/*.(css|html|less|md|mjml|php|scss|sh|xml)": [
       "task fix:prettier --"
@@ -127,7 +123,7 @@
     ]
   },
   "main": "dist/main.js",
-  "name": "@installdoc/common-shared",
+  "name": "{{#if customPackageName}}{{customPackageName}}{{else}}@{{profile.npmjs_organization}}/{{repository.prefix.github}}{{slug}}{{/if}}",
   "nodemonConfig": {
     "exec": "tsc -p . && node --inspect-brk dist/main",
     "ext": "js,jsx,json,ts,tsx,yml",
@@ -139,11 +135,19 @@
       "src"
     ]
   },
+  "ntl": {
+    "descriptions": {
+      "help": "Display a list of tasks that can be run via the Taskfile.yml",
+      "prepare": "Hook, triggered by running npm install, that runs logic such as installing pre-commit hooks",
+      "repair": "Fixes basic issues in projects that are having trouble running basic commands like 'task start'",
+      "start": "Entrypoint for new developers that installs requirements and then runs 'task start'"
+    }
+  },
   "optionalDependencies": {},
   "prettier": "@washingtondc/prettier",
   "private": false,
   "publishConfig": {
-    "access": "public"
+    "access": "{{npm_publish_config_access}}"
   },
   "release": {
     "branches": [
@@ -154,15 +158,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ProfessorManhattan/common-shared.git"
+    "url": "git+{{#if repository.github}}{{repository.github}}{{else}}https://github.com/{{profile.github}}/{{repository.prefix.github}}{{slug}}{{/if}}.git"
   },
   "scripts": {
-    "help": "task --list",
-    "prepare": "task common:husky",
+    "help": "{{npm_scripts_help}}",
+    "prepare": "{{npm_scripts_prepare}}",
     "repair": "bash <(curl -sS https://install.doctor/repair)",
-    "start": "bash .config/start.sh"
+    "start": "{{npm_scripts_start}}"
   },
-  "type": "module",
+  "type": "{{npm_type}}",
   "typings": "dist/main.d.ts",
-  "version": "0.0.1"
+  "version": "{{version}}"
 }

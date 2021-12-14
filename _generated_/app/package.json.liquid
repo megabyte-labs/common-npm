@@ -1,19 +1,19 @@
 {
-  "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
+  "author": "{{author.name}} <{{author.email}}> ({{link.home}})",
   "blueprint": {
     "description": "An NPM package that is part of the Megabyte Labs eco-system",
     "name": "My Project Name",
     "overview": "This text shows up at the top of the README.md.",
     "repository": {
-      "github": "https://github.com/ProfessorManhattan/common-shared",
-      "gitlab": "https://gitlab.com/megabyte-labs/common/shared"
+      "github": "{{#if repository.github}}{{repository.github}}{{else}}https://github.com/{{profile.github}}/{{repository.prefix.github}}{{slug}}{{/if}}",
+      "gitlab": "{{#if repository.gitlab}}{{repository.gitlab}}{{else}}{{repository.gitlabBaseUrl}}/{{group}}/{{subgroup}}/{{slug}}{{/if}}"
     },
     "slug": "my-project",
     "title": "Title of the README.md"
   },
   "bugs": {
-    "email": "help@megabyte.space",
-    "url": "https://gitlab.com/megabyte-labs/common/shared/-/issues"
+    "email": "{{email.help}}",
+    "url": "{{#if repository.gitlab}}{{repository.gitlab}}{{else}}{{repository.gitlabBaseUrl}}/{{group}}/{{subgroup}}/{{slug}}{{/if}}{{repository.location.issues.gitlab}}"
   },
   "commitlint": {
     "extends": [
@@ -26,18 +26,36 @@
       "path": "node_modules/cz-emoji-conventional"
     }
   },
-  "dependencies": {},
-  "description": "Includes common files used across different types of common file repositories (e.g. Go, Python, TypeScript, Go, more..)",
+  "dependencies": {
+    "@nestjs/common": "8.1.2",
+    "@nestjs/config": "^1.0.3",
+    "@nestjs/core": "8.1.2",
+    "@nestjs/event-emitter": "^1.0.0",
+    "@nestjs/platform-express": "^8.0.0",
+    "class-transformer": "^0.4.0",
+    "class-validator": "^0.13.1",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.2.0"
+  },
+  "description": "{{description}}",
   "devDependencies": {
     "@megabytelabs/jest-preset": "^1.0.0",
+    "@nestjs/cli": "^8.0.0",
+    "@nestjs/schematics": "^8.0.0",
+    "@nestjs/testing": "^8.0.0",
+    "@types/express": "^4.17.13",
     "@types/node": "^16.11.6",
+    "@types/supertest": "^2.0.11",
     "@washingtondc/development": "^1.0.2",
     "@washingtondc/prettier": "^1.0.0",
     "@washingtondc/release": "^0.0.2",
     "esbuild": "^0.12.29",
     "esbuild-node-externals": "^1.3.0",
     "eslint-config-strict-mode": "^1.0.0",
-    "sleekfast": "^0.0.1"
+    "sleekfast": "^0.0.1",
+    "source-map-support": "^0.5.20",
+    "supertest": "^6.1.3",
+    "tsconfig-paths": "^3.10.1"
   },
   "engines": {
     "node": ">=14.18.0"
@@ -54,14 +72,14 @@
   "funding": [
     {
       "type": "opencollective",
-      "url": "https://opencollective.com/megabytelabs"
+      "url": "{{profile_link.opencollective}}/{{profile.opencollective}}"
     },
     {
       "type": "patreon",
-      "url": "https://www.patreon.com/ProfessorManhattan"
+      "url": "{{profile_link.patreon}}/{{profile.patreon}}"
     }
   ],
-  "homepage": "https://megabyte.space",
+  "homepage": "{{link.home}}",
   "jest": {
     "preset": "@megabytelabs/jest-preset",
     "reporters": [
@@ -79,19 +97,17 @@
     ]
   },
   "keywords": [
+    "app",
     "mblabs",
     "megabytelabs",
+    "nestjs",
     "professormanhattan",
     "washingtondc"
   ],
-  "license": "MIT",
+  "license": "{{license}}",
   "lint-staged": {
     "**/*": [
-      "blocklint --wordlist blacklist,slave,whitelist",
-      "check-merge-conflict",
-      "check-added-large-files",
-      "check-symlinks",
-      "destroyed-symlinks"
+      "task lint:any --"
     ],
     "**/*.(css|html|less|md|mjml|php|scss|sh|xml)": [
       "task fix:prettier --"
@@ -126,9 +142,9 @@
     ]
   },
   "main": "dist/main.js",
-  "name": "@installdoc/common-shared",
+  "name": "{{#if customPackageName}}{{customPackageName}}{{else}}@{{profile.npmjs_organization}}/{{repository.prefix.github}}{{slug}}{{/if}}",
   "nodemonConfig": {
-    "exec": "tsc -p . && node --inspect-brk dist/main",
+    "exec": "nest build && node --inspect-brk dist/main",
     "ext": "js,jsx,json,ts,tsx,yml",
     "ignore": [
       "src/**/*.spec.ts"
@@ -138,11 +154,19 @@
       "src"
     ]
   },
+  "ntl": {
+    "descriptions": {
+      "help": "Display a list of tasks that can be run via the Taskfile.yml",
+      "prepare": "Hook, triggered by running npm install, that runs logic such as installing pre-commit hooks",
+      "repair": "Fixes basic issues in projects that are having trouble running basic commands like 'task start'",
+      "start": "Entrypoint for new developers that installs requirements and then runs 'task start'"
+    }
+  },
   "optionalDependencies": {},
   "prettier": "@washingtondc/prettier",
   "private": false,
   "publishConfig": {
-    "access": "public"
+    "access": "{{npm_publish_config_access}}"
   },
   "release": {
     "branches": [
@@ -153,15 +177,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ProfessorManhattan/common-shared.git"
+    "url": "git+{{#if repository.github}}{{repository.github}}{{else}}https://github.com/{{profile.github}}/{{repository.prefix.github}}{{slug}}{{/if}}.git"
   },
   "scripts": {
-    "help": "task --list",
-    "prepare": "task common:husky",
+    "help": "{{npm_scripts_help}}",
+    "prepare": "{{npm_scripts_prepare}}",
     "repair": "bash <(curl -sS https://install.doctor/repair)",
-    "start": "bash .config/start.sh"
+    "start": "{{npm_scripts_start}}"
   },
-  "type": "module",
+  "type": "{{npm_type}}",
   "typings": "dist/main.d.ts",
-  "version": "0.0.1"
+  "version": "{{version}}"
 }

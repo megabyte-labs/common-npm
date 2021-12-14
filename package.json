@@ -70,6 +70,9 @@
     "description": "Files shared across NPM projects including global common files, doc partials, and shared configs",
     "emoji_end": " ▶️🔥",
     "emoji_start": "",
+    "github_id": "R_kgDOGet0xA",
+    "gitlab_group_id": "11097242",
+    "gitlab_project_id": "24741344",
     "group": "common",
     "name": "NPM/Node.js Common",
     "overview": "This repository houses files that propagate down to NPM projects via CI. Its point is to keep dependencies and configurations up to date and synchronized across all the NPM projects. Individual NPM projects inherit their upstream files by copying over the `common` folder files and then the `common-{{ NPM_PROJECT_TYPE }}` folder. After the individual projects do that, they merge the appropriate JSON into a `variables.json` file and use that as the context to generate any files that match `*.hbs.*` or `*.handlebars`.",
@@ -82,10 +85,7 @@
     },
     "slug": "common-npm",
     "subgroup": "npm",
-    "title": "Common NPM/Node.js Files and Boilerplates",
-    "github_id": "R_kgDOGet0xA",
-    "gitlab_project_id": "24741344",
-    "gitlab_group_id": "11097242"
+    "title": "Common NPM/Node.js Files and Boilerplates"
   },
   "commitlint": {
     "extends": [
@@ -111,11 +111,7 @@
   ],
   "lint-staged": {
     "**/*": [
-      "blocklint --wordlist blacklist,slave,whitelist",
-      "check-merge-conflict",
-      "check-added-large-files",
-      "check-symlinks",
-      "destroyed-symlinks"
+      "task lint:any --"
     ],
     "**/*.(css|html|less|md|mjml|php|scss|sh|xml)": [
       "task fix:prettier --"
@@ -148,6 +144,14 @@
       "task image:resize -- 200 200",
       "task image:compress --"
     ]
+  },
+  "ntl": {
+    "descriptions": {
+      "help": "Display a list of tasks that can be run via the Taskfile.yml",
+      "prepare": "Hook, triggered by running npm install, that runs logic such as installing pre-commit hooks",
+      "repair": "Fixes basic issues in projects that are having trouble running basic commands like 'task start'",
+      "start": "Entrypoint for new developers that installs requirements and then runs 'task start'"
+    }
   },
   "prettier": "@washingtondc/prettier",
   "release": {
