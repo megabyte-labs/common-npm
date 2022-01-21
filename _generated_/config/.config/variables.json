@@ -433,6 +433,7 @@
     ]
   },
   "profile": {
+    "dockerHubUser": "professormanhattan",
     "dockerhub": "megabytelabs",
     "galaxy": "professormanhattan",
     "github": "ProfessorManhattan",
