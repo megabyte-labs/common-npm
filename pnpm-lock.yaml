@@ -7,7 +7,7 @@ specifiers:
   '@washingtondc/development': ^1.0.2
   '@washingtondc/prettier': ^1.0.0
   '@washingtondc/release': ^0.0.2
-  eslint-config-strict-mode: ^1.0.10
+  eslint-config-strict-mode: ^1.0.11
   nest-commander: ^2.3.4
   nest-commander-testing: ^2.0.1
   sleekfast: ^0.0.1
@@ -25,7 +25,7 @@ devDependencies:
   '@washingtondc/development': 1.0.10_typescript@4.5.2
   '@washingtondc/prettier': 1.0.0_typescript@4.5.2
   '@washingtondc/release': 0.0.2_typescript@4.5.2
-  eslint-config-strict-mode: 1.0.10_typescript@4.5.2
+  eslint-config-strict-mode: 1.0.11_typescript@4.5.2
   nest-commander-testing: 2.0.1_f25fa237f8d9d5553b2d8f04fc69f5c0
   sleekfast: 0.0.1
   supertest: 6.1.6
@@ -5250,8 +5250,8 @@ packages:
       eslint: 8.7.0
     dev: true
 
-  /eslint-config-strict-mode/1.0.10_typescript@4.5.2:
-    resolution: {integrity: sha512-uTKNiApy+Nno04TCUDj0tGwoZh8hSIqwt8bmxd7yVbTzI8ECUgNiD+m7iQDUgWUUyv6RaG+qCtBSPgE7Yt/k0Q==}
+  /eslint-config-strict-mode/1.0.11_typescript@4.5.2:
+    resolution: {integrity: sha512-/bEbo6xHqMPiwNYrJHT/JBc+knaPvvkHQQLKhNo7VqvSC3mb3DgKNDFqOgzs5QAE1SoYAuH3eRmb58Ok3ACj5g==}
     engines: {node: '>=14.18.0'}
     dependencies:
       '@typescript-eslint/eslint-plugin': 5.10.0_9d27f699425cd210e848335469294346
