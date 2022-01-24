@@ -39,10 +39,7 @@
         "[`eslint-formatter-summary`](https://npmjs.com/package/eslint-formatter-summary)",
         "Alternate formatting style for the results that displays a table"
       ],
-      [
-       "[`eslint-plugin-angular`](https://npmjs.com/package/eslint-plugin-angular)",
-        "Rules for Angular applications"
-      ],
+      ["[`eslint-plugin-angular`](https://npmjs.com/package/eslint-plugin-angular)", "Rules for Angular applications"],
       [
         "[`eslint-plugin-array-func`](https://npmjs.com/package/eslint-plugin-array-func)",
         "Rules for Array functions and methods"

@@ -5,7 +5,7 @@ class CommonShared < Formula
   version "0.0.1"
   license "MIT"
 
-  
+
 
   def install
     os = OS.kernel_name.downcase
