@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, fp/no-rest-parameters, functional/functional-parameters */
-import { ConsoleLogger, Injectable, LoggerService, Scope } from '@nestjs/common'
+import { ConsoleLogger, Injectable, Scope } from '@nestjs/common'
 import chalk from 'chalk'
 import { isUnicodeSupported } from '../common.util'
 
@@ -9,7 +9,7 @@ import { isUnicodeSupported } from '../common.util'
  * or [[LoggerService]]
  */
 @Injectable({ scope: Scope.TRANSIENT })
-export class LogService extends ConsoleLogger implements LoggerService {
+export class LogService extends ConsoleLogger {
   public readonly logger
 
   private readonly figures = {
