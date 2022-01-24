@@ -4,6 +4,7 @@
     "header_title_pre": "Plugin: ",
     "link": "https://megabyte.space/docs/npm/plugins"
   },
+  "npm_type": "commonjs",
   "repository": {
     "prefix": {
       "github": "plugin-"
