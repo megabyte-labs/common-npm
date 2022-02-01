@@ -1,7 +1,6 @@
 {
   "docs": {
     "header_description_pre": "A configuration managed by ",
-    "header_title_pre": "Config: ",
     "link": "https://megabyte.space/docs/npm/config"
   },
   "plugins": {
