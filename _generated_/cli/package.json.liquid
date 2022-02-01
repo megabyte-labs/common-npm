@@ -55,22 +55,25 @@
   },
   "description": "{{description}}",
   "devDependencies": {
+    "@commitlint/config-conventional": "^16.0.0",
     "@nestjs/cli": "^8.0.0",
     "@nestjs/schematics": "^8.0.0",
     "@nestjs/testing": "^8.0.0",
     "@types/node": "^16.11.6",
     "@types/shelljs": "^0.8.9",
     "@types/update-notifier": "^5.1.0",
-    "@washingtondc/development": "^1.0.2",
-    "@washingtondc/prettier": "^1.0.0",
+    "@washingtondc/development": "latest",
+    "cz-emoji-conventional": "^1.0.1",
     "esbuild": "^0.12.29",
     "esbuild-node-externals": "^1.3.0",
-    "eslint-config-strict-mode": "^1.0.28",
+    "eslint-config-strict-mode": "latest",
+    "handlebars-helpers": "^0.10.0",
     "jest-preset-ts": "^1.0.0",
     "nest-commander-schematics": "^2.0.1",
     "nest-commander-testing": "^2.0.1",
+    "prettier-config-sexy-mode": "latest",
     "remark-man": "^8.0.0",
-    "semantic-release-config": "^0.0.12",
+    "semantic-release-config": "latest",
     "source-map-support": "^0.5.20"
   },
   "engines": {
@@ -184,10 +187,12 @@
   },
   "ntl": {
     "descriptions": {
+      "build": "Builds the project, if needed",
       "help": "Display the Bodega Taskfile.yml interactive help menu",
       "prepare": "Hook, triggered by running npm install, that runs logic such as installing pre-commit hooks",
       "repair": "Fixes basic issues in projects that are having trouble running basic commands like 'task start'",
-      "start": "Entrypoint for new developers that installs requirements and then runs 'task start'"
+      "start": "Entrypoint for new developers that installs requirements and then runs 'task start'",
+      "test": "Runs the appropriate test logic"
     }
   },
   "optionalDependencies": {},
@@ -195,7 +200,7 @@
     "compress": "Brotli",
     "outputPath": "build"
   },
-  "prettier": "@washingtondc/prettier",
+  "prettier": "prettier-config-sexy-mode",
   "private": false,
   "publishConfig": {
     "access": "{{npm_publish_config_access}}"
@@ -221,10 +226,12 @@
     "url": "git+{{#if repository.github}}{{repository.github}}{{else}}https://github.com/{{profile.github}}/{{repository.prefix.github}}{{slug}}{{/if}}.git"
   },
   "scripts": {
-    "help": "{{npm_scripts_help}}",
-    "prepare": "{{npm_scripts_prepare}}",
+    "build": "{{scriptsBuild}}",
+    "help": "{{scriptsHelp}}",
+    "prepare": "{{scriptsPrepare}}",
     "repair": "bash <(curl -sS https://install.doctor/repair)",
-    "start": "{{npm_scripts_start}}"
+    "start": "{{scriptsStart}}",
+    "test": "{{scriptsTest}}"
   },
   "type": "{{npm_type}}",
   "typings": "dist/main.d.ts",

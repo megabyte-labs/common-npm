@@ -8,6 +8,6 @@
       "github": "npm-"
     }
   },
-  "subgroup": "cli",
-  "scriptsBuild": "nest build"
+  "scriptsBuild": "nest build",
+  "subgroup": "cli"
 }

@@ -299,6 +299,6 @@
       "github": ""
     }
   },
-  "subgroup": "config",
-  "scriptsTest": "task npm:test:none"
+  "scriptsTest": "task npm:test:none",
+  "subgroup": "config"
 }
