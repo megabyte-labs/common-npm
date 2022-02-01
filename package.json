@@ -88,6 +88,16 @@
     "subgroup": "npm",
     "title": "Common NPM/Node.js Files and Boilerplates"
   },
+  "changelog": {
+    "displayTypes": [
+      "feat",
+      "fix",
+      "perf",
+      "refactor",
+      "revert"
+    ],
+    "showAuthor": true
+  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
