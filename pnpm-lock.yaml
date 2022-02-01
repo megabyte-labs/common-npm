@@ -7,10 +7,10 @@ specifiers:
   '@washingtondc/development': ^1.0.2
   '@washingtondc/prettier': ^1.0.0
   '@washingtondc/release': ^0.0.2
-  eslint-config-strict-mode: ^1.0.28
+  eslint-config-strict-mode: ^1.0.30
   nest-commander: ^2.3.4
   nest-commander-testing: ^2.0.1
-  semantic-release-config: ^0.0.14
+  semantic-release-config: ^0.0.15
   sleekfast: ^0.0.1
   supertest: ^6.1.6
   tslint: ^6.1.3
@@ -26,9 +26,9 @@ devDependencies:
   '@washingtondc/development': 1.0.10_typescript@4.5.2
   '@washingtondc/prettier': 1.0.0_typescript@4.5.2
   '@washingtondc/release': 0.0.2_typescript@4.5.2
-  eslint-config-strict-mode: 1.0.28_typescript@4.5.2
+  eslint-config-strict-mode: 1.0.30_typescript@4.5.2
   nest-commander-testing: 2.0.1_f25fa237f8d9d5553b2d8f04fc69f5c0
-  semantic-release-config: 0.0.14_typescript@4.5.2
+  semantic-release-config: 0.0.15_typescript@4.5.2
   sleekfast: 0.0.1
   supertest: 6.1.6
   tslint: 6.1.3_typescript@4.5.2
@@ -5244,8 +5244,8 @@ packages:
       eslint: 8.8.0
     dev: true
 
-  /eslint-config-strict-mode/1.0.28_typescript@4.5.2:
-    resolution: {integrity: sha512-4f/cDnvfoyLf4zj/QhIvYzCeWR5cqf+qKzOvel6HKHp4ILjawGcwBc5h+J03TIKrJezLf7y74u6Udm8y5HWbHg==}
+  /eslint-config-strict-mode/1.0.30_typescript@4.5.2:
+    resolution: {integrity: sha512-I/nN3mV0wuCpSRmoseRhU4zv7A1R2cktYe7TPA2UgDLRu6MbdyoXDFBP7puidXXasBsgwYvzc8UwlSjBvKfrdA==}
     engines: {node: '>=14.18.0'}
     dependencies:
       '@typescript-eslint/eslint-plugin': 5.10.2_ea8bb4d0663f2f70684977544b787986
@@ -5300,7 +5300,7 @@ packages:
       eslint-plugin-yml: 0.10.1_eslint@8.8.0
       glob: 7.2.0
       parse-gitignore: 1.0.1
-      tslint: 6.1.3_typescript@4.5.2
+      tslib: 2.3.1
       yaml: 1.10.2
     transitivePeerDependencies:
       - jest
@@ -11589,8 +11589,8 @@ packages:
     engines: {node: '>=0.12.0'}
     dev: true
 
-  /semantic-release-config/0.0.14_typescript@4.5.2:
-    resolution: {integrity: sha512-sLj9k3hoZPIu1SINPOjMM8vHk6zKSdoNBnTeHrxH5/AIZeRlE/3LQQVQTg/Qqi6X5NeJN5aMsU+wq3XaAmI4jA==}
+  /semantic-release-config/0.0.15_typescript@4.5.2:
+    resolution: {integrity: sha512-MZFS7Tg7dNEm9kzpKY2Ofas8MCe8VCA1rp7cowza+r2SfOmPvM0Xd6NqfHEKQENWLuUt8xynvKBZ6XtNwxn/tA==}
     engines: {node: '>=14.18.0'}
     dependencies:
       '@auto-it/all-contributors': 10.32.6_typescript@4.5.2
@@ -11619,7 +11619,7 @@ packages:
       semantic-release-firefox-add-on: 0.2.8_semantic-release@18.0.1
       semantic-release-gh: 0.0.5_semantic-release@18.0.1
       semantic-release-npm-deprecate-old-versions: 1.3.2
-      semantic-release-python: 2.5.14
+      semantic-release-python: 2.5.16
       tslib: 2.3.1
       yaml: 1.10.2
     optionalDependencies:
@@ -11708,8 +11708,8 @@ packages:
       - semantic-release
     dev: true
 
-  /semantic-release-python/2.5.14:
-    resolution: {integrity: sha512-tjePHt9YvyLKxP8yQE10uH47mTNx9YvlQ6RNvJ+4GTqo3rCSSN1ZRQKZxJ9OP/o1szSqhar44ctOamQWP3m/+g==}
+  /semantic-release-python/2.5.16:
+    resolution: {integrity: sha512-c9q3ao+j71p7cTXJvCcOKTHdjxPXDhJNvyCkHQEkkrYpcJo7QoKW6MJ4kQT9+DzBQyg4KbRuG4qDAjY6LYE07Q==}
     engines: {node: '>=14.18.0'}
     requiresBuild: true
     dependencies:
