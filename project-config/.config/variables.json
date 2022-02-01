@@ -229,11 +229,7 @@
     ],
     "prettier": [
       ["Prettier Plugin", "Description", "File Types"],
-      [
-        "[`@prettier/plugin-php`](https://npmjs.com/package/@prettier/plugin-php)",
-        "Adds support for PHP",
-        "`*.php`"
-      ],
+      ["[`@prettier/plugin-php`](https://npmjs.com/package/@prettier/plugin-php)", "Adds support for PHP", "`*.php`"],
       [
         "[`@prettier/plugin-pug`](https://npmjs.com/package/@prettier/plugin-pug)",
         "Adds support for Pug templates",
@@ -244,7 +240,11 @@
         "Adds support for Ruby",
         "`*.rb` and [many more](https://github.com/prettier/plugin-ruby/blob/main/src/plugin.ts#L20)"
       ],
-      ["[`@prettier/plugin-xml`](https://npmjs.com/package/@prettier/plugin-xml)", "A prettier plugin for XML", "`*.xml` and [many more](https://github.com/prettier/plugin-xml/blob/main/src/plugin.ts#L59)"],
+      [
+        "[`@prettier/plugin-xml`](https://npmjs.com/package/@prettier/plugin-xml)",
+        "A prettier plugin for XML",
+        "`*.xml` and [many more](https://github.com/prettier/plugin-xml/blob/main/src/plugin.ts#L59)"
+      ],
       [
         "[`prettier-plugin-go-template`](https://npmjs.com/package/prettier-plugin-go-template)",
         "Adds support for Go templates",
@@ -255,12 +255,12 @@
         "Adds support for C#",
         "`*.cs`, `*.cake`, `*.cshtml`, `*.csx`"
       ],
-      ["[`prettier-plugin-ini`](https://npmjs.com/package/prettier-plugin-ini)", "Adds support for INI files", "`*.ini`"],
       [
-        "[`prettier-plugin-java`](https://npmjs.com/package/prettier-plugin-java)",
-        "Adds support for Java",
-        "`*.java`"
+        "[`prettier-plugin-ini`](https://npmjs.com/package/prettier-plugin-ini)",
+        "Adds support for INI files",
+        "`*.ini`"
       ],
+      ["[`prettier-plugin-java`](https://npmjs.com/package/prettier-plugin-java)", "Adds support for Java", "`*.java`"],
       [
         "[`prettier-plugin-jsdoc`](https://npmjs.com/package/prettier-plugin-jsdoc)",
         "Adds support for JSDoc comments in TypeScript/JavaScript files",
@@ -291,11 +291,7 @@
         "Adds support for Solidity code",
         "`*.sol`"
       ],
-      [
-        "[`prettier-plugin-sql`](https://npmjs.com/package/prettier-plugin-sql)",
-        "Adds support for SQL",
-        "`*.sql`"
-      ]
+      ["[`prettier-plugin-sql`](https://npmjs.com/package/prettier-plugin-sql)", "Adds support for SQL", "`*.sql`"]
     ]
   },
   "repository": {
