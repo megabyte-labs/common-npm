@@ -9,5 +9,6 @@
       "github": "plugin-"
     }
   },
-  "subgroup": "plugin"
+  "subgroup": "plugin",
+  "scriptsTest": "task npm:test:none"
 }

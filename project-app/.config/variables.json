@@ -8,5 +8,6 @@
       "github": "app-"
     }
   },
-  "subgroup": "app"
+  "subgroup": "app",
+  "scriptsBuild": "nest build"
 }

@@ -19,5 +19,7 @@
       }
     }
   ],
-  "group": "npm"
+  "group": "npm",
+  "scriptsBuild": "task npm:build:tsconfig",
+  "scriptsTest": "task npm:test"
 }
