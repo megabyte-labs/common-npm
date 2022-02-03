@@ -33,12 +33,14 @@
     "@nestjs/core": "^8.2.6",
     "nest-commander": "^2.4.0"
   },
+  "optionalDependencies": {},
   "devDependencies": {
     "@commitlint/config-conventional": "^16.0.0",
     "@nestjs/testing": "^8.2.6",
     "@washingtondc/development": "latest",
     "cz-emoji-conventional": "^1.0.1",
     "eslint-config-strict-mode": "latest",
+    "glob": "^7.2.0",
     "handlebars-helpers": "^0.10.0",
     "nest-commander-testing": "^2.0.1",
     "prettier-config-sexy-mode": "latest",
@@ -101,7 +103,9 @@
     "showAuthor": true
   },
   "commitlint": {
-    "extends": [],
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
     "helpUrl": "https://megabyte.space/docs/contributing/commits"
   },
   "eslintConfig": {

@@ -8,6 +8,7 @@ specifiers:
   '@washingtondc/development': latest
   cz-emoji-conventional: ^1.0.1
   eslint-config-strict-mode: latest
+  glob: ^7.2.0
   handlebars-helpers: ^0.10.0
   nest-commander: ^2.4.0
   nest-commander-testing: ^2.0.1
@@ -28,10 +29,11 @@ devDependencies:
   '@washingtondc/development': 1.0.10_typescript@4.5.5
   cz-emoji-conventional: 1.0.1
   eslint-config-strict-mode: 1.0.36_typescript@4.5.5
+  glob: 7.2.0
   handlebars-helpers: 0.10.0
   nest-commander-testing: 2.0.1_8337b862a70a86e644431a08fddd7a10
   prettier-config-sexy-mode: 1.0.1_typescript@4.5.5
-  semantic-release-config: 1.1.3
+  semantic-release-config: 1.1.4
   supertest: 6.2.2
   tslint: 6.1.3_typescript@4.5.5
   typescript: 4.5.5
@@ -8438,8 +8440,8 @@ packages:
     engines: {node: '>=0.12.0'}
     dev: true
 
-  /semantic-release-config/1.1.3:
-    resolution: {integrity: sha512-qLnVDhW+r3EbRoCvxXDl8X+1CTE5VrPrU5z9n++xzxsaCE4dlZ0NZ8Ird3n4gYck5zXRl0n6guDbmKlMHRfg0w==}
+  /semantic-release-config/1.1.4:
+    resolution: {integrity: sha512-nM+bJkmmoSpxO5Kq1hz6UYWvHwfQsHXbyobxvRD0h+bd/TRvAwPSJDuudkrUrMONvi/gULagNH4pILrliy+Y/Q==}
     engines: {node: '>=14.18.0'}
     dependencies:
       '@semantic-release/changelog': 6.0.1_semantic-release@19.0.2
