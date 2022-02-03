@@ -8,6 +8,7 @@ specifiers:
   '@washingtondc/development': latest
   cz-emoji-conventional: ^1.0.1
   eslint-config-strict-mode: latest
+  glob: ^7.2.0
   handlebars-helpers: ^0.10.0
   nest-commander: ^2.4.0
   nest-commander-testing: ^2.0.1
@@ -28,6 +29,7 @@ devDependencies:
   '@washingtondc/development': 1.0.10_typescript@4.5.5
   cz-emoji-conventional: 1.0.1
   eslint-config-strict-mode: 1.0.36_typescript@4.5.5
+  glob: 7.2.0
   handlebars-helpers: 0.10.0
   nest-commander-testing: 2.0.1_8337b862a70a86e644431a08fddd7a10
   prettier-config-sexy-mode: 1.0.1_typescript@4.5.5
