@@ -228,7 +228,7 @@
   },
   "scriptsBuild": "task npm:build:tsconfig",
   "scriptsHelp": "task --menu",
-  "scriptsPrepare": "task common:husky",
+  "scriptsPrepare": "npm run start && task common:husky",
   "scriptsStart": "bash start.sh",
   "scriptsTest": "[[ -z $CI ]] && task npm:test || task npm:test:ci",
   "sharp_instructions": [],

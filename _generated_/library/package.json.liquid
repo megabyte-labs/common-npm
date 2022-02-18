@@ -52,7 +52,8 @@
     "handlebars-helpers": "^0.10.0",
     "jest-preset-ts": "latest",
     "prettier-config-sexy-mode": "latest",
-    "semantic-release-config": "latest"
+    "semantic-release-config": "latest",
+    "typescript": "^4.5.5"
   },
   "engines": {
     "node": ">=14.18.0"
@@ -187,6 +188,11 @@
   },
   "optionalDependencies": {},
   "pnpm": {
+    "allowedVersions": {
+      "@typescript-eslint/eslint-plugin": "5",
+      "eslint": "8",
+      "typescript": "4"
+    },
     "neverBuiltDependencies": [
       "core-js",
       "core-js-pure",

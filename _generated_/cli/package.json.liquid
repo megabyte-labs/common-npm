@@ -77,7 +77,8 @@
     "prettier-config-sexy-mode": "latest",
     "remark-man": "^8.0.0",
     "semantic-release-config": "latest",
-    "source-map-support": "^0.5.20"
+    "source-map-support": "^0.5.20",
+    "typescript": "^4.5.5"
   },
   "engines": {
     "node": ">=14.18.0"
@@ -226,6 +227,11 @@
     "outputPath": "build"
   },
   "pnpm": {
+    "allowedVersions": {
+      "@typescript-eslint/eslint-plugin": "5",
+      "eslint": "8",
+      "typescript": "4"
+    },
     "neverBuiltDependencies": [
       "core-js",
       "core-js-pure",
