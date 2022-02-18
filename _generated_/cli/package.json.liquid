@@ -229,6 +229,11 @@
     "outputPath": "build"
   },
   "pnpm": {
+    "neverBuiltDependencies": [
+      "core-js",
+      "core-js-pure",
+      "highlight.js"
+    ],
     "peerDependencyRules": {
       "ignoreMissing": [
         "@typescript-eslint/eslint-plugin",
