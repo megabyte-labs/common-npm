@@ -30,5 +30,13 @@
     "ignore": ["src/**/*.spec.ts"],
     "watch": [".env", "src"]
   },
+  "ntl": {
+    "descriptions": {
+      "bump": "Used to quickly build, increase the package.json version, and publish the package"
+    }
+  },
+  "scripts": {
+    "bump": "npm run build && npm version patch --no-commit-hooks --no-git-tag-version --force && npm publish"
+  },
   "typings": "dist/main.d.ts"
 }
