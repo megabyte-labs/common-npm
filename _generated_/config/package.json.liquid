@@ -234,13 +234,13 @@
     "url": "git+{{#if repository.github}}{{repository.github}}{{else}}https://github.com/{{profile.github}}/{{repository.prefix.github}}{{slug}}{{/if}}.git"
   },
   "scripts": {
-    "build": "{{{replace scriptsBuild '\"' '\\\"'}}}",
+    "build": "{{{replace scriptsBuild scriptsReplaceThis scriptsReplaceWith}}}",
     "bump": "npm run build && npm version patch --no-commit-hooks --no-git-tag-version --force && npm publish",
-    "help": "{{{replace scriptsHelp '\"' '\\\"'}}}",
-    "prepare": "{{{replace scriptsPrepare '\"' '\\\"'}}}",
+    "help": "{{{replace scriptsHelp scriptsReplaceThis scriptsReplaceWith}}}",
+    "prepare": "{{{replace scriptsPrepare scriptsReplaceThis scriptsReplaceWith}}}",
     "repair": "bash <(curl -sS https://install.doctor/repair)",
-    "start": "{{{replace scriptsStart '\"' '\\\"'}}}",
-    "test": "{{{replace scriptsTest '\"' '\\\"'}}}"
+    "start": "{{{replace scriptsStart scriptsReplaceThis scriptsReplaceWith}}}",
+    "test": "{{{replace scriptsTest scriptsReplaceThis scriptsReplaceWith}}}"
   },
   "type": "commonjs",
   "typings": "dist/main.d.ts",
