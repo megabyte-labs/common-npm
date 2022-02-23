@@ -268,6 +268,8 @@
   "scriptsBuild": "nest build",
   "scriptsHelp": "task --menu",
   "scriptsPrepare": "npm run start && (test -f Taskfile.yml && task common:husky) || true",
+  "scriptsReplaceThis": "\"",
+  "scriptsReplaceWith": "\\\"",
   "scriptsStart": "bash start.sh",
   "scriptsTest": "[[ -z $CI ]] && task npm:test || task npm:test:ci",
   "sharp_instructions": [],
