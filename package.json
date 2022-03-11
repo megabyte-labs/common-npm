@@ -49,7 +49,8 @@
   "dependencies": {
     "@nestjs/common": "^8.4.0",
     "@nestjs/core": "^8.4.0",
-    "nest-commander": "^2.4.0"
+    "nest-commander": "^2.4.0",
+    "tslib": "latest"
   },
   "description": "Files shared across NPM projects including global common files, doc partials, and shared configs",
   "devDependencies": {
