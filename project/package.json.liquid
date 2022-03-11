@@ -36,7 +36,7 @@
     }
   },
   "scripts": {
-    "bump": "npm run build && npm version patch --no-commit-hooks --no-git-tag-version --force && npm publish"
+    "bump": "npm run build && SKIP_NPM_PREPUBLISHONLY=true npm version patch --no-commit-hooks --no-git-tag-version --force && SKIP_NPM_PREPUBLISHONLY=true npm publish"
   },
   "typings": "dist/main.d.ts"
 }
