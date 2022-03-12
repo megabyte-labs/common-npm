@@ -1,8 +1,4 @@
-commitlint
-jq
 git-cz
 husky
-husky
-git-cz
 jq
 commitlint
