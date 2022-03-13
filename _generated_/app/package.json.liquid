@@ -62,7 +62,7 @@
     "source-map-support": "^0.5.20",
     "supertest": "^6.1.3",
     "tsconfig-paths": "^3.10.1",
-    "typescript": "latest"
+    "typescript": "^4.5.5"
   },
   "engines": {
     "node": ">=14.18.0"
@@ -258,7 +258,7 @@
     "commit": "bash start.sh && task commit",
     "fix": "bash start.sh && task fix",
     "help": "bash start.sh && task --menu",
-    "lint": "bash start.sh && task list",
+    "lint": "bash start.sh && task lint",
     "preload": "bash start.sh && task preload",
     "prepare": "bash start.sh && (test -f Taskfile.yml && task npm:prepare) || true",
     "prepublishOnly": "test -z $SKIP_PREPUB && bash start.sh && task npm:bundle:create || true",
