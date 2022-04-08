@@ -1,0 +1,124 @@
+---
+announce:
+  linkedin:
+    enabled: false
+    message_template: '{{name}} \{{ .Tag }} is out! Check it out at \{{ .ReleaseURL }}.'
+  reddit:
+    application_id: '{{redditApplicationId}}'
+    enabled: false
+    title_template: '{{name}} \{{ .Tag }} was just released!'
+    url_template: '{{repository.github}}/releases/tag/\{{ .Tag }}'
+    username: '{{redditUsername}}'
+  skip: '\{{gt .Patch 0}}'
+  slack:
+    channel: '{{slackNotificationChannel}}'
+    enabled: true
+    icon_url: '{{slackNotificationIcon}}'
+    message_template: '**[{{name}}]({{repository.github}})** \{{.Tag}} is out! Check it out at \{{.ReleaseURL}}.'
+    username: '{{slackNotificationUsername}}'
+  teams:
+    color: '{{teamsNotificationColor}}'
+    enabled: false
+    icon_url: '{{teamsNotificationIcon}}'
+    message_template: '{{name}} \{{ .Tag }} is out! Check it out at \{{ .ReleaseURL }}.'
+    title_template: '{{name}} \{{ .Tag }} has been released!'
+  twitter:
+    enabled: false
+    message_template: '{{name}} \{{ .Tag }} is out with new features! Check it out at \{{ .ReleaseURL }}.'
+
+archives:
+  - files:
+      - README.md
+      - LICENSE
+      - completion/**/*
+    format_overrides:
+      - format: zip
+        goos: windows
+
+brews:
+  - description: '{{description}}'
+    folder: '{{homebrew.folder}}'
+    homepage: '{{link.home}}'
+    install: |-
+      bin.install "{{binName}}"
+      bash_completion.install "completion/bash/{{binName}}.bash" => "{{binName}}"
+      zsh_completion.install "completion/zsh/_{{binName}}" => "_{{binName}}"
+      fish_completion.install "completion/fish/{{binName}}.fish"
+    license: '{{license}}'
+    name: '{{binName}}'
+    tap:
+      name: '{{homebrew.name}}'
+      owner: '{{homebrew.owner}}'
+    test: '{{homebrew.test}}'
+
+builds:
+  binary: '{{binName}}'
+  goarch:
+    - amd64
+  hooks:
+    post: task npm:build:pkg
+  main: .config/dummy.go
+
+checksum:
+  name_template: CHECKSUMS.txt
+
+dist: build
+
+dockers:
+  - build_flag_templates:
+      - --platform=linux/amd64
+    dockerfile: .config/Dockerfile
+    goarch: amd64
+    goos: linux
+    image_templates:
+      - '{{profile.dockerhub}}/\{{.ProjectName}}'
+      - '{{profile.dockerhub}}/\{{.ProjectName}}:\{{.Tag}}'
+      - '{{profile.dockerhub}}/\{{.ProjectName}}:v\{{ .Major }}'
+    use: buildx
+
+gomod:
+  proxy: {{ goModProxy }}
+
+nfpms:
+  - description: '{{description}}'
+    formats:
+      - apk
+      - deb
+      - rpm
+    homepage: '{{link.home}}'
+    id: default
+    license: '{{license}}'
+    maintainer: '{{organization}} <{{email.help}}>'
+    recommends:
+      - git
+    suggests:
+      - docker
+      - jq
+      - yq
+    vendor: '{{company}}'
+
+project_name: '{{replace name " " "-"}}'
+
+release:
+  disable: true
+
+# eslint-disable max-len
+snapcrafts:
+  - confinement: '{{snapConfinement}}'
+    # yamllint disable-line rule:line-length
+    description: '{{overview}}'
+    extra_files:
+      - destination: completion
+        mode: 0755
+        source: completion
+    id: default
+    license: '{{license}}'
+    publish: true
+    summary: '{{description}}'
+# eslint-enable max-len
+
+snapshot:
+  name_template: '\{{.Tag}}'
+
+universal_binaries:
+  - replace: true
