@@ -1,0 +1,9 @@
+{
+  "docs": {
+    "header_description_pre": "Maintained by ",
+    "link": "https://install.doctor"
+  },
+  "npm_type": "commonjs",
+  "scriptsTest": "task npm:test:none",
+  "subgroup": "tap"
+}
