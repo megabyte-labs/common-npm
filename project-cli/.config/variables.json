@@ -1,4 +1,5 @@
 {
+  "dockerPublish": true,
   "docs": {
     "header_description_pre": "An NPM CLI maintained by ",
     "link": "https://megabyte.space/docs/npm/cli"
