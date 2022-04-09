@@ -1,5 +1,5 @@
 require "language/node"
-
+# @npmBrew [{{#if binName}}{{pascalcase binName}}{{else}}{{pascalcase slug}}{{/if}}]({{repository.github}}) - {{description}}
 class {{#if binName}}{{pascalcase binName}}{{else}}{{pascalcase slug}}{{/if}} < Formula
   desc "{{description}}"
   homepage "{{link.home}}"
