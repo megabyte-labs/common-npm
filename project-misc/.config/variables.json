@@ -1,0 +1,8 @@
+{
+  "docs": {
+    "header_description_pre": "Maintained by "
+  },
+  "npm_type": "commonjs",
+  "scriptsTest": "task donothing",
+  "subgroup": "misc"
+}
