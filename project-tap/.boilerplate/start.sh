@@ -1,2 +1,2 @@
-#!/usr/env/bin sh
+#!/bin/sh
 # Dummy file
