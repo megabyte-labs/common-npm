@@ -1,108 +1,14 @@
 {
-  "private": false,
-  "name": "@installdoc/common-npm",
-  "version": "0.0.1",
-  "description": "Files shared across NPM projects including global common files, doc partials, and shared configs",
-  "license": "MIT",
-  "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
-  "homepage": "https://megabyte.space",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/megabyte-labs/common-npm.git"
-  },
-  "bugs": {
-    "email": "help@megabyte.space",
-    "url": "https://gitlab.com/megabyte-labs/common/npm/-/issues"
-  },
-  "type": "module",
-  "scripts": {
-    "build": "bash start.sh && task donothing",
-    "bump": "npm run build && npm version patch --no-commit-hooks --no-git-tag-version --force && npm publish",
-    "commit": "bash start.sh && task commit",
-    "fix": "bash start.sh && task fix",
-    "help": "bash start.sh && task --menu",
-    "lint": "bash start.sh && task lint",
-    "preload": "bash start.sh && task preload",
-    "prepare": "bash start.sh && (test -f Taskfile.yml && task npm:prepare) || true",
-    "release": "bash start.sh && task publish:semantic-release",
-    "repair": "bash <(curl -sS https://install.doctor/repair)",
-    "start": "test -z $SKIP_NPM_START && bash start.sh || true",
-    "test": "bash start.sh && task donothing",
-    "unpack": "bash start.sh && task npm:bundle:unpack",
-    "update": "bash start.sh && task update",
-    "vscode": "bash start.sh && task vscode"
-  },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/git-cz-emoji"
+  "author": "{{author.name}} <{{author.email}}> ({{link.home}})",
+  "blueprint": {
+    "repository": {
+      "github": "{{#if repository.github}}{{repository.github}}{{else}}https://github.com/{{profile.github}}/{{repository.prefix.github}}{{slug}}{{/if}}",
+      "gitlab": "{{#if repository.gitlab}}{{repository.gitlab}}{{else}}{{repository.gitlabBaseUrl}}/{{group}}/{{subgroup}}/{{slug}}{{/if}}"
     }
   },
-  "dependencies": {
-    "@nestjs/common": "^8.4.0",
-    "@nestjs/core": "^8.4.0",
-    "nest-commander": "^2.4.0",
-    "tslib": "latest"
-  },
-  "optionalDependencies": {},
-  "devDependencies": {
-    "@commitlint/config-conventional": "latest",
-    "@nestjs/testing": "^8.4.0",
-    "eslint-config-strict-mode": "latest",
-    "git-cz-emoji": "latest",
-    "handlebars-helpers": "latest",
-    "nest-commander-testing": "^2.0.1",
-    "prettier-config-sexy-mode": "latest",
-    "semantic-release-config": "latest",
-    "supertest": "^6.2.2",
-    "tslint": "^6.1.3",
-    "typescript": "^4.5.5"
-  },
-  "keywords": [
-    "cli",
-    "common",
-    "files",
-    "library",
-    "mblabs",
-    "megabytelabs",
-    "nest",
-    "nestjs",
-    "node",
-    "npm",
-    "package",
-    "professormanhattan",
-    "shared",
-    "washingtondc"
-  ],
-  "engines": {
-    "node": ">=14.18.0"
-  },
-  "publishConfig": {
-    "@gitlab:registry": "https://gitlab.com/api/v4/projects/24741344/packages/npm/",
-    "@megabyte:registry": "https://gitlab.com/api/v4/projects/24741344/packages/npm/",
-    "access": "public",
-    "registry": "https://registry.npmjs.org/",
-    "tag": "edge"
-  },
-  "blueprint": {
-    "description": "Files shared across NPM projects including global common files, doc partials, and shared configs",
-    "emoji_end": " ▶️🔥",
-    "emoji_start": "",
-    "github_id": "R_kgDOGet0xA",
-    "gitlab_group_id": "11097242",
-    "gitlab_project_id": "24741344",
-    "group": "common",
-    "name": "NPM Common",
-    "overview": "This repository houses files that propagate down to NPM projects via CI. Its point is to keep dependencies and configurations up to date and synchronized across all the NPM projects. Individual NPM projects inherit their upstream files by copying over the `common` folder files and then the `common-{{ NPM_PROJECT_TYPE }}` folder. After the individual projects do that, they merge the appropriate JSON into a `variables.json` file and use that as the context to generate any files that match `*.hbs.*` or `*.handlebars`.",
-    "profile": {
-      "npmjs_organization": "installdoc"
-    },
-    "repository": {
-      "github": "https://github.com/megabyte-labs/common-npm",
-      "gitlab": "https://gitlab.com/megabyte-labs/common/npm"
-    },
-    "slug": "common-npm",
-    "subgroup": "npm",
-    "title": "Common NPM/Node.js Files and Boilerplates"
+  "bugs": {
+    "email": "{{email.help}}",
+    "url": "{{#if repository.gitlab}}{{repository.gitlab}}{{else}}{{repository.gitlabBaseUrl}}/{{group}}/{{subgroup}}/{{slug}}{{/if}}{{repository.location.issues.gitlab}}"
   },
   "changelog": {
     "displayTypes": [
@@ -120,26 +26,79 @@
     ],
     "helpUrl": "https://megabyte.space/docs/contributing/commits"
   },
-  "eslintConfig": {
-    "extends": "eslint-config-strict-mode",
-    "rules": {
-      "import/no-extraneous-dependencies": "warn"
+  "config": {
+    "commitizen": {
+      "path": "node_modules/git-cz-emoji"
     }
   },
+  "dependencies": {},
+  "description": "{{description}}",
+  "devDependencies": {
+    "@commitlint/config-conventional": "latest",
+    "@types/node": "^16.11.6",
+    "esbuild": "^0.12.29",
+    "esbuild-node-externals": "^1.3.0",
+    "eslint-config-strict-mode": "latest",
+    "git-cz-emoji": "latest",
+    "handlebars-helpers": "latest",
+    "jest-preset-ts": "latest",
+    "prettier-config-sexy-mode": "latest",
+    "semantic-release-config": "latest",
+    "typescript": "^4.5.5"
+  },
+  "engines": {
+    "node": ">=14.18.0"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-strict-mode"
+  },
+  "files": [
+    "dist",
+    "lib"
+  ],
   "funding": [
     {
       "type": "opencollective",
-      "url": "https://opencollective.com/megabytelabs"
+      "url": "{{profile_link.opencollective}}/{{profile.opencollective}}"
     },
     {
       "type": "patreon",
-      "url": "https://www.patreon.com/ProfessorManhattan"
+      "url": "{{profile_link.patreon}}/{{profile.patreon}}"
     }
   ],
+  "homepage": "{{link.home}}",
+  "jest": {
+    "preset": "jest-preset-ts",
+    "reporters": [
+      "default",
+      [
+        "jest-html-reporters",
+        {
+          "filename": "index.html",
+          "logoImgPath": "./.config/assets/logo-jest-report.png",
+          "openReport": true,
+          "pageTitle": "Code Coverage Report",
+          "publicPath": "./coverage"
+        }
+      ]
+    ]
+  },
   "jscpd": {
     "gitignore": true,
     "threshold": 0.1
   },
+  "keywords": [
+    "doctor",
+    "install",
+    "installdoctor",
+    "mblabs",
+    "megabytelabs",
+    "professormanhattan",
+    "scoop",
+    "washingtondc",
+    "windows"
+  ],
+  "license": "{{license}}",
   "lint-staged": {
     "(Brewfile|composer.lock|Gemfile|Gopkg.lock|Pipfile.lock)": [
       "task fix:prettier --"
@@ -207,6 +166,19 @@
       "task image:compress --"
     ]
   },
+  "main": "dist/main.js",
+  "name": "{{#if customPackageName}}{{customPackageName}}{{else}}@{{profile.npmjs_organization}}/{{repository.prefix.github}}{{slug}}{{/if}}",
+  "nodemonConfig": {
+    "exec": "tsc -p . && node --inspect-brk dist/main",
+    "ext": "js,jsx,json,ts,tsx,yml",
+    "ignore": [
+      "src/**/*.spec.ts"
+    ],
+    "watch": [
+      ".env",
+      "src"
+    ]
+  },
   "ntl": {
     "descriptions": {
       "build": "Builds the project using the build command specified under scripts in package.json",
@@ -217,7 +189,6 @@
       "lint": "Lint the project with all available linters",
       "preload": "Preload the operating system with commonly used libraries and tools",
       "prepare": "A hook triggered by running npm install that runs logic such as installing pre-commit hooks",
-      "publish": "Publish the software to all supported channels using semantic-release",
       "release": "Publish the software to all supported channels using semantic-release",
       "repair": "Fixes basic issues in projects that are having trouble running basic commands like 'task start'",
       "start": "Entrypoint for new developers that installs requirements and then runs 'task start'",
@@ -226,10 +197,10 @@
       "update": "Update and refresh the repository with upstream changes and templated parts"
     }
   },
+  "optionalDependencies": {},
   "pnpm": {
     "allowedVersions": {
       "@typescript-eslint/eslint-plugin": "5",
-      "eslint": "8",
       "typescript": "4"
     },
     "neverBuiltDependencies": [
@@ -245,6 +216,13 @@
     }
   },
   "prettier": "prettier-config-sexy-mode",
+  "private": false,
+  "publishConfig": {
+    "@gitlab:registry": "https://gitlab.com/api/v4/projects/{{gitlab_project_id}}/packages/npm/",
+    "access": "{{npm_publish_config_access}}",
+    "registry": "https://registry.npmjs.org/",
+    "tag": "edge"
+  },
   "release": {
     "branches": [
       "main",
@@ -256,5 +234,29 @@
       }
     ],
     "extends": "semantic-release-config"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+{{#if repository.github}}{{repository.github}}{{else}}https://github.com/{{profile.github}}/{{repository.prefix.github}}{{slug}}{{/if}}.git"
+  },
+  "scripts": {
+    "build": "bash start.sh && {{{replace scriptsBuild scriptsReplaceThis scriptsReplaceWith}}}",
+    "bump": "npm run build && npm version patch --no-scripts --no-commit-hooks --no-git-tag-version --force && SKIP_PREPUB=true npm publish",
+    "commit": "bash start.sh && task commit",
+    "fix": "bash start.sh && task fix",
+    "help": "bash start.sh && task --menu",
+    "lint": "bash start.sh && task lint",
+    "preload": "bash start.sh && task preload",
+    "prepare": "bash start.sh && (test -f Taskfile.yml && task npm:prepare) || true",
+    "release": "bash start.sh && task publish:semantic-release",
+    "repair": "bash <(curl -sS https://install.doctor/repair)",
+    "start": "test -z $SKIP_NPM_START && bash start.sh || true",
+    "test": "bash start.sh && {{{replace scriptsTest scriptsReplaceThis scriptsReplaceWith}}}",
+    "unpack": "bash start.sh && task npm:bundle:unpack",
+    "update": "bash start.sh && task update",
+    "vscode": "bash start.sh && task vscode"
+  },
+  "type": "{{npm_type}}",
+  "typings": "dist/main.d.ts",
+  "version": "{{version}}"
 }
